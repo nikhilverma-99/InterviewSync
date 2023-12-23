@@ -1,3 +1,4 @@
 [build]
     command = "vite build"
     build = "build"
+    publish: /opt/build/repo/build

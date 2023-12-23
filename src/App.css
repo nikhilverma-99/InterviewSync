@@ -1,0 +1,10 @@
+.btn, .btn:link, .btn:visited {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 500;
+    padding: 1.6rem 3.2rem;
+    border-radius: 9px; 
+    cursor: pointer; 
+    transition: all 0.3s;
+}

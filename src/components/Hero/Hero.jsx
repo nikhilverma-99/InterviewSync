@@ -17,8 +17,7 @@ const Hero = () => {
                 CodeCollab is your go-to platform for collaborative code editing. Whether you're working on a project with a team or getting help from a friend, CodeCollab makes coding together seamless and efficient.
                 </p> 
                 <div className='hero-links'>
-                  <a href="#" className='btn btn-startCoding'>Start Coding !</a>
-                  <div className='middle'> </div>
+                  <a href="#" className='btn btn-startCoding'>Start Coding !</a> 
                   <a href="#" className='btn btn-Learnmore'>Learn More</a>
                 </div>
              
@@ -28,8 +27,7 @@ const Hero = () => {
                 {Object.values(customerImages).map((value, index) => {
                     console.log(value);
 
-                return (
-                  
+                return ( 
                   <> 
                   <img
                     src={value}
@@ -37,10 +35,7 @@ const Hero = () => {
                     alt="customer"
                     loading="lazy" 
                   />
-                  </>
-                  
-
-                  
+                  </> 
                 );
               })}
                 </div>

@@ -1,12 +1,17 @@
-import Image from '../../images/customers/customer-1.jpg'
-const customerImages = {
-    c1: "../../images/customers/customer-1.jpg", 
-    c2: "../../images/customers/customer-2.jpg",
-    c3: "../../images/customers/customer-3.jpg",
-    c4: "../../images/customers/customer-4.jpg",
-    c5: "../../images/customers/customer-5.jpg",
-    c6: "../../images/customers/customer-6.jpg",
-  }; 
+import customer1 from "../../images/customers/customer-1.jpg";
+import customer2 from "../../images/customers/customer-2.jpg";
+import customer3 from "../../images/customers/customer-3.jpg";
+import customer4 from "../../images/customers/customer-4.jpg";
+import customer5 from "../../images/customers/customer-5.jpg";
+import customer6 from "../../images/customers/customer-6.jpg";
 
-  export default customerImages;
-  
+const customerImages = {
+  c1: customer1,
+  c2: customer2,
+  c3: customer3,
+  c4: customer4,
+  c5: customer5,
+  c6: customer6,
+};
+
+export default customerImages;

@@ -14,5 +14,7 @@ html {
   overflow-x: hidden !important; 
   touch-action: pan-y;
   font-family: 'Rubik', sans-serif;
+  background-color: #F8FCFA;
+
 
 }

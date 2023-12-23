@@ -1,0 +1,5 @@
+services:
+  - type: web
+    name: Codecollab
+    buildCommand: npm run build
+    startCommand: npm run start

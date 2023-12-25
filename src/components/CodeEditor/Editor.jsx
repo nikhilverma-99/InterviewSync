@@ -10,7 +10,7 @@ import{fontSizes, programmingLanguages} from './Settings/editorSetting'
 const CodeEditor = () => {
   const [fontSize, setFontSize] = useState(18);
   const [tabSize, setTabSize] = useState(2);  
-  const [language,setLanguage] = useState('cpp')
+  const [language,setLanguage] = useState('')
   const [selectedTheme, setSelectedTheme] = useState('vs-dark'); // Default theme
   const [code, setCode] = useState("function hello(){\nalert('Hello world!');}");
   const themes = {
@@ -39,7 +39,7 @@ const CodeEditor = () => {
         `)}`;
       },
     };
-    
+    setLanguage('cpp');
     return () => {
      <></> 
     };

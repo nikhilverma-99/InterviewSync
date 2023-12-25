@@ -6,7 +6,11 @@ import MonacoEditor from 'react-monaco-editor';
 import { IoSettingsOutline } from "react-icons/io5";
 // Import your theme definitions here or define them in the same file
 import darkTheme from './Themes/monokai.json';
+import CodeSnippet from './CodeSnippet/codeSnippet.json'
 import{fontSizes, programmingLanguages} from './Settings/editorSetting'
+
+ 
+
 const CodeEditor = () => {
   const [fontSize, setFontSize] = useState(18);
   const [tabSize, setTabSize] = useState(2);  
@@ -17,8 +21,7 @@ const CodeEditor = () => {
     'vs-dark': 'Dark Theme',
     'vs-light': 'Light Theme',
     'monokai': 'MonoKai Theme',
-  };
-  console.log(fontSizes);
+  }; 
   
   const editorOptions = {
     selectOnLineNumbers: true,
@@ -38,7 +41,7 @@ const CodeEditor = () => {
           importScripts('https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.26.1/min/vs/base/worker/workerMain.js');
         `)}`;
       },
-    };
+    }; 
     setLanguage('cpp');
     return () => {
      <></> 
@@ -47,7 +50,7 @@ const CodeEditor = () => {
 
   const handleEditorDidMount = (editor) => {
     // You can do additional customization or handling after the editor is mounted
-    console.log('Editor mounted:', editor);
+    
   };
 
   const handleThemeChange = (event) => {
@@ -62,6 +65,11 @@ const CodeEditor = () => {
   const handleLanguageChange = (event) => {
     const newLanguage = event.target.value;
     setLanguage(newLanguage);
+     
+    const model = monaco.editor.getModels()[0]; // Assuming you have only one model
+     
+    setCode(CodeSnippet[newLanguage])
+    monaco.editor.setModelLanguage(model, newLanguage);
   };
 
   return (
@@ -95,6 +103,7 @@ const CodeEditor = () => {
       height="600"
       language={language}
       theme={selectedTheme}
+      value = {code}
       options={editorOptions}
       editorDidMount={handleEditorDidMount}
     />

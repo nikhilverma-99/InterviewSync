@@ -5,7 +5,7 @@ import { HiOutlineCodeBracket } from 'react-icons/hi2';
 import MonacoEditor from 'react-monaco-editor';
 import { IoSettingsOutline } from "react-icons/io5";
 // Import your theme definitions here or define them in the same file
-// import darkTheme from './Themes/monokai.json';
+import darkTheme from './Themes/monokai.json';
 import{fontSizes, programmingLanguages} from './Settings/editorSetting'
 const CodeEditor = () => {
   const [fontSize, setFontSize] = useState(18);

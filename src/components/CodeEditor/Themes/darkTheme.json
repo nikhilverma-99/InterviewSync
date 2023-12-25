@@ -1,0 +1,30 @@
+ {
+    "base": "vs-dark",
+    "inherit": true,
+    "rules": [
+      { "foreground": "FFFFFF", "background": "1E1E1E", "token": "" },
+      { "foreground": "57A64A", "token": "comment" },
+      { "foreground": "569CD6", "token": "keyword" },
+      { "foreground": "CE9178", "token": "string" },
+      { "foreground": "B5CEA8", "token": "number" },
+      { "foreground": "D4D4D4", "token": "operator" },
+      { "foreground": "9CDCFE", "token": "variable" },
+      { "foreground": "569CD6", "token": "function" },
+      { "foreground": "569CD6", "token": "class" },
+      { "foreground": "4EC9B0", "token": "type" },
+      { "foreground": "FF0000", "token": "keyword.control" },
+      { "foreground": "FF0000", "token": "keyword.flow" },
+      { "foreground": "FF0000", "token": "keyword.other" },
+      { "foreground": "D4D4D4", "token": "punctuation" },
+      { "foreground": "D4D4D4", "token": "delimiter" },
+      { "foreground": "B21DFF", "token": "constant" },
+      { "foreground": "D4D4D4", "token": "preprocessor" },
+      { "foreground": "D4D4D4", "token": "annotation" },
+      { "foreground": "B21DFF", "token": "attribute" },
+      { "foreground": "B21DFF", "token": "object" },
+      { "foreground": "B21DFF", "token": "method" },
+      { "foreground": "FF0000", "token": "keyword.control" },
+      { "foreground": "D4D4D4", "token": "keyword.operator" } 
+    ]
+  }
+  

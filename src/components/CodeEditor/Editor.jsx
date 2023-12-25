@@ -3,11 +3,12 @@ import * as monaco from 'monaco-editor';
 import './Editor.css';
 import { HiOutlineCodeBracket } from 'react-icons/hi2';
 import MonacoEditor from 'react-monaco-editor';
+import { IoSettingsOutline } from "react-icons/io5";
 // Import your theme definitions here or define them in the same file
-import darkTheme from './Themes/monokai.json';
+// import darkTheme from './Themes/monokai.json';
 import{fontSizes, programmingLanguages} from './Settings/editorSetting'
 const CodeEditor = () => {
-  const [fontSize, setFontSize] = useState(14);
+  const [fontSize, setFontSize] = useState(18);
   const [tabSize, setTabSize] = useState(2);  
   const [language,setLanguage] = useState('cpp')
   const [selectedTheme, setSelectedTheme] = useState('vs-dark'); // Default theme
@@ -23,6 +24,7 @@ const CodeEditor = () => {
     selectOnLineNumbers: true,
     fontSize,
     tabSize,
+    fontFamily: '"Source Code Pro", monospace',
   };
   useEffect(() => {
     // Dispose of the previous editor instance before creating a new one 
@@ -65,15 +67,16 @@ const CodeEditor = () => {
         <select value={selectedTheme} onChange={handleThemeChange}>
           {Object.entries(themes).map(([themeKey, themeLabel]) => (
             <option key={themeKey} value={themeKey}>{themeLabel}</option>
-          ))}
+            ))}
         </select>
 
         <select value={language} onChange={setLanguage}>
           {Object.entries(programmingLanguages).map(([themeKey, themeLabel]) => (
             <option key={themeKey} value={themeKey}>{themeLabel}</option>
-          ))}
+            ))}
         </select>
 
+            <IoSettingsOutline />
         <select value={fontSize} onChange={handleFontChange}>
           {fontSizes.map((size) => (
             <option key={size } value={size}>{size+' px'}</option>

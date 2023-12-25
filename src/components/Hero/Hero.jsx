@@ -2,6 +2,7 @@ import React from 'react';
 import './Hero.css'
 import customerImages from './customerImages';
 import HeroImage from '../../images/hero.png'
+import { NavLink } from 'react-router-dom';
 const Hero = () => {
   return (
      <section className="section-hero">
@@ -17,16 +18,14 @@ const Hero = () => {
                 CodeCollab is your go-to platform for collaborative code editing. Whether you're working on a project with a team or getting help from a friend, CodeCollab makes coding together seamless and efficient.
                 </p> 
                 <div className='hero-links'>
-                  <a href="#" className='btn btn-startCoding'>Start Coding !</a> 
-                  <a href="#" className='btn btn-Learnmore'>Learn More</a>
+                  <NavLink href="#" className='btn btn-startCoding'>Start Coding !</NavLink> 
+                  <NavLink href="#" className='btn btn-Learnmore'>Learn More</NavLink>
                 </div>
              
 
                 <div className="delivered-meals">
                 <div className="delivered-imgs">
-                {Object.values(customerImages).map((value, index) => {
-                    console.log(value);
-
+                {Object.values(customerImages).map((value, index) => { 
                 return ( 
                   <> 
                   <img

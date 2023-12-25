@@ -59,6 +59,11 @@ const CodeEditor = () => {
     setFontSize(newFontSize);
   };
 
+  const handleLanguageChange = (event) => {
+    const newLanguage = event.target.value;
+    setLanguage(newLanguage);
+  };
+
   return (
     <div className='editor-continer'>
       <div className="editor-top1"> 
@@ -70,7 +75,7 @@ const CodeEditor = () => {
             ))}
         </select>
 
-        <select value={language} onChange={setLanguage}>
+        <select value={language} onChange={handleLanguageChange}>
           {Object.entries(programmingLanguages).map(([themeKey, themeLabel]) => (
             <option key={themeKey} value={themeKey}>{themeLabel}</option>
             ))}

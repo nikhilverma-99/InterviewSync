@@ -32,7 +32,9 @@ const CodeEditor = () => {
     selectOnLineNumbers: true,
     fontSize: fontSize,
     tabSize: tabSize,
-    fontFamily: '"Source Code Pro", monospace',
+    fontFamily: 'Fira Code, Menlo, Monaco, "Courier New", monospace',
+    lineHeight: 22,
+    fontLigatures: true
   };
   useEffect(() => {
     // Dispose of the previous editor instance before creating a new one 
@@ -130,7 +132,7 @@ const CodeEditor = () => {
       theme={selectedTheme}
       value = {code}
       options={editorOptions}
-       onChange={handleCodeChange}
+      onChange={handleCodeChange}
       editorDidMount={handleEditorDidMount}
       />
       {

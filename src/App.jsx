@@ -1,7 +1,7 @@
-import { useState } from 'react'
 import NavBar from './components/NavBar/NavBar'
-import Hero from './components/Hero/Hero'
-import CodeEditor from './components/CodeEditor/Editor'
+import Hero from './components/Hero/Hero' 
+import ProblemEditor from './components/Problem+Editor/ProblemEditor'
+// import Whiteboard from './components/WhiteBoard/WhiteBoard'
 import './App.css'
 
 function App() { 
@@ -10,7 +10,8 @@ function App() {
     <>
       <NavBar></NavBar>
       <Hero></Hero>
-      <CodeEditor/>
+      <ProblemEditor></ProblemEditor>
+      {/* <Whiteboard></Whiteboard>  */}
     </>
   )
 }

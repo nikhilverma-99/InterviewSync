@@ -1,0 +1,26 @@
+.problemEditor
+{
+    background-color:#3f3f3f;
+    padding: 1rem;
+    display: flex;
+    gap:0.5rem;
+    margin: 1rem;
+    border-radius: 10px;
+    height: 92vh
+}
+.testcases
+  {
+    display: block;
+  }
+
+  .intersection
+  {
+    content:'';
+    width:0.4rem;
+    border-radius: 200px;
+    background-color: #252525;
+  }
+  .intersection:hover
+  {
+    cursor: ew-resize;
+  }

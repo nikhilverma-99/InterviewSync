@@ -3,9 +3,10 @@
     display: flex;
     align-items: center;
     gap:0.6rem;
-    background-color: rgb(56, 56, 56);
+    background-color: rgb(47,47,47);
     padding:0.4rem 1rem;
     width: 100%;
+    height: 5%;
 
     border-top-right-radius: 8px;
     border-top-left-radius: 8px;
@@ -26,7 +27,8 @@
 }
 .editor-continer
 {
-    width: 80rem;
+    width: 100%;
+    height: 100%;
     position: relative;
 }
 .form-select
@@ -85,7 +87,7 @@
 .container-editorSetting
 {
     display: flex;
-    width:80%;
+    width:60rem;
     height:20rem;
     font-family: inherit;
     position:absolute;
@@ -129,6 +131,7 @@
 }
 .left-content
 {
+    list-style-type: none;
     margin-left: -5rem;
 }
 .left-content-item
@@ -152,7 +155,7 @@
 }
 ul
 {
-  list-style-type: none;
+ 
   margin: 0;
   padding: 0;
 }
@@ -190,12 +193,12 @@ ul
 }
 .editor-bottom
 {
-     
-     
-    background-color: rgb(56, 56, 56);
-    padding:0.4rem 1rem;
+    display: flex;
+    align-items: center; 
+    background-color: rgb(47,47,47);
+    padding:0.2rem 1rem;
     width: 100%;
-
+    height: 5%;
     border-bottom-right-radius: 8px;
     border-bottom-left-radius: 8px;
 }
@@ -254,3 +257,26 @@ ul
     background: rgba(255, 255, 255, 0) ;
     
 } 
+.btn-run
+{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    gap:0.4rem;
+    color: #cdcdcd;
+    padding:0.4rem 1.7rem 0.4rem 0.8rem; 
+    width:fit-content;
+    border-radius: 7px;
+    font-weight: 500;
+    background-color: rgb(62, 62, 62);
+}
+.btn-run-icon
+{ 
+    font-weight: bold;
+    font-size: 2rem;
+    stroke-width: 2.4; 
+}
+.btn-run:hover
+{
+    cursor: pointer;
+}

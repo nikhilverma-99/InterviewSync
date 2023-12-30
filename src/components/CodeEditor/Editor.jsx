@@ -7,13 +7,14 @@ import { IoSettingsOutline } from "react-icons/io5";
 // Import your theme definitions here or define them in the same file
 import MonoKai from './Themes/monokai.json';
 import CodeSnippet from './CodeSnippet/codeSnippet.json'
-import{fontSizes, programmingLanguages} from './Settings/editorSetting'
+import{fontSizes, programmingLanguages,tabSizes} from './Settings/editorSetting'
 import { RiFontSize2 } from "react-icons/ri";
 import { MdOutlineDarkMode } from "react-icons/md";
 import { MdContentCopy } from "react-icons/md";
-
+import { TbSpace } from "react-icons/tb";
+import { IoPlay } from "react-icons/io5";
  
-
+ 
 const CodeEditor = () => {
   const [fontSize, setFontSize] = useState(18);
   const [tabSize, setTabSize] = useState(2);  
@@ -29,8 +30,8 @@ const CodeEditor = () => {
   
   const editorOptions = {
     selectOnLineNumbers: true,
-    fontSize,
-    tabSize,
+    fontSize: fontSize,
+    tabSize: tabSize,
     fontFamily: '"Source Code Pro", monospace',
   };
   useEffect(() => {
@@ -65,6 +66,16 @@ const CodeEditor = () => {
     const newFontSize = event.target.value;
     setFontSize(newFontSize);
   };
+  const handleTabSize = (event) => {
+    const newTabSize = event.target.value;
+    console.log(newTabSize);
+    
+    setTabSize(newTabSize);
+  };
+  const runCode = async()=>{
+    console.log(code)
+    eval(code)
+  }
   const handleCodeChange = (newValue, event) => { 
     setCode(newValue);
   }
@@ -96,7 +107,7 @@ const CodeEditor = () => {
     monaco.editor.setModelLanguage(model, newLanguage);
   };
 
-  return (
+  return ( 
     <div className='editor-continer'>
       <div className= {selectedTheme==='vs-light'?"editor-top1 blue":"editor-top1"}> 
         <HiOutlineCodeBracket className="code-icon" />
@@ -106,14 +117,15 @@ const CodeEditor = () => {
             <option key={themeKey} value={themeKey}>{themeLabel}</option>
             ))}
         </select>
-            <IoSettingsOutline className={settingOpen?'setting-icon rotate':'setting-icon'} id={selectedTheme==='vs-light'?'white':null} onClick={handleSettingOpen} />
+        <div style={{ marginLeft: 'auto' , display:'flex',gap:'1rem'}}> 
              <MdContentCopy className='copy-button' onClick={handleCopyToClipboard} id={selectedTheme==='vs-light'?'white':null}/>
-
+            <IoSettingsOutline className={settingOpen?'setting-icon rotate':'setting-icon'} id={selectedTheme==='vs-light'?'white':null} onClick={handleSettingOpen} /> 
+        </div>
       </div>
       {/* <div id="container" style={{ height: '600px' }}></div> */}
       <MonacoEditor
-      width="100%"
-      height="600"
+      width="100%" 
+      height="90%"
       language={language}
       theme={selectedTheme}
       value = {code}
@@ -156,18 +168,26 @@ const CodeEditor = () => {
                     <option key={size } value={size}>{size+' px'}</option>))}
                     </select>
                   </div>
-
+                  <div className='setting-input'>
+                    <label className='setting-input-label'><TbSpace className='settings-icon'/> <span>Tab Size</span></label>
+                    <select className='form-select select-dark' value={tabSize} id={selectedTheme==='vs-light'?'setting-light-select':null}  onChange={handleTabSize}>
+                    {tabSizes.map((size) => (
+                    <option key={size } value={size}>{size}</option>))}
+                    </select>
+                  </div> 
                 </div>
               </div>
             </div>
           </section>
       </section>
       }
-      <div className= {selectedTheme==='vs-light'?"editor-bottom blue":"editor-bottom"}> 
-      <button> Run</button>
+      <div onClick={runCode} className= {selectedTheme==='vs-light'?"editor-bottom blue":"editor-bottom"}> 
+       <div className='btn-run'> 
+        <IoPlay className='btn-run-icon'/>
+        <a>Run</a>
+       </div>
       </div>
-    </div>
-    
+    </div> 
   );
 };
 

@@ -15,6 +15,8 @@ html {
   touch-action: pan-y;
   font-family: 'Rubik', sans-serif;
   background-color: #F8FCFA;
+  padding: 0;
+  margin: 0;
 
 
 }

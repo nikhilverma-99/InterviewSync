@@ -1,4 +1,4 @@
-const fontSizes= [12,13,14,15,16,17,18,29,20,21]
+const fontSizes= [12,13,14,15,16,17,18,20,21]
 const tabSizes= [2,4] 
 const themes= {
     'vs-dark': 'Dark Theme',

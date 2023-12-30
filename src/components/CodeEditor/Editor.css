@@ -279,4 +279,5 @@ ul
 .btn-run:hover
 {
     cursor: pointer;
+    background-color: #494848;
 }

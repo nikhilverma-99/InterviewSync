@@ -27,4 +27,230 @@
 .editor-continer
 {
     width: 80rem;
+    position: relative;
 }
+.form-select
+{
+    /* width: 8.6rem; */
+    padding: 0.3rem;
+    font-size: 1.4rem;
+    font-family: inherit;
+    color: white;
+    border: none;
+    background-color: inherit;
+    border-radius: 9px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.form-select:hover
+{
+    background-color: #494848;
+}
+.setting-icon
+{
+    color:#a3a3a3;
+    margin-left: 1rem;
+    font-weight: bold;
+    font-size: 2.2rem;
+    stroke-width: 2.4;  
+    margin-left: auto;
+    transition: transform 200ms ease;
+    z-index: 100;
+}
+.setting-icon:hover
+{
+    cursor: pointer;
+}
+.rotate {
+    transform: rotate(90deg);
+}
+.setting-popup
+{
+    background: rgba(0, 0, 0, 0.541) ;
+    backdrop-filter: blur(2.4px); /* Apply a blur effect to the container */
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    position: absolute;
+    top:0;
+    left:0;
+}
+.slider-mouseover
+{
+    display: none;
+}
+
+.container-editorSetting
+{
+    display: flex;
+    width:80%;
+    height:20rem;
+    font-family: inherit;
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.settings-left
+{
+    height: 100%;
+    width: 35%;
+    background-color: #272727;
+    color: white;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding: 2rem;
+
+    display: flex;
+    flex-direction: column;
+    gap:0.8rem;
+}
+
+.settings-right
+{
+    height: 100%;
+    width:65%;
+    background-color: #333333;
+    color: white;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 2rem;
+    
+
+
+}
+.settings-left-heading
+{
+    font-size: 1.4rem;
+    margin-left: -11.9rem; 
+}
+.left-content
+{
+    margin-left: -5rem;
+}
+.left-content-item
+{
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.6rem
+}
+.list-icon
+{
+    transform: scale(1.3);
+}
+.setting-right-content
+{
+    
+    flex-direction: column;
+    align-items: flex-start;
+    gap:0.5rem;
+}
+ul
+{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.settings-icon
+{
+    transform: scale(1.8);
+}
+.setting-input
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+   
+}
+.setting-input:not(:first-child) {
+    /* Your additional styles for all setting-input elements except the first child */ 
+    padding-top: 1rem;
+}
+.setting-input-label
+{
+    display: flex;
+    gap:0.8rem;
+    align-items: center;
+    font-family: inherit;
+
+}
+.setting-input-label span{
+    font-size: 1.3rem; 
+}
+.select-dark
+{
+    background-color: rgb(67, 67, 67);
+    margin-left: auto;
+
+}
+.editor-bottom
+{
+     
+     
+    background-color: rgb(56, 56, 56);
+    padding:0.4rem 1rem;
+    width: 100%;
+
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+.copy-button
+{
+    color:#a3a3a3; 
+    font-size: 2.2rem;   
+    z-index: 100;
+}
+.copy-button:hover
+{
+    cursor: pointer;
+}
+.blue{ 
+    background-color: rgb(0, 46, 183);
+  
+}
+.form-select-blue
+{
+    /* width: 8.6rem; */
+    padding: 0.3rem;
+    font-size: 1.4rem;
+    font-family: inherit;
+    color: white;
+    border: none;
+    background-color: rgb(0, 46, 183);
+    border-radius: 9px;
+    box-shadow: 0 1px 2px rgb(0, 46, 183);
+}
+
+.form-select-blue:hover
+{
+    background-color: rgb(0, 51, 203);
+}
+#white
+{
+    color:white
+}
+#setting-L-light
+{
+    background-color: rgb(0, 46, 183);
+}
+#setting-R-light
+{
+    background-color: rgb(0, 54, 218);
+}
+#setting-light-select{
+    background-color: rgb(0, 60, 239);
+}
+#setting-light-select:hover{
+    background-color: rgb(0, 64, 255);
+}
+
+#popup-light
+{
+    background: rgba(255, 255, 255, 0) ;
+    
+} 

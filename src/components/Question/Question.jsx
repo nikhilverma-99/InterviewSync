@@ -1,9 +1,17 @@
 import React from "react";
 import './Question.css'
+import { useCodeCollabContext } from "../../App";
 const Question = () => {
+    const {selectedTheme,setSelectedTheme} = useCodeCollabContext();
+    const EditorThemeColor ={
+        'vs-dark': '#2f2f2f',
+        'vs-light': '#002eb8',
+        'monokai': '#2f2f2f',
+        'cobalt':'#01111f', 
+      }
     const currentYear = new Date().getFullYear();
   return (
-        <section className="question-section">
+        <section className="question-section" style={{backgroundColor:`${EditorThemeColor[selectedTheme]}`}}>
             <div className="heading-container">
                 <a className="heating-content">1897. Redistribute Characters to Make All Strings Equal</a>
             </div>

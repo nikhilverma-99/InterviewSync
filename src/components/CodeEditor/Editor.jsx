@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState  } from 'react'; 
 import * as monaco from 'monaco-editor';
 import './Editor.css';
 import { HiOutlineCodeBracket } from 'react-icons/hi2';
@@ -6,26 +6,30 @@ import MonacoEditor from 'react-monaco-editor';
 import { IoSettingsOutline } from "react-icons/io5";
 // Import your theme definitions here or define them in the same file
 import MonoKai from './Themes/monokai.json';
+import Cobalt from './Themes/Cobalt.json'; 
+
 import CodeSnippet from './CodeSnippet/codeSnippet.json'
 import{fontSizes, programmingLanguages,tabSizes} from './Settings/editorSetting'
 import { RiFontSize2 } from "react-icons/ri";
 import { MdOutlineDarkMode } from "react-icons/md";
 import { MdContentCopy } from "react-icons/md";
 import { TbSpace } from "react-icons/tb";
-import { IoPlay } from "react-icons/io5";
- 
- 
+import { IoPlay } from "react-icons/io5"; 
+
+import {useCodeCollabContext} from '../../App'
 const CodeEditor = () => {
   const [fontSize, setFontSize] = useState(18);
   const [tabSize, setTabSize] = useState(2);  
+  // const [selectedTheme, setSelectedTheme] = useState(); // Default theme
   const [language,setLanguage] = useState('')
-  const[settingOpen, setSettingOpen] = useState(false)
-  const [selectedTheme, setSelectedTheme] = useState('vs-dark'); // Default theme
-  const [code, setCode] = useState("function hello(){\nalert('Hello world!');}");
+  const [settingOpen, setSettingOpen] = useState(false)
+  const [code, setCode] = useState();
+  const {selectedTheme,setSelectedTheme} = useCodeCollabContext();
   const themes = {
+    'cobalt':'Cobalt', 
     'vs-dark': 'Dark Theme',
-    'vs-light': 'Light Theme',
     'monokai': 'MonoKai Theme',
+    'vs-light': 'Light Theme',
   }; 
   
   const editorOptions = {
@@ -33,12 +37,14 @@ const CodeEditor = () => {
     fontSize: fontSize,
     tabSize: tabSize,
     fontFamily: 'Fira Code, Menlo, Monaco, "Courier New", monospace',
-    lineHeight: 22,
+    lineHeight: 25,
     fontLigatures: true
   };
   useEffect(() => {
     // Dispose of the previous editor instance before creating a new one 
     monaco.editor.defineTheme('monokai', MonoKai); 
+    monaco.editor.defineTheme('cobalt', Cobalt);   
+
     window.MonacoEnvironment = {
       getWorkerUrl: function (moduleId, label) {
         return `data:text/javascript;charset=utf-8,${encodeURIComponent(`
@@ -50,6 +56,8 @@ const CodeEditor = () => {
       },
     }; 
     setLanguage('cpp');
+    setCode(CodeSnippet.cpp)
+    setSelectedTheme('cobalt')
     return () => {
      <></> 
     };
@@ -109,12 +117,44 @@ const CodeEditor = () => {
     monaco.editor.setModelLanguage(model, newLanguage);
   };
 
+  const EditorThemeColor ={
+    'vs-dark': '#2f2f2f',
+    'vs-light': '#002eb8',
+    'monokai': '#2f2f2f',
+    'cobalt':'#01111f', 
+  }
+
+  const settingRight ={
+    'vs-dark': '#4d4d4d',
+    'vs-light': '#0038e0',
+    'monokai': '#494b40',
+    'cobalt':'#01305b',
+    
+  }
+  const settingLeft = {
+    'vs-dark': '#2e2d2d',
+    'vs-light': '#002eb8',
+    'monokai': '#272822',
+    'cobalt':'#01203b'
+  }
+  const buttonTheme ={
+    'vs-dark': '#454343',
+    'vs-light': '#0037db',
+    'monokai': '#272822',
+    'cobalt':'#01203b'
+  }
+  const selectInputThemes={
+    'vs-dark': '#2f2f2f',
+    'vs-light': '#002eb8',
+    'monokai': '#2f2f2f',
+    'cobalt':'#01111f'
+  }
   return ( 
     <div className='editor-continer'>
-      <div className= {selectedTheme==='vs-light'?"editor-top1 blue":"editor-top1"}> 
+      <div className="editor-top1" style={{backgroundColor:`${EditorThemeColor[selectedTheme]}`}}> 
         <HiOutlineCodeBracket className="code-icon" />
         <label> Code</label>
-        <select className= {selectedTheme==='vs-light'?"form-select-blue":"form-select"} value={language} onChange={handleLanguageChange}>
+        <select className= "form-select" style={{backgroundColor:`${EditorThemeColor[selectedTheme]}`}} value={language} onChange={handleLanguageChange}>
           {Object.entries(programmingLanguages).map(([themeKey, themeLabel]) => (
             <option key={themeKey} value={themeKey}>{themeLabel}</option>
             ))}
@@ -133,7 +173,7 @@ const CodeEditor = () => {
       value = {code}
       options={editorOptions}
       onChange={handleCodeChange}
-      editorDidMount={handleEditorDidMount}
+      editorDidMount={handleEditorDidMount} 
       />
       {
         settingOpen 
@@ -141,7 +181,7 @@ const CodeEditor = () => {
         <section className='setting-popup' id={selectedTheme==='vs-light'?'popup-light':null}>  
           <section className="section-settingPopup">
             <div className="container-editorSetting">
-              <div className='settings-left' id={selectedTheme==='vs-light'?'setting-L-light':null} >
+              <div className='settings-left' style={{backgroundColor:`${settingLeft[selectedTheme]}`}} >
                 <span style={{ marginLeft: '-11rem' }} className='settings-left-heading'>Settings</span> 
                   <ul className='left-content'>
                     <li className='left-content-item'>
@@ -150,12 +190,12 @@ const CodeEditor = () => {
                     </li>
                   </ul>  
               </div>
-              <div className='settings-right'  id={selectedTheme==='vs-light'?'setting-R-light':null} >
+              <div className='settings-right' style={{backgroundColor:`${settingRight[selectedTheme]}`}} >
                 <div className='setting-right-content'>
 
                   <div className='setting-input' >
                     <label className='setting-input-label'><MdOutlineDarkMode className='settings-icon'/> <span>Theme</span></label>
-                    <select className='form-select select-dark' value={selectedTheme} id={selectedTheme==='vs-light'?'setting-light-select':null} onChange={handleThemeChange}>
+                    <select className='form-select select-dark' value={selectedTheme}   style={{backgroundColor:`${settingLeft[selectedTheme]}`}} onChange={handleThemeChange}>
                         {Object.entries(themes).map(([themeKey, themeLabel]) => (
                           <option key={themeKey} value={themeKey}>{themeLabel}</option>
                           ))}
@@ -165,14 +205,14 @@ const CodeEditor = () => {
 
                   <div className='setting-input'>
                     <label className='setting-input-label'><RiFontSize2 className='settings-icon'/> <span>Font Size</span></label>
-                    <select className='form-select select-dark' value={fontSize} id={selectedTheme==='vs-light'?'setting-light-select':null}  onChange={handleFontChange}>
+                    <select className='form-select select-dark' value={fontSize}    style={{backgroundColor:`${settingLeft[selectedTheme]}`}}  onChange={handleFontChange}>
                     {fontSizes.map((size) => (
                     <option key={size } value={size}>{size+' px'}</option>))}
                     </select>
                   </div>
                   <div className='setting-input'>
                     <label className='setting-input-label'><TbSpace className='settings-icon'/> <span>Tab Size</span></label>
-                    <select className='form-select select-dark' value={tabSize} id={selectedTheme==='vs-light'?'setting-light-select':null}  onChange={handleTabSize}>
+                    <select className='form-select select-dark' value={tabSize}     style={{backgroundColor:`${settingLeft[selectedTheme]}`}} onChange={handleTabSize}>
                     {tabSizes.map((size) => (
                     <option key={size } value={size}>{size}</option>))}
                     </select>
@@ -183,8 +223,8 @@ const CodeEditor = () => {
           </section>
       </section>
       }
-      <div onClick={runCode} className= {selectedTheme==='vs-light'?"editor-bottom blue":"editor-bottom"}> 
-       <div className='btn-run'> 
+      <div onClick={runCode} className= "editor-bottom" style={{backgroundColor:`${EditorThemeColor[selectedTheme]}`}} > 
+       <div className='btn-run'style={{backgroundColor:`${buttonTheme[selectedTheme]}`}}> 
         <IoPlay className='btn-run-icon'/>
         <a>Run</a>
        </div>

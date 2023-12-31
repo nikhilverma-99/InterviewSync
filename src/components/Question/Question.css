@@ -5,10 +5,12 @@
     display: flex;
     flex-direction: column;
     gap: 1.4rem;
-    max-width: 60rem;
+    width: 70rem;
     background-color: rgb(47,47,47);
     color:white;
-    border-radius: 10px; 
+    height: 90vh;
+    border-radius: 10px;
+    overflow-y: scroll;
 }
 .heating-content
 {
@@ -31,8 +33,7 @@
   .tag-content
   {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: center; 
   }
   .question-paragraph
   {

@@ -1,7 +1,7 @@
 import React from "react";
 import './Question.css'
 import { useCodeCollabContext } from "../../App";
-const Question = () => {
+const Question = (props) => {
     const {selectedTheme,setSelectedTheme} = useCodeCollabContext();
     const EditorThemeColor ={
         'vs-dark': '#2f2f2f',
@@ -9,70 +9,74 @@ const Question = () => {
         'monokai': '#2f2f2f',
         'cobalt':'#01111f', 
       }
+      const questionData=props.questionData;
+      if (!questionData) {
+        return null; // or some placeholder content
+    }
+
+    const difficultyText={
+        'Easy':'#3eff00',
+        'Medium':'#ffcc00',
+        'Hard':'#ff0000'
+    }
+    const difficultyBackground={
+        'Easy':'#5de92f73',
+        'Medium':'#ffcc0099',
+        'Hard':'#ff000098'
+    }
     const currentYear = new Date().getFullYear();
   return (
         <section className="question-section" style={{backgroundColor:`${EditorThemeColor[selectedTheme]}`}}>
             <div className="heading-container">
-                <a className="heating-content">1897. Redistribute Characters to Make All Strings Equal</a>
+                <a className="heating-content">{questionData?.question}</a>
             </div>
             <div className="tags">
                 <div className="tag-content">
-                    <a className="tag" style={{ color: '#3eff00' , background:'#5de92f73'}}>Easy</a> 
+                    <a className="tag" style={{ color: `${difficultyText[questionData.difficulty]}` , background: `${difficultyBackground[questionData.difficulty]}`}}>{questionData.difficulty}</a> 
                 </div>
             </div>
             <div className="question-description">
-                <p className="question-paragraph">
-                You are given an array of strings words (0-indexed).
-                </p>
-                <p className="question-paragraph">
-                In one operation, pick two distinct indices i and j, where words[i] is a non-empty string, and move any character from words[i] to any position in words[j].
-                </p>
-                <p className="question-paragraph">
-                Return true if you can make every string in words equal using any number of operations, and false otherwise.
-                </p>
+                {
+                    questionData.questionDescription.map((val)=>{
+                        return  <p className="question-paragraph">
+                         {val}
+                        </p>
+                    })
+                }
+                
             </div>
             <div className="question-examples">
-                <div className="question-example">
-                        <p className="example">Example 1: </p>
-                    <div className="example-content">
-                        <div className="question-input">
-                            <span>Input: </span>
-                            <a>words = ["abc","aabc","bc"]</a>
-                        </div>
-                        <div className="question-output">
-                            <span>Output: </span>
-                            <a>true</a>
-                        </div>
-                        <div className="question-explaination">
-                            <span>Explaination: </span>
-                            <a>Move the first 'a' in words[1] to the front of words[2],to make words[1] = "abc" and words[2] = "abc". All the strings are now equal to "abc", so return true.</a>
-                        </div> 
-                    </div> 
-                </div>
-                <div className="question-example">
-                        <p className="example">Example 2: </p>
-                    <div className="example-content">
-                        <div className="question-input">
-                            <span>Input: </span>
-                            <a>words = ["ab","a"]</a>
-                        </div>
-                        <div className="question-output">
-                            <span>Output: </span>
-                            <a>false</a>
-                        </div>
-                        <div className="question-explaination">
-                            <span>Explaination: </span>
-                            <a> It is impossible to make all the strings equal using the operation.</a>
-                        </div> 
-                    </div> 
-                </div>
+                {
+                    questionData.examples.map((val,index)=>{  
+                        return <div className="question-example">
+                                <p className="example">Example {index+1}: </p>
+                                    <div className="example-content">
+                                        <div className="question-input">
+                                            <span>Input: </span>
+                                            <a>{val.input}</a>
+                                        </div>
+                                        <div className="question-output">
+                                            <span>Output: </span>
+                                            <a>{val.output}</a>
+                                        </div>
+                                        <div className="question-explaination">
+                                            <span>Explaination: </span>
+                                            <a> {val.explanation}</a>
+                                        </div> 
+                                    </div> 
+                                </div>
+                    })
+                } 
             </div>
             <div className="question-constraints">
                 <span className="constraint-heading">Constraints:</span>
                 <ul className="contraints-list">
-                    <li>1 &lt;= words.length &lt;= 100</li>
-                    <li>1 &lt;= words[i].length &lt;= 100</li>
-                    <li>words[i] consists of lowercase English letters.</li> 
+                    {
+                        questionData.constraints.map((val,index)=>{
+                          return  <li>{val}</li> 
+                        })
+                    }
+                  
                 </ul>
             <footer className="question-footer">
                 <p>Copyright &copy; {currentYear} CodeColab. All rights reserved.</p>

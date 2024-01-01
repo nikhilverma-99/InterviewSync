@@ -55,8 +55,15 @@ const RichTextEditor = () => {
   };
 
   useEffect(() => {
-    handleChange(); 
-  }, []);
+    const data = {
+      question,
+      difficulty,
+      examples,
+      constraints,
+      questionDescription,
+    };
+    setQuestionData(data);
+  }, [question, difficulty, examples, constraints, questionDescription]);
   return (
     <>
       <div className="adminEditor">
@@ -236,8 +243,8 @@ const RichTextEditor = () => {
 
           <div className="add-btn btn-save end" onClick={handleChange}>
             <div className="btn-content">
-              <BiReflectVertical className="add-btn-save" />
-              <span>Reflect Changes</span>
+              <IoIosSave className="add-btn-save" />
+              <span>Save Changes</span>
             </div>
           </div>
         </section>

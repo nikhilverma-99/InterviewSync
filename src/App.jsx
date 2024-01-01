@@ -11,7 +11,7 @@ function App() {
     <>
     <CodeCollabContext.Provider value={{selectedTheme,setSelectedTheme}}> 
       <NavBar></NavBar>
-      <Hero></Hero>
+      <Hero></Hero> 
       <ProblemEditor></ProblemEditor>
       <TextEditor></TextEditor>
       {/* <Whiteboard></Whiteboard>  */}

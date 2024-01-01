@@ -22,7 +22,7 @@ const ProblemEditor = () => {
   const EditorThemeColor ={
       'vs-dark': '#2f2f2f',
       'vs-light': '#002eb8',
-      'monokai': '#2f2f2f',
+      'monokai': '#272822',
       'cobalt':'#01111f', 
     }
     const themeBackground ={

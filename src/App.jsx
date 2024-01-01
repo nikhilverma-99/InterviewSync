@@ -1,6 +1,6 @@
 import { useEffect, useState, createContext, useContext } from 'react'
 import NavBar from './components/NavBar/NavBar'
-import Hero from './components/Hero/Hero' 
+import Hero from './components/Hero/Hero'  
 import ProblemEditor from './components/Problem+Editor/ProblemEditor'
 import './App.css'
 import TextEditor from './components/QuestionTextEditor/TextEditor'
@@ -13,8 +13,7 @@ function App() {
       <NavBar></NavBar>
       <Hero></Hero> 
       <ProblemEditor></ProblemEditor>
-      <TextEditor></TextEditor>
-      {/* <Whiteboard></Whiteboard>  */}
+      <TextEditor></TextEditor> 
     </CodeCollabContext.Provider>
     </>
   )

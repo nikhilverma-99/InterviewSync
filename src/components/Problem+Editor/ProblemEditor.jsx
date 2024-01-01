@@ -1,10 +1,44 @@
-import React from "react";
+import React,{useState} from "react";
 import Question from "../Question/Question";
 import Editor from '../CodeEditor/Editor'
 import './ProblemEditor.css'
 import { useCodeCollabContext } from "../../App";
 
 const ProblemEditor = () => {
+//adjustable width
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [difference, setDifference] = useState(0);
+
+  const leftStyle = {  
+    boxSizing: "border-box",
+  };
+  const rightStyle = {  
+    boxSizing: "border-box",
+  };
+
+  const handleMouseDown = (e) => {
+    setIsDragging(true);
+    setStartX(e.clientX);
+  };
+
+  const handleMouseMove = (e) => {
+    if (isDragging) {
+      const deltaX = e.clientX - startX;
+      setStartX(e.clientX);
+
+      // Calculate the difference from the middle div based on deltaX
+      const newDifference = difference + deltaX;
+      setDifference(newDifference);
+    }
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+//
+
   const questionData={ 
     constraints:[`1 <= words.length <= 100`,`1 <= words[i].length <= 100`,`words[i] consists of lowercase English letters.`],
     difficulty:[`Easy`],
@@ -32,10 +66,19 @@ const ProblemEditor = () => {
       'cobalt':'#042e53', 
     }
   return (
-        <div className="problemEditor" style={{backgroundColor:`${themeBackground[selectedTheme]}`}} >
+        <div className="problemEditor"  onMouseMove={handleMouseMove}
+      onMouseUp={handleMouseUp} style={{backgroundColor:`${themeBackground[selectedTheme]}`}} >
+          <div style={{ ...leftStyle, width: `calc(50% + ${difference}px)` }}>
             <Question questionData={questionData}></Question>
-            <div className="intersection" style={{backgroundColor:`${EditorThemeColor[selectedTheme]}`}}></div>
-            <Editor ></Editor>
+          </div>
+
+            <div className="intersection" onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp} style={{backgroundColor:`${EditorThemeColor[selectedTheme]}`}}></div>
+          <div style={{ ...rightStyle, width: `calc(50% - ${difference}px)` }}>
+             <Editor ></Editor>
+          </div>
+
         </div>
   )
 };

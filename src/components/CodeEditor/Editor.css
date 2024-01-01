@@ -28,7 +28,7 @@
 }
 .editor-continer
 {
-    width: 62%;
+    width: 100%;
     height: 100%;
     position: relative;
 }
@@ -261,4 +261,8 @@ ul
 {
     cursor: pointer;
     background-color: #494848;
+}
+.react-monaco-editor-container
+{
+    width:100% !important;
 }

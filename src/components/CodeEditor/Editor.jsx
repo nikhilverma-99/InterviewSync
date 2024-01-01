@@ -83,8 +83,7 @@ const CodeEditor = () => {
     setTabSize(newTabSize);
   };
   const runCode = async()=>{
-    console.log(code)
-    eval(code)
+    console.log(code) 
   }
   const handleCodeChange = (newValue, event) => { 
     setCode(newValue);
@@ -174,7 +173,7 @@ const CodeEditor = () => {
       options={editorOptions}
       onChange={handleCodeChange}
       editorDidMount={handleEditorDidMount} 
-      />
+      /> 
       {
         settingOpen 
           && 

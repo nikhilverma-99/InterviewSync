@@ -68,14 +68,14 @@ const ProblemEditor = () => {
   return (
         <div className="problemEditor"  onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp} style={{backgroundColor:`${themeBackground[selectedTheme]}`}} >
-          <div style={{ ...leftStyle, width: `calc(50% + ${difference}px)` }}>
+          <div style={{ ...leftStyle, width: `calc(40% + ${difference}px)` }}>
             <Question questionData={questionData}></Question>
           </div>
 
             <div className="intersection" onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp} style={{backgroundColor:`${EditorThemeColor[selectedTheme]}`}}></div>
-          <div style={{ ...rightStyle, width: `calc(50% - ${difference}px)` }}>
+          <div style={{ ...rightStyle, width: `calc(60% - ${difference}px)` }}>
              <Editor ></Editor>
           </div>
 

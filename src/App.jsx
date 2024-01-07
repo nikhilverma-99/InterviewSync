@@ -7,6 +7,7 @@ import TextEditor from './components/QuestionTextEditor/TextEditor'
 import Login from './components/Login/Login'
 import Table from './components/Table/Table'
 import { Route, Routes } from 'react-router-dom'
+import HowItWorks from './components/How it Works/HowItWorks'
 const CodeCollabContext = createContext();
 function App() { 
   const [selectedTheme, setSelectedTheme] = useState();  
@@ -14,9 +15,13 @@ function App() {
     <>
     <CodeCollabContext.Provider value={{selectedTheme,setSelectedTheme}}> 
       <Routes>
-        <Route path='/' element={<> 
-      <NavBar></NavBar>
-      <Hero></Hero> </>}></Route>
+        <Route path='/' element={
+          <> 
+            <NavBar></NavBar>
+            <Hero></Hero>
+            <HowItWorks></HowItWorks>
+          </>}> 
+        </Route>
 
         <Route path='/enterInterview' element={<Login></Login>}></Route>
         <Route path='/problemEditor' element={<ProblemEditor></ProblemEditor>}></Route>

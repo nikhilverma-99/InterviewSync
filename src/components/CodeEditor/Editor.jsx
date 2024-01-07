@@ -43,7 +43,7 @@ import {useCodeCollabContext} from '../../App'
     // Dispose of the previous editor instance before creating a new one 
     monaco.editor.defineTheme('monokai', MonoKai); 
     monaco.editor.defineTheme('cobalt', Cobalt);   
- 
+    
     window.MonacoEnvironment = {
       getWorkerUrl: function (moduleId, label) {
         return `data:text/javascript;charset=utf-8,${encodeURIComponent(`

@@ -225,7 +225,7 @@ import {useCodeCollabContext} from '../../App'
   return ( 
     <div className='editor-continer'>
       <div className="editor-top1" style={{backgroundColor:`${EditorThemeColor[selectedTheme]}`}}> 
-        <HiOutlineCodeBracket className="code-icon" />
+       <HiOutlineCodeBracket className="code-icon" />
         <label> Code</label>
         <select className= "form-select" style={{backgroundColor:`${EditorThemeColor[selectedTheme]}`}} value={language} onChange={handleLanguageChange}>
           { programmingLanguages.map(( {id,label}) => (
@@ -236,10 +236,10 @@ import {useCodeCollabContext} from '../../App'
              <MdContentCopy className='copy-button' onClick={handleCopyToClipboard} id={selectedTheme==='vs-light'?'white':null}/>
             <IoSettingsOutline className={settingOpen?'setting-icon rotate':'setting-icon'} id={selectedTheme==='vs-light'?'white':null} onClick={handleSettingOpen} /> 
         </div>
-      </div>
-      {/* <div id="container" style={{ height: '600px' }}></div> */}
-      <MonacoEditor
-      width="100%" 
+             </div>
+     {/* <div id="container" style={{ height: '600px' }}></div> */}
+      <MonacoEditor 
+width="100%" 
       height="90%"
       language={editorLanguage[language]}
       theme={selectedTheme}

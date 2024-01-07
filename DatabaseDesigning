@@ -1,0 +1,68 @@
+SuperAdmin
+   |
+   |
+ Company
+
+ intervier     
+
+ interviewee
+
+tblUsers // Company, SuperAdmin
+{
+    name, email, role, company
+}
+
+tblCompany
+{
+    companyName, GSTNo, paymentId, companyEmail, subscriptionType, startDate, endDate
+}
+
+tblInterview
+{
+    companyId: MongoDD_ID,
+    companyName,
+    font-size: 1.8rem;
+    interviewerEmail,ID:MongoDB_ID
+    intervieweeEmail,ID:MongoDB_ID,
+    jobRole,interviewData,
+    interviewTaken
+}
+tblInterviewCandidate
+{
+    isInterviewer,
+    email,
+    companyID,
+    roomID 
+}
+
+
+
+// Interview Table Admin
+ S.No
+    Candiadte Name
+    Interviewer Name
+    Role
+    Date
+    Interview Taken
+
+Create Interview
+    interviewerEmail
+    intervieweeEmail
+    Timing
+    Role
+    Table to be triggered
+
+    tblInterviewCandidate  
+    tblInterview
+
+----------------------------------------------
+|                                             CodeCollab Plans                  |
+----------------------------------------------
+|           Basic                             |   Standard   |  Premium         |
+|---------------------------------------------|
+| Interviews/month      |      7              |      40      |      Unlimited   | 
+| Priority Support      |       -             |        -     |        ✓         |
+| Price (Monthly)       |   $19.99            |   $49.99     |      $79.99      |
+| Price (Annual)        |   $499.99           |   $799.99    |      $600.99
+ 
+                          [Get Started]    |   [Get Started]    |   [Get Started]   |

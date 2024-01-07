@@ -1,5 +1,6 @@
 import socketIOClient from 'socket.io-client';
 
-const socket = socketIOClient('http://localhost:3000'); // Replace with your server URL
+const socketLink = process.env.COLLAB_BACKEND_LINK | 'https://code-collab-server.onrender.com/';
+const socket = socketIOClient(socketLink); // Replace with your server URL
 
 export default socket;

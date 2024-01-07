@@ -44,7 +44,16 @@ import {useCodeCollabContext} from '../../App'
     monaco.editor.defineTheme('monokai', MonoKai); 
     monaco.editor.defineTheme('cobalt', Cobalt);   
 
-    //  
+    window.MonacoEnvironment = {
+      getWorkerUrl: function (moduleId, label) {
+        return `data:text/javascript;charset=utf-8,${encodeURIComponent(`
+          self.MonacoEnvironment = {
+            baseUrl: 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.26.1/min/'
+          };
+          importScripts('https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.26.1/min/vs/base/worker/workerMain.js');
+        `)}`;
+      },
+    }; 
     setLanguage('63');//Javascript
     setCode(CodeSnippet['63'])
     setSelectedTheme('cobalt')

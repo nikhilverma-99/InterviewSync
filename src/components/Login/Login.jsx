@@ -6,6 +6,8 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Bars } from "react-loading-icons"; 
 import logo from "../../images/Logo.png"; 
+import socket from "../../socket"
+import * as api from "../../Axios"
 function Login() { 
   let [email, setEmail] = useState("");
   let [token, setToken] = useState("");
@@ -13,7 +15,17 @@ function Login() {
   const navigate = useNavigate();
   
   async function LoginButton() { 
-      navigate('/problemEditor') 
+      
+      let res = await api.joinInterview()
+      if(res.status==200){
+
+        localStorage.setItem("roomID",res.data)
+        console.log(localStorage.getItem("roomID"));
+        socket.emit('joininterview',res.data) // emiting join room event
+        navigate('/problemEditor') 
+      }else{
+        console.log(res)
+      }
   }
 
   function fSetEmail(e) {

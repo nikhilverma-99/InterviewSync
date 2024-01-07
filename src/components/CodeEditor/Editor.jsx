@@ -7,7 +7,7 @@ import { IoSettingsOutline } from "react-icons/io5";
 // Import your theme definitions here or define them in the same file
 import MonoKai from './Themes/monokai.json';
 import Cobalt from './Themes/Cobalt.json'; 
-
+import socket from "../../socket"
 import CodeSnippet from './CodeSnippet/codeSnippet.json'
 import {fontSizes, programmingLanguages,tabSizes} from './Settings/editorSetting'
 import { RiFontSize2 } from "react-icons/ri";
@@ -43,16 +43,31 @@ import {useCodeCollabContext} from '../../App'
     // Dispose of the previous editor instance before creating a new one 
     monaco.editor.defineTheme('monokai', MonoKai); 
     monaco.editor.defineTheme('cobalt', Cobalt);   
-
-    //  
+ 
+    window.MonacoEnvironment = {
+      getWorkerUrl: function (moduleId, label) {
+        return `data:text/javascript;charset=utf-8,${encodeURIComponent(`
+          self.MonacoEnvironment = {
+            baseUrl: 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.26.1/min/'
+          };
+          importScripts('https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.26.1/min/vs/base/worker/workerMain.js');
+        `)}`;
+      },
+    }; 
     setLanguage('63');//Javascript
     setCode(CodeSnippet['63'])
     setSelectedTheme('cobalt')
+
     return () => {
      <></> 
     };
   }, []);
-  
+
+  useEffect(()=>{
+    socket.on('codeChange', (newCode) => {
+      setCode(newCode);
+    });
+  },[socket])
   const handleEditorDidMount = (editor) => {
     // You can do additional customization or handling after the editor is mounted 
   };
@@ -122,7 +137,6 @@ import {useCodeCollabContext} from '../../App'
       },
     };
  
-    console.log(options)
     try {
       let response = await axios.request(options);
       let statusId = response.data.status?.id;
@@ -149,10 +163,23 @@ import {useCodeCollabContext} from '../../App'
       // showErrorToast();
     }
   };
+
+  const handleCodeChange = (newValue, event) => {
+  setCode(newValue);
+  let roomID = localStorage.getItem("roomID");
+  socket.emit('codeChange', { newValue, roomID }); // Pass an object with keys newValue and roomID
+};
+
  
-  const handleCodeChange = (newValue, event) => { 
-    setCode(newValue);
-  }
+  // const handleCodeChange = (newValue, event) => { 
+  //   setCode(newValue);
+  //   let roomID = JSON.parse(localStorage.getItem("roomID"))
+  //   if(roomID==null){
+  //     alert("Invalid room")
+  //   }
+  //    socket.emit('codeChange',{newValue,roomID});
+  //   //socket.emit('codeChange',newValue);
+  // }
   const handleSettingOpen = ()=>{
     setSettingOpen((cSetting)=>{
       return !cSetting;

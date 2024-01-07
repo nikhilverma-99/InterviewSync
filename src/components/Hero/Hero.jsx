@@ -12,10 +12,10 @@ const Hero = () => {
             </div> 
             <div className="hero-text-box">
                 <h1 className="heading-primary">
-                Code Together, Anywhere, Anytime 
+                Elevating Interviews with Seamless Collaboration
                 </h1>
                 <p className="hero-description">
-                CodeCollab is your go-to platform for collaborative code editing. Whether you're working on a project with a team or getting help from a friend, CodeCollab makes coding together seamless and efficient.
+                Elevate your interview experience with CodeCollab, the ultimate platform meticulously crafted for unparalleled efficiency and seamless collaboration – from setup to insightful post-interview feedback.
                 </p> 
                 <div className='hero-links'>
                   <NavLink  to= '/enterInterview' className='btn btn-startCoding'>Start Coding !</NavLink> 

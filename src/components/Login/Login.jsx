@@ -8,7 +8,7 @@ import { Bars } from "react-loading-icons";
 import logo from "../../images/Logo.png"; 
 function Login() { 
   let [email, setEmail] = useState("");
-  let [password, setPassword] = useState("");
+  let [token, setToken] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   
@@ -20,9 +20,9 @@ function Login() {
     let value = e.target.value;
     setEmail(value);
   }
-  function fSetPassword(e) {
+  function fSetToken(e) {
     let value = e.target.value;
-    setPassword(value);
+    setToken(value);
   }
   useEffect(()=>{
     
@@ -75,11 +75,10 @@ function Login() {
               />
             </div>
             <div className="password">
-              <input
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={fSetPassword}
+              <input 
+                placeholder="Token"
+                value={token}
+                onChange={fSetToken}
                 autoComplete="on"
               />
             </div>
@@ -95,16 +94,7 @@ function Login() {
                   <div className="login_button">
                     <span>Join Interview</span>
                   </div>
-                </div>
-                <div className="other_option">
-                  <div className="signup">
-                    <NavLink to="/forgotPassword">Forget Passsword ?</NavLink>
-                  </div>
-
-                  <div className="signup">
-                    <NavLink to="/signup">Sign Up</NavLink>
-                  </div>
-                </div>
+                </div> 
               </>
             )}
           </form>

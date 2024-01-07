@@ -3,13 +3,13 @@ import * as monaco from 'monaco-editor';
 import './Editor.css';
 import { HiOutlineCodeBracket } from 'react-icons/hi2';
 import MonacoEditor from 'react-monaco-editor';
-import { IoSettingsOutline } from "react-icons/io5";
+import { IoSettingsOutline } from "react-icons/io5"; 
 // Import your theme definitions here or define them in the same file
 import MonoKai from './Themes/monokai.json';
 import Cobalt from './Themes/Cobalt.json'; 
 
 import CodeSnippet from './CodeSnippet/codeSnippet.json'
-import{fontSizes, programmingLanguages,tabSizes} from './Settings/editorSetting'
+import {fontSizes, programmingLanguages,tabSizes} from './Settings/editorSetting'
 import { RiFontSize2 } from "react-icons/ri";
 import { MdOutlineDarkMode } from "react-icons/md";
 import { MdContentCopy } from "react-icons/md";
@@ -17,11 +17,10 @@ import { TbSpace } from "react-icons/tb";
 import { IoPlay } from "react-icons/io5"; 
 
 import {useCodeCollabContext} from '../../App'
-const CodeEditor = () => {
+  const CodeEditor = () => {
   const [fontSize, setFontSize] = useState(18);
-  const [tabSize, setTabSize] = useState(2);  
-  // const [selectedTheme, setSelectedTheme] = useState(); // Default theme
-  const [language,setLanguage] = useState('')
+  const [tabSize, setTabSize] = useState(2);    
+  const [language,setLanguage] = useState(63)
   const [settingOpen, setSettingOpen] = useState(false)
   const [code, setCode] = useState();
   const {selectedTheme,setSelectedTheme} = useCodeCollabContext();
@@ -45,27 +44,17 @@ const CodeEditor = () => {
     monaco.editor.defineTheme('monokai', MonoKai); 
     monaco.editor.defineTheme('cobalt', Cobalt);   
 
-    window.MonacoEnvironment = {
-      getWorkerUrl: function (moduleId, label) {
-        return `data:text/javascript;charset=utf-8,${encodeURIComponent(`
-          self.MonacoEnvironment = {
-            baseUrl: 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.26.1/min/'
-          };
-          importScripts('https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.26.1/min/vs/base/worker/workerMain.js');
-        `)}`;
-      },
-    }; 
-    setLanguage('cpp');
-    setCode(CodeSnippet.cpp)
+    //  
+    setLanguage('63');//Javascript
+    setCode(CodeSnippet['63'])
     setSelectedTheme('cobalt')
     return () => {
      <></> 
     };
   }, []);
-
+  
   const handleEditorDidMount = (editor) => {
-    // You can do additional customization or handling after the editor is mounted
-    
+    // You can do additional customization or handling after the editor is mounted 
   };
 
   const handleThemeChange = (event) => {
@@ -82,9 +71,85 @@ const CodeEditor = () => {
     
     setTabSize(newTabSize);
   };
-  const runCode = async()=>{
-    console.log(code) 
-  }
+
+  const runCode = () => {
+    setProcessing(true);
+    console.log(language)
+    const formData = {
+      language_id: language,
+      // encode source code in base64
+      source_code: btoa(code),
+      stdin: btoa(customInput),
+    };
+    const options = {
+      method: "POST",
+      url: 'https://judge0-ce.p.rapidapi.com/submissions',
+      params: { base64_encoded: "true", fields: "*" },
+      headers: {
+        "content-type": "application/json",
+        "Content-Type": "application/json",
+        "X-RapidAPI-Host":  'judge0-ce.p.rapidapi.com',
+        "X-RapidAPI-Key": 'bf1473c2d5msh0be376369a1077dp152884jsn69deee7869f5',
+      },
+      data: formData,
+    };
+ 
+    console.log(options)
+    axios
+      .request(options)
+      .then(function (response) {
+        console.log("res.data", response.data);
+        const token = response.data.token;
+        checkStatus(token);
+        // console.log(token)
+        // console.log(tokenCheck)
+      })
+      .catch((err) => {
+        let error = err.response ? err.response.data : err;
+        setProcessing(false);
+        console.log(error);
+      });
+  };
+ 
+  const checkStatus = async (token) => {
+    const options = {
+      method: "GET",
+      url: `https://judge0-ce.p.rapidapi.com/submissions/${token}`,
+      params: { base64_encoded: "true", fields: "*" },
+      headers: {
+        "X-RapidAPI-Host":  'judge0-ce.p.rapidapi.com',
+        "X-RapidAPI-Key":  'bf1473c2d5msh0be376369a1077dp152884jsn69deee7869f5',
+      },
+    };
+ 
+    console.log(options)
+    try {
+      let response = await axios.request(options);
+      let statusId = response.data.status?.id;
+ 
+      // Processed - we have a result
+      if (statusId === 1 || statusId === 2) {
+        // still processing
+        setTimeout(() => {
+          checkStatus(token)
+        }, 2000)
+        return
+      } else {
+        setProcessing(false)
+        // setOutputDetails(response.data)
+        // showSuccessToast(`Compiled Successfully!`)
+        console.log(response)
+        console.log('response.data', atob(response.data.stdout))
+ 
+        return
+      }
+    } catch (err) {
+      console.log("err", err);
+      setProcessing(false);
+      // showErrorToast();
+    }
+  };
+ 
   const handleCodeChange = (newValue, event) => { 
     setCode(newValue);
   }
@@ -96,8 +161,7 @@ const CodeEditor = () => {
 
   const handleCopyToClipboard = async () => {
     try{
-      await navigator.clipboard.writeText(code)
-      //Popup code copied Sucesfully
+      await navigator.clipboard.writeText(code) 
       alert('Code Copied!')
     }
     catch(e)
@@ -141,21 +205,22 @@ const CodeEditor = () => {
     'vs-light': '#0037db',
     'monokai': '#272822',
     'cobalt':'#01203b'
-  }
-  const selectInputThemes={
-    'vs-dark': '#2f2f2f',
-    'vs-light': '#002eb8',
-    'monokai': '#2f2f2f',
-    'cobalt':'#01111f'
-  }
+  } 
+  const editorLanguage = {
+        '63':'javascript' ,
+        '71': 'python',
+        '62': 'java',
+        '51': 'csharp',
+        '76': 'cpp',
+    };
   return ( 
     <div className='editor-continer'>
       <div className="editor-top1" style={{backgroundColor:`${EditorThemeColor[selectedTheme]}`}}> 
         <HiOutlineCodeBracket className="code-icon" />
         <label> Code</label>
         <select className= "form-select" style={{backgroundColor:`${EditorThemeColor[selectedTheme]}`}} value={language} onChange={handleLanguageChange}>
-          {Object.entries(programmingLanguages).map(([themeKey, themeLabel]) => (
-            <option key={themeKey} value={themeKey}>{themeLabel}</option>
+          { programmingLanguages.map(( {id,label}) => (
+            <option key={id} value={id}>{label}</option>
             ))}
         </select>
         <div style={{ marginLeft: 'auto' , display:'flex',gap:'1rem'}}> 
@@ -167,7 +232,7 @@ const CodeEditor = () => {
       <MonacoEditor
       width="100%" 
       height="90%"
-      language={language}
+      language={editorLanguage[language]}
       theme={selectedTheme}
       value = {code}
       options={editorOptions}
@@ -223,7 +288,7 @@ const CodeEditor = () => {
       </section>
       }
       <div onClick={runCode} className= "editor-bottom" style={{backgroundColor:`${EditorThemeColor[selectedTheme]}`}} > 
-       <div className='btn-run'style={{backgroundColor:`${buttonTheme[selectedTheme]}`}}> 
+       <div className='btn-run'style={{backgroundColor:`${buttonTheme[selectedTheme]}`}} > 
         <IoPlay className='btn-run-icon'/>
         <a>Run</a>
        </div>

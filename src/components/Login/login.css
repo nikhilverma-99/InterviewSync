@@ -1,0 +1,149 @@
+.container {
+    position: relative;
+  }
+  .container-login {
+    width: 40rem;
+    height: 36rem;
+    box-shadow: rgba(99, 99, 99, 0.4) 0px 2px 8px 0px;
+    border-radius: 20px;
+    margin: 0 auto;
+    /* filter: blur(2px); */
+    backdrop-filter: blur(2px);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  
+    border: 0.1rem solid snow;
+  
+    z-index: 2;
+  }
+  .container-login::before {
+    z-index: 1;
+  }
+  
+  .logo-container {
+    width: 17rem;
+  }
+  .image_container {
+    margin: 4rem;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .email {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .password {
+    display: flex;
+    justify-content: center;
+  
+    margin-top: 1rem;
+  }
+  
+  .email input {
+    height: 3rem;
+    width: 100%;
+  
+    font-family: "Rubik", sans-serif;
+    font-weight: 500;
+    border-radius: 7px;
+    outline: none;
+    border: 1px solid grey;
+  
+    padding: 0 1rem;
+    letter-spacing: 0.8px;
+  }
+  
+  .password input {
+    letter-spacing: 1px;
+    padding: 0 1rem;
+    height: 3rem;
+    width: 100%;
+    border-radius: 7px;
+    outline: none;
+  
+    border: 1px solid grey;
+  }
+  
+  .login_button {
+    display: flex;
+    justify-content: center;
+    height: 5rem;
+    align-items: center;
+    background-color: #e67e22;
+  }
+  .login_button span {
+    color: white;
+  
+    font-size: 1.8rem;
+  }
+  
+  .login_button_container {
+    margin-top: 2rem;
+    background-color: #e67e22;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    border-radius: 7px;
+  }
+  
+  .login_info {
+    margin: 4rem auto;
+    width: 30rem;
+  }
+  
+  .close {
+    height: 2.5rem;
+    stroke: white;
+    position: absolute;
+    top: 0;
+    right: 0;
+  
+    transform: translate(-2rem, 2rem);
+  }
+  
+  .other_option {
+    margin-top: 3rem;
+  
+    display: flex;
+    justify-content: space-between;
+  
+    color: #495057;
+    font-size: 1.1rem;
+  }
+  
+  .authorize-background {
+    background: url("../../img/table-full-food-including-rice-curry-plate-food_900958-7307.jpeg");
+    width: 100%;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    background-position: center;
+  }
+  
+  .signup a:link,
+  .signup a:visited {
+    text-decoration: none;
+    color: rgb(245, 245, 245);
+  }
+  .signup a:hover,
+  .signup a:active {
+    color: #f1f1f1;
+  }
+  
+  .loading-circle {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom:0.2rem
+  }
+  
+  .loader
+  {
+    transform: scale(0.4);
+    color:#e67e22
+  }

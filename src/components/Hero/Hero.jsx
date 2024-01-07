@@ -18,7 +18,7 @@ const Hero = () => {
                 CodeCollab is your go-to platform for collaborative code editing. Whether you're working on a project with a team or getting help from a friend, CodeCollab makes coding together seamless and efficient.
                 </p> 
                 <div className='hero-links'>
-                  <NavLink href="#" className='btn btn-startCoding'>Start Coding !</NavLink> 
+                  <NavLink  to= '/enterInterview' className='btn btn-startCoding'>Start Coding !</NavLink> 
                   <NavLink href="#" className='btn btn-Learnmore'>Learn More</NavLink>
                 </div>
              

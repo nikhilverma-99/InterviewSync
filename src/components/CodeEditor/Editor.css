@@ -79,12 +79,7 @@
     position: absolute;
     top:0;
     left:0;
-}
-.slider-mouseover
-{
-    display: none;
-}
-
+} 
 .container-editorSetting
 {
     display: flex;
@@ -266,3 +261,10 @@ ul
 {
     width:100% !important;
 }
+
+.margin-1rem
+{
+    margin: 1rem 0;
+}
+
+ 

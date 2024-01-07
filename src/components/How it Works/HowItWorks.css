@@ -1,8 +1,7 @@
 .section-how {
     padding: 9.6rem 0;
   }
-  .container {
-    /* 1140px */
+  .container { 
     max-width: 120rem;
     padding: 0 3.2rem;
     margin: 0 auto;
@@ -17,13 +16,12 @@
     letter-spacing: 0.75px;
   }
 
-  .heading-primary,
+ 
 .heading-secondary,
 .heading-tertiary {
   font-size: 1.8rem;
-  font-weight: 700;
-  color: #333;
-  /* color: #45260a; */
+  font-weight: 700; 
+  /* color: #45260a;d  */
   /* color: #343a40; */
   letter-spacing: -0.5px;
 }

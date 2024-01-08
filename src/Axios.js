@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const APILink =  'https://code-collab-server.onrender.com/';
+const APILink =  'https://codecollab-k6wq.onrender.com/';
 
 const API = axios.create({baseURL:APILink}) 
 

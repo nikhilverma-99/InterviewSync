@@ -3,7 +3,7 @@ import Question from "../Question/Question";
 import Editor from '../CodeEditor/Editor'
 import './ProblemEditor.css'
 import { useCodeCollabContext } from "../../App";
-
+import VideoDraggable from "../VideoDraggable/VideoDraggable";
 const ProblemEditor = () => {
 //adjustable width
   const [isDragging, setIsDragging] = useState(false);
@@ -66,6 +66,8 @@ const ProblemEditor = () => {
       'cobalt':'#042e53', 
     }
   return (
+    <>
+    <VideoDraggable></VideoDraggable>
         <div className="problemEditor"  onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp} style={{backgroundColor:`${themeBackground[selectedTheme]}`}} >
           <div style={{ ...leftStyle, width: `calc(60rem + ${difference}px)` }}>
@@ -80,6 +82,7 @@ const ProblemEditor = () => {
           </div>
 
         </div>
+    </>
   )
 };
 

@@ -7,6 +7,7 @@ import TextEditor from './components/QuestionTextEditor/TextEditor'
 import Login from './components/Login/Login'
 import Table from './components/Table/Table'
 import { Route, Routes } from 'react-router-dom'
+import VideoCall from './components/Dyanamic Width Components/VideoCall'
 import HowItWorks from './components/How it Works/HowItWorks'
 const CodeCollabContext = createContext();
 function App() { 
@@ -24,6 +25,8 @@ function App() {
         </Route>
 
         <Route path='/enterInterview' element={<Login></Login>}></Route>
+        <Route path='/videocalling' element={<VideoCall></VideoCall>}></Route>
+
         <Route path='/problemEditor' element={<ProblemEditor></ProblemEditor>}></Route>
       </Routes>
   

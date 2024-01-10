@@ -1,5 +1,6 @@
 import { useEffect, useState ,useRef} from "react" 
 import Peer from "peerjs"
+import Draggable from 'react-draggable';
 
 const VideoCall = () => {
     const [peerId, setPeerId] = useState('');
@@ -53,18 +54,38 @@ const VideoCall = () => {
       });
     }
   
-    return (
+    return (<>
       <div className="App">
         <h1>Current user id is {peerId}</h1>
         <input type="text" value={remotePeerIdValue} onChange={e => setRemotePeerIdValue(e.target.value)} />
         <button onClick={() => call(remotePeerIdValue)}>Call</button>
-        <div>
-          <video  ref={currentUserVideoRef} />
-        </div>
-        <div>
-          <video  ref={remoteVideoRef} />
-        </div>
+          
       </div>
+      <Draggable>
+      <div id="draggable" className="no-select column gap-7px"> 
+          <div className='video-container column'>
+              <div className="video">
+          <video width="100%" height="100%" ref={currentUserVideoRef} />
+                  {/* <img width="100%" height="100%" src="https://womenwhomoney.com/wp-content/uploads/2021/02/young-woman-interviewing-virtually-for-a-job-650x325.jpg" alt="Interviewer"/> */}
+              </div>
+              <div className="video-container-title">
+                  <span>Interviewer</span>
+              </div>
+          </div>
+          <div className='video-divider'></div> 
+          <div className='video-container column'>
+              <div className="video">
+                {/* <img width="100%" height="100%" src="https://womenwhomoney.com/wp-content/uploads/2021/02/young-woman-interviewing-virtually-for-a-job-650x325.jpg" alt="Candidate"/> */}
+                <video width="100%" height="100%" ref={remoteVideoRef} />
+
+              </div>
+              <div className="video-container-title">
+                  <span>Candidate</span>
+              </div>
+          </div>
+      </div>
+    </Draggable>
+    </>
     );
 }
 

@@ -1,5 +1,4 @@
-import { useEffect, useState ,useRef} from "react"
-import ReactPlayer from 'react-player'
+import { useEffect, useState ,useRef} from "react" 
 import Peer from "peerjs"
 
 const VideoCall = () => {

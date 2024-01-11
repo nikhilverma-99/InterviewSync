@@ -62,28 +62,27 @@ const VideoCall = () => {
           
       </div>
       <Draggable>
-      <div id="draggable" className="no-select column gap-7px"> 
-          <div className='video-container column'>
-              <div className="video">
-          <video width="100%" height="100%" ref={currentUserVideoRef} />
-                  {/* <img width="100%" height="100%" src="https://womenwhomoney.com/wp-content/uploads/2021/02/young-woman-interviewing-virtually-for-a-job-650x325.jpg" alt="Interviewer"/> */}
-              </div>
-              <div className="video-container-title">
-                  <span>Interviewer</span>
-              </div>
-          </div>
-          <div className='video-divider'></div> 
-          <div className='video-container column'>
-              <div className="video">
-                {/* <img width="100%" height="100%" src="https://womenwhomoney.com/wp-content/uploads/2021/02/young-woman-interviewing-virtually-for-a-job-650x325.jpg" alt="Candidate"/> */}
-                <video width="100%" height="100%" ref={remoteVideoRef} />
-
-              </div>
-              <div className="video-container-title">
-                  <span>Candidate</span>
-              </div>
-          </div>
-      </div>
+      <section id="interviewSection" class="interview-section no-select">
+        <div id="draggable" class="column gap-7px">
+            <div class='video-container column'>
+                <div class="video">
+                    <video width="100%" height="100%" ref={currentUserVideoRef}></video> 
+                </div>
+                <label class="video-container-title">
+                    <span>Interviewer</span>
+                </label>
+            </div>
+            <div class='video-divider'></div> 
+            <div class='video-container column'>
+                <div class="video"> 
+                    <video width="100%" height="100%" ref={remoteVideoRef}></video>
+                </div>
+                <label class="video-container-title">
+                    <span>Candidate</span>
+                </label>
+            </div>
+        </div>
+      </section> 
     </Draggable>
     </>
     );

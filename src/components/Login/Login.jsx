@@ -5,7 +5,7 @@ import "./login.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Bars } from "react-loading-icons"; 
-import logo from "../../images/Logo.png"; 
+import logo from "../../images/Logo.svg"; 
 import socket from "../../socket"
 import * as api from "../../Axios"
 function Login() { 

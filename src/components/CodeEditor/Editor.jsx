@@ -1,6 +1,7 @@
 import React, { useEffect, useState  } from 'react'; 
 import * as monaco from 'monaco-editor';
-import './Editor.css';
+import './Editor.css'; 
+import { debounce } from 'lodash';
 import { HiOutlineCodeBracket } from 'react-icons/hi2';
 import MonacoEditor from 'react-monaco-editor';
 import { IoSettingsOutline } from "react-icons/io5"; 
@@ -169,7 +170,7 @@ import {useCodeCollabContext} from '../../App'
   let roomID = localStorage.getItem("roomID");
   socket.emit('codeChange', { newValue, roomID }); // Pass an object with keys newValue and roomID
 };
-
+const debouncedCodeChange = debounce(handleCodeChange, 500);
  
   // const handleCodeChange = (newValue, event) => { 
   //   setCode(newValue);
@@ -256,16 +257,19 @@ import {useCodeCollabContext} from '../../App'
         </div>
              </div>
      {/* <div id="container" style={{ height: '600px' }}></div> */}
+     <code>
       <MonacoEditor 
-width="100%" 
+      width={`100%`}
       height="90%"
       language={editorLanguage[language]}
       theme={selectedTheme}
-      value = {code}
+      value = {debouncedCodeChange}
       options={editorOptions}
       onChange={handleCodeChange}
       editorDidMount={handleEditorDidMount} 
       /> 
+
+     </code>
       {
         settingOpen 
           && 

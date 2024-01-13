@@ -25,7 +25,7 @@ function Login() {
         localStorage.setItem("roomID",res.data)
         console.log(localStorage.getItem("roomID"));
         socket.emit('joininterview',res.data) // emiting join room event
-        navigate('/videocalling') 
+        navigate('/problemEditor') 
       }else{
         console.log(res)
       }

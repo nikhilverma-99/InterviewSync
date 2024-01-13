@@ -5,9 +5,8 @@
     display: flex;
     flex-direction: column;
     gap: 1.4rem;
-    width: 100%;
-    background-color: rgb(47,47,47);
-    color:white;
+    min-width: 100%;
+    background-color: rgb(47,47,47); 
     height: 90vh;
     border-radius: 10px;
     overflow-y: scroll;
@@ -111,8 +110,10 @@
 }
 .question-footer
 {
-  font-size: 1rem;
-  position: absolute; 
+  position: sticky;
   bottom: 0;
-  padding-bottom: 0.4rem;
+  width: 100%; 
+  padding: 10px; 
+  
 }
+ 

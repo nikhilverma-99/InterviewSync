@@ -4,7 +4,7 @@
     padding: 1rem;
     display: flex;
     gap:0.5rem;
-    margin: 1rem;
+    margin: 0 1rem;
     border-radius: 10px;
     height: 92vh
 }
@@ -24,3 +24,25 @@
   {
     cursor: ew-resize;
   }
+
+  .problemNavbar
+{
+    display: flex;
+    width: 100vw;  
+    /* background-color: #F8FCFA; */
+    display: flex; 
+    align-items: center; 
+    height: 6rem;
+    padding: 3.4rem 1.4rem; 
+}
+.problemNavbar img
+{
+    height: 4.2rem;
+}
+
+.problemEditorSection
+{ 
+  height: 100vh;
+  z-index: -1; 
+  position: absolute;
+}

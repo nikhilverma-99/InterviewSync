@@ -1,22 +1,28 @@
-import React,{useState} from "react";
+import React,{useState,useEffect  } from "react";
 import Question from "../Question/Question";
 import Editor from '../CodeEditor/Editor'
 import './ProblemEditor.css'
 import { useCodeCollabContext } from "../../App";
+import Logo from '../../images/Logo.svg'
+import WhiteLogo from '../../images/LightLogo.svg'
 import VideoDraggable from "../VideoDraggable/VideoDraggable";
+import NavBar from "../NavBar/NavBar";
+import VideoCall from "../Dyanamic Width Components/VideoCall";
+import { EditorThemeColor,themeBackground,fontColor } from "../constants/theme";
 const ProblemEditor = () => {
-//adjustable width
+ 
+  //adjustable width 
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [difference, setDifference] = useState(0);
-
+  const [isFullscreen, setIsFullscreen] = useState(false); 
   const leftStyle = {  
     boxSizing: "border-box",
   };
   const rightStyle = {  
     boxSizing: "border-box",
   };
-
+// 665 -178
   const handleMouseDown = (e) => {
     setIsDragging(true);
     setStartX(e.clientX);
@@ -29,7 +35,8 @@ const ProblemEditor = () => {
 
       // Calculate the difference from the middle div based on deltaX
       const newDifference = difference + deltaX;
-      setDifference(newDifference);
+      if(newDifference>=-178 && newDifference<=665)
+        setDifference(newDifference); 
     }
   };
 
@@ -37,8 +44,22 @@ const ProblemEditor = () => {
     setIsDragging(false);
   };
 
-//
+ 
+  // useEffect(() => { 
+  //   const handleFullscreenChange = () => {
+  //     setIsFullscreen(!!document.fullscreenElement);
+      
+  //     if (!document.fullscreenElement) {
+  //       alert("Exited fullscreen!");
+  //     }
+  //   };
 
+  //   document.addEventListener("fullscreenchange", handleFullscreenChange);
+
+  //   return () => {
+  //     document.removeEventListener("fullscreenchange", handleFullscreenChange);
+  //   };
+  // }, []);
   const questionData={ 
     constraints:[`1 <= words.length <= 100`,`1 <= words[i].length <= 100`,`words[i] consists of lowercase English letters.`],
     difficulty:[`Easy`],
@@ -53,21 +74,22 @@ const ProblemEditor = () => {
     ]
 }
   const {selectedTheme,setSelectedTheme} = useCodeCollabContext();
-  const EditorThemeColor ={
-      'vs-dark': '#2f2f2f',
-      'vs-light': '#002eb8',
-      'monokai': '#272822',
-      'cobalt':'#01111f', 
-    }
-    const themeBackground ={
-      'vs-dark': '#514f4f',
-      'vs-light': '#003cef',
-      'monokai': '#4f4c4c',
-      'cobalt':'#042e53', 
-    }
+  
   return (
     <>
-    <VideoDraggable></VideoDraggable>
+    {/* <VideoDraggable color={{backgroundColor:`${EditorThemeColor[selectedTheme]}`,title:`${themeBackground[selectedTheme]}`,fontColor:`${fontColor[selectedTheme]}`}}></VideoDraggable> */}
+    <VideoCall></VideoCall>
+    <section  className="problemEditorSection" style={{backgroundColor:`${EditorThemeColor[selectedTheme]}`,color: fontColor[selectedTheme]}}>
+
+     <header id="header" className=  "problemNavbar" > 
+        <figure> 
+            <img
+              className="logo"
+              alt="CodeCollab logo" loading="lazy"
+              src={(selectedTheme==='vs-light')?Logo:WhiteLogo}
+            />  
+        </figure>
+      </header> 
         <div className="problemEditor"  onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp} style={{backgroundColor:`${themeBackground[selectedTheme]}`}} >
           <div style={{ ...leftStyle, width: `calc(60rem + ${difference}px)` }}>
@@ -76,12 +98,13 @@ const ProblemEditor = () => {
 
             <div className="intersection" onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp} style={{backgroundColor:`${EditorThemeColor[selectedTheme]}`}}></div>
+        onMouseUp={handleMouseUp} style={{backgroundColor:`${EditorThemeColor[selectedTheme]}`,zIndex:'10'}}></div>
           <div style={{ ...rightStyle, width: `calc(100% - 60rem - ${difference}px)` }}>
              <Editor ></Editor>
           </div>
 
         </div>
+    </section>
     </>
   )
 };

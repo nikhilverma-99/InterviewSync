@@ -8,24 +8,28 @@ import { Bars } from "react-loading-icons";
 import logo from "../../images/Logo.svg"; 
 import socket from "../../socket"
 import * as api from "../../Axios"
+import Loading from '../../images/Loading.gif'
 function Login() { 
   let [email, setEmail] = useState("");
   let [token, setToken] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   
-  async function LoginButton() { 
-      
+  async function LoginButton() {
+    alert("Join") 
+      console.log("test")
+      setLoading(true)
       let res = await api.joinInterview()
       if(res.status==200){
-
+          console.log(res)
         localStorage.setItem("roomID",res.data)
         console.log(localStorage.getItem("roomID"));
         socket.emit('joininterview',res.data) // emiting join room event
-        navigate('/problemEditor') 
+        navigate('/videocalling') 
       }else{
         console.log(res)
       }
+      setLoading(false)
   }
 
   function fSetEmail(e) {
@@ -51,68 +55,65 @@ function Login() {
     // }
   })
   return (
-    <>
-      <>
-        {" "}
-        <div className="authorize-background"></div>
-        <div className="container-login">
-          <div className="image_container">
-            <img className="logo-container" alt="Logo" src={logo} loading="lazy" />
+    <div id="loginContainer">
+    <div class="authorize-background"></div>
+    <div class="container-login">
+        <div class="image_container">
+            <img class="logo-container" alt="Logo" src={logo} loading="lazy" />
 
-            <NavLink to="/">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                className="close"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6 18L18 6M6 6l12 12"
+            <a href="/">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    class="close"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M6 18L18 6M6 6l12 12"
+                    />
+                </svg>
+            </a>
+        </div>
+
+        <form class="login_info">
+            <div class="email">
+                <input
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={fSetEmail}
+                    autoComplete="on"
                 />
-              </svg>
-            </NavLink>
-          </div>
-
-          <form className="login_info">
-            <div className="email">
-              <input
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={fSetEmail}
-                autoComplete="on"
-              />
             </div>
-            <div className="password">
-              <input 
-                placeholder="Token"
-                value={token}
-                onChange={fSetToken}
-                autoComplete="on"
-              />
+            <div class="password">
+                <input 
+                    placeholder="Token"
+                    value={token}
+                    onChange={fSetToken}
+                    autoComplete="on"
+                />
             </div>
 
             {loading ? (
-              <div className="loading-circle">
-                <Bars className="loader" />
-              </div>
-            ) : (
-              <>
-                {" "}
-                <div className="login_button_container" onClick={LoginButton}>
-                  <div className="login_button">
-                    <span>Join Interview</span>
-                  </div>
+               <div class="login_button_container" >
+                    <div class="login_button">
+                        <img style={{height:'50%'}} src={Loading}/>
+                    </div>
                 </div> 
-              </>
+            ) : (
+                <div class="login_button_container" onClick={LoginButton}>
+                    <div class="login_button">
+                        <span>Join Interview</span>
+                    </div>
+                </div> 
             )}
-          </form>
-        </div>
-      </>
-    </>
+        </form>
+    </div>
+</div>
+
   );
 }
 

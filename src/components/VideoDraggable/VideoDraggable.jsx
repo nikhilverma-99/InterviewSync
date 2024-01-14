@@ -6,7 +6,7 @@ import Draggable from 'react-draggable';
 import './VideoDraggable.css';
 import { BsWebcam } from "react-icons/bs";
 const VideoDraggable = (props) => {
-  console.log(props.color)
+  // console.log(props.color)
   const styling =props.color;
 
   const [peerId, setPeerId] = useState('');
@@ -63,7 +63,7 @@ const VideoDraggable = (props) => {
     let remotePeerId= await getPeerID()
     var getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
-    getUserMedia({ video: true, audio: true }, (mediaStream) => {
+    getUserMedia({ video: true, audio: { echoCancellation: true } }, (mediaStream) => {
 
       currentUserVideoRef.current.srcObject = mediaStream;
       currentUserVideoRef.current.play();
@@ -81,7 +81,7 @@ const VideoDraggable = (props) => {
     <>
        
   
-        <Draggable>
+        <Draggable style={{height:'100%'}}>
         <div id="draggable" className="no-select column gap-7px" style={{backgroundColor:styling.backgroundColor, border: `2px solid ${styling.title}`,}}> 
             <div className='video-container column' >
                 <div className="video">

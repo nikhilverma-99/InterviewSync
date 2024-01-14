@@ -1,12 +1,12 @@
 import React from "react";
 import './Question.css'
+import { fontColor } from "../constants/theme";
 import { useCodeCollabContext } from "../../App";
 const Question = (props) => {
     const {selectedTheme,setSelectedTheme} = useCodeCollabContext();
     const EditorThemeColor ={
         'vs-dark': '#2f2f2f',
-        'vs-light': '#002eb8',
-        'monokai': '#272822',
+        'vs-light': '#eceff1', 
         'cobalt':'#01111f', 
       }
       const questionData=props.questionData;
@@ -24,9 +24,11 @@ const Question = (props) => {
         'Medium':'#ffcc0099',
         'Hard':'#ff000098'
     }
+
+   
     const currentYear = new Date().getFullYear();
   return (
-        <section className="question-section" style={{backgroundColor:`${EditorThemeColor[selectedTheme]}`}}>
+        <section className="question-section" style={{backgroundColor:`${EditorThemeColor[selectedTheme]}`,color:`${fontColor[selectedTheme]}`}}>
             <div className="heading-container">
                 <a className="heating-content">{questionData?.question}</a>
             </div>

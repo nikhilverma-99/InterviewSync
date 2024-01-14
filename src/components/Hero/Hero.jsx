@@ -15,7 +15,7 @@ const Hero = () => {
                 Elevating Interviews with Seamless Collaboration
                 </h1>
                 <p className="hero-description">
-                Elevate your interview experience with CodeCollab, the ultimate platform meticulously crafted for unparalleled efficiency and seamless collaboration – from setup to insightful post-interview feedback.
+                Elevate your interview experience with InterviewSync, the ultimate platform meticulously crafted for unparalleled efficiency and seamless collaboration – from setup to insightful post-interview feedback.
                 </p> 
                 <div className='hero-links'>
                   <NavLink  to= '/enterInterview' className='btn btn-startCoding'>Start Coding !</NavLink> 

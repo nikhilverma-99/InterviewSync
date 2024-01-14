@@ -14,8 +14,7 @@
 }
 .editor-top1 label{
     font-weight: 500;
-    font-size: 1.4rem;
-    color: white;
+    font-size: 1.4rem; 
 }
 .code-icon
 {
@@ -35,11 +34,13 @@
 .form-select
 {
     /* width: 8.6rem; */
-    padding: 0.3rem;
+    padding: 0.5rem 1rem; 
     font-size: 1.4rem;
     font-family: inherit;
-    color: white;
+    outline: none; 
     border: none;
+    min-width: max-content;
+    width: 18rem;
     background-color: inherit;
     border-radius: 9px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -96,8 +97,7 @@
 {
     height: 100%;
     width: 35%;
-    background-color: #272727;
-    color: white;
+    background-color: #272727; 
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     padding: 2rem;
@@ -111,8 +111,7 @@
 {
     height: 100%;
     width:65%;
-    background-color: #333333;
-    color: white;
+    background-color: #333333; 
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     padding: 2rem;

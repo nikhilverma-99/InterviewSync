@@ -21,45 +21,8 @@ const ProblemEditor = () => {
   };
   const rightStyle = {  
     boxSizing: "border-box",
-  };
-// 665 -178
-  const handleMouseDown = (e) => {
-    setIsDragging(true);
-    setStartX(e.clientX);
-  };
-
-  const handleMouseMove = (e) => {
-    if (isDragging) {
-      const deltaX = e.clientX - startX;
-      setStartX(e.clientX);
-
-      // Calculate the difference from the middle div based on deltaX
-      const newDifference = difference + deltaX;
-      if(newDifference>=-178 && newDifference<=665)
-        setDifference(newDifference); 
-    }
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
-  };
-
- 
-  // useEffect(() => { 
-  //   const handleFullscreenChange = () => {
-  //     setIsFullscreen(!!document.fullscreenElement);
-      
-  //     if (!document.fullscreenElement) {
-  //       alert("Exited fullscreen!");
-  //     }
-  //   };
-
-  //   document.addEventListener("fullscreenchange", handleFullscreenChange);
-
-  //   return () => {
-  //     document.removeEventListener("fullscreenchange", handleFullscreenChange);
-  //   };
-  // }, []);
+  }; 
+  
   const questionData={ 
     constraints:[`1 <= words.length <= 100`,`1 <= words[i].length <= 100`,`words[i] consists of lowercase English letters.`],
     difficulty:[`Easy`],
@@ -74,11 +37,11 @@ const ProblemEditor = () => {
     ]
 }
   const {selectedTheme,setSelectedTheme} = useCodeCollabContext();
-  
+  console.log(difference)
   return (
     <>
-    {/* <VideoDraggable color={{backgroundColor:`${EditorThemeColor[selectedTheme]}`,title:`${themeBackground[selectedTheme]}`,fontColor:`${fontColor[selectedTheme]}`}}></VideoDraggable> */}
-    <VideoCall></VideoCall>
+    <VideoDraggable color={{backgroundColor:`${EditorThemeColor[selectedTheme]}`,title:`${themeBackground[selectedTheme]}`,fontColor:`${fontColor[selectedTheme]}`}}></VideoDraggable>
+    {/* <VideoCall></VideoCall> */}
     <section  className="problemEditorSection" style={{backgroundColor:`${EditorThemeColor[selectedTheme]}`,color: fontColor[selectedTheme]}}>
 
      <header id="header" className=  "problemNavbar" > 
@@ -90,19 +53,13 @@ const ProblemEditor = () => {
             />  
         </figure>
       </header> 
-        <div className="problemEditor"  onMouseMove={handleMouseMove}
-      onMouseUp={handleMouseUp} style={{backgroundColor:`${themeBackground[selectedTheme]}`}} >
-          <div style={{ ...leftStyle, width: `calc(60rem + ${difference}px)` }}>
-            <Question questionData={questionData}></Question>
-          </div>
+        <div className="problemEditor" style={{backgroundColor:`${themeBackground[selectedTheme]}`}} >  
+            <Question questionData={questionData}></Question>   
+        <div className="intersection" style={{backgroundColor:`${EditorThemeColor[selectedTheme]}`,zIndex:'10'}}></div> 
+    
 
-            <div className="intersection" onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp} style={{backgroundColor:`${EditorThemeColor[selectedTheme]}`,zIndex:'10'}}></div>
-          <div style={{ ...rightStyle, width: `calc(100% - 60rem - ${difference}px)` }}>
-             <Editor ></Editor>
-          </div>
-
+            <Editor></Editor> 
+       
         </div>
     </section>
     </>
@@ -110,3 +67,51 @@ const ProblemEditor = () => {
 };
 
 export default ProblemEditor;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// <section  className="problemEditorSection" style={{backgroundColor:`${EditorThemeColor[selectedTheme]}`,color: fontColor[selectedTheme]}}>
+
+// <header id="header" className=  "problemNavbar" > 
+//    <figure> 
+//        <img
+//          className="logo"
+//          alt="CodeCollab logo" loading="lazy"
+//          src={(selectedTheme==='vs-light')?Logo:WhiteLogo}
+//        />  
+//    </figure>
+//  </header> 
+//    <div className="problemEditor"  onMouseMove={handleMouseMove}
+//  onMouseUp={handleMouseUp} style={{backgroundColor:`${themeBackground[selectedTheme]}`}} >
+//      <div style={{ ...leftStyle, width: `calc(60rem + ${difference}px)` }}>
+//        <Question questionData={questionData}></Question>
+//      </div>
+
+//        <div className="intersection" onMouseDown={handleMouseDown}
+//    onMouseMove={handleMouseMove}
+//    onMouseUp={handleMouseUp} style={{backgroundColor:`${EditorThemeColor[selectedTheme]}`,zIndex:'10'}}></div>
+//      <div style={{ ...rightStyle, width: `calc(100% - 60rem - ${difference}px)` }}>
+//        {/* <div style={{backgroundColor:'#000', color:'#fff'}}>Code</div> */}
+//        <Editor></Editor>
+//      </div>
+
+//    </div>
+// </section>

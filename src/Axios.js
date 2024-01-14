@@ -7,5 +7,6 @@ const API = axios.create({baseURL:APILink})
 export const joinInterview = ()=>{
      
     let res = API.post('/auth/enterInterview',{email:"123",roomID:"123"})
+    console.log(res)
     return res;
 }

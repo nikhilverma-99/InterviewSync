@@ -79,8 +79,8 @@ const VideoDraggable = (props) => {
   
   return (
     <>
-        <h1>Current user id is {peerId}</h1>
-      <input type="text" value={remotePeerIdValue} onChange={e => setRemotePeerIdValue(e.target.value)} />  
+       
+  
         <Draggable>
         <div id="draggable" className="no-select column gap-7px" style={{backgroundColor:styling.backgroundColor, border: `2px solid ${styling.title}`,}}> 
             <div className='video-container column' >

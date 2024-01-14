@@ -10,7 +10,7 @@ import Table from './components/Table/Table'
 import { Route, Routes } from 'react-router-dom'
 import VideoCall from './components/Dyanamic Width Components/VideoCall'
 import HowItWorks from './components/How it Works/HowItWorks'
-import Pricing from './components/pricing/Pricing'
+// import Pricing from './components/pricing/Pricing'
 const CodeCollabContext = createContext();
 function App() { 
   const [selectedTheme, setSelectedTheme] = useState('');   
@@ -24,7 +24,7 @@ function App() {
             <NavBar></NavBar>
             <Hero></Hero>
             <HowItWorks></HowItWorks>
-            <Pricing></Pricing>
+            {/* <Pricing></Pricing> */}
             <Editor></Editor>
           </>}> 
         </Route>

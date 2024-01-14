@@ -22,9 +22,24 @@ const Question = (props) => {
     const difficultyBackground={
         'Easy':'#5de92f73',
         'Medium':'#ffcc0099',
-        'Hard':'#ff000098'
+        'Hard':'#ff000054'
     }
 
+    const difficultyTextLight={
+        'Easy':'#3eff00',
+        'Medium':'#ffcc00',
+        'Hard':'#ff0000'
+        // color: rgb(34 139 0);
+        // background: rgba(93, 233, 47, 0.45);
+        // color: rgb(227 171 0);
+        // background: rgb(255 205 4 / 19%);
+        // background:#ff000045
+    }
+    const difficultyBackgroundLight={
+        'Easy':'#5de92f73',
+        'Medium':'#ffcc0099',
+        'Hard':'#ff000098'
+    }
    
     const currentYear = new Date().getFullYear();
   return (

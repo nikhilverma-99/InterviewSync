@@ -25,7 +25,7 @@ const ProblemEditor = () => {
   
   const questionData={ 
     constraints:[`1 <= words.length <= 100`,`1 <= words[i].length <= 100`,`words[i] consists of lowercase English letters.`],
-    difficulty:[`Easy`],
+    difficulty:[`Hard`],
     examples:[{
         input:'words = ["abc","aabc","bc"]',output:'true',explanation:`Move the first 'a' in words[1] to the front of words[2],to make words[1] = "abc" and words[2] = "abc". All the strings are now equal to "abc", so return true.`
     }],

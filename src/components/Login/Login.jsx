@@ -15,17 +15,25 @@ function Login() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   
-  async function LoginButton() {
-    alert("Join") 
-      console.log("test")
+  async function LoginButton() {  
       setLoading(true)
-      let res = await api.joinInterview()
+
+      let user_email = email.split("/")[0]
+      let type = email.split("/")[1];
+      let res = await api.joinInterview({user_email})
       if(res.status==200){
-          console.log(res)
+
         localStorage.setItem("roomID",res.data)
-        console.log(localStorage.getItem("roomID"));
-        socket.emit('joininterview',res.data) // emiting join room event
-        navigate('/problemEditor') 
+        socket.emit('joininterview',res.data) 
+        if(type=="I"){
+          navigate('/problemEditor/I') 
+        }else if(type=="C"){
+          navigate('/problemEditor/C') 
+        }else{
+          alert("please enter your type")
+        }
+
+
       }else{
         console.log(res)
       }
@@ -49,9 +57,18 @@ function Login() {
     //     style: {
     //       fontSize: '18px', // Set the desired font size
     //     }
+    
+    // if (currentUser) {
+    //   toast.success(` User is already logged in !`, {
+    //     position: toast.POSITION.TOP_CENTER,
+    //     autoClose: 2500, // milliseconds
+    //     style: {
+    //       fontSize: '18px', // Set the desired font size
+    //     }
     //   });
   
     //   navigate("/")
+    // }
     // }
   })
   return (

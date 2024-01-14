@@ -1,5 +1,7 @@
-import React, { useEffect, useState ,useRef} from "react";
-import Peer from "peerjs" 
+import React, { useEffect, useState ,useRef, Fragment} from "react"; 
+import { useParams } from "react-router-dom";
+import Peer from "peerjs"
+import * as api from '../../Axios'
 import Draggable from 'react-draggable';
 import './VideoDraggable.css';
 import { BsWebcam } from "react-icons/bs";
@@ -7,18 +9,36 @@ const VideoDraggable = (props) => {
   console.log(props.color)
   const styling =props.color;
 
-
   const [peerId, setPeerId] = useState('');
   const [remotePeerIdValue, setRemotePeerIdValue] = useState('');
   const remoteVideoRef = useRef(null);
   const currentUserVideoRef = useRef(null);
   const peerInstance = useRef(null);
 
+  const {type} = useParams()
+  let roomID = localStorage.getItem("roomID")
+
+  const savePeerID = async (peerID)=>{
+      if(type=="I"){
+         // saving peerid for interviewer
+         let res = await api.saveInterviewID({roomID,peerID})
+      }else{
+        // saving peerid for candidate
+        let res = await api.saveCandidateID({roomID,peerID})
+      }
+  }
+
+  const getPeerID = async ()=>{
+      let res = await api.getCandidatePeerId({roomID})
+      return res.data.can_peerID;
+  }
+
   useEffect(() => {
     const peer = new Peer();
 
     peer.on('open', (id) => {
       setPeerId(id)
+      savePeerID(id);
     });
 
     peer.on('call', (call) => {
@@ -38,8 +58,10 @@ const VideoDraggable = (props) => {
     peerInstance.current = peer;
   }, [])
 
-  const call = (remotePeerId) => {
-    var getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia ||navigator.mozGetUserMedia;
+  const call = async () => {
+
+    let remotePeerId= await getPeerID()
+    var getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
     getUserMedia({ video: true, audio: true }, (mediaStream) => {
 
@@ -54,7 +76,7 @@ const VideoDraggable = (props) => {
       });
     });
   }
-
+  
   return (
     <>
         <h1>Current user id is {peerId}</h1>
@@ -79,10 +101,14 @@ const VideoDraggable = (props) => {
                     <span style={{color:styling.fontColor}}>Candidate</span>
                 </label>
             </div> 
-            <div className="call-btn" onClick={() => call(remotePeerIdValue)}>
+            {
+              type=="I"?
+            <div className="call-btn" onClick={() => call()}>
               <BsWebcam style={{fontSize:'2.8rem'}}/>
                 <span> Connect Camera </span>
-            </div>
+            </div>:<></> 
+            }
+
         </div>
         </Draggable>
     </>

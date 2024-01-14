@@ -3,6 +3,7 @@ import NavBar from './components/NavBar/NavBar'
 import Hero from './components/Hero/Hero'  
 import './App.css'
 import Editor from './components/CodeEditor/Editor'
+import Loading from './components/Loading/Loading'
 import TextEditor from './components/QuestionTextEditor/TextEditor'
 const ProblemEditor = lazy(()=>import('./components/Problem+Editor/ProblemEditor'))
 const Login = lazy(()=>import('./components/Login/Login'))
@@ -17,7 +18,7 @@ function App() {
   return (
     <>
     <CodeCollabContext.Provider value={{selectedTheme,setSelectedTheme}}>
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<Loading></Loading>}>
       <Routes>
         <Route path='/' element={
           <> 

@@ -92,7 +92,7 @@ const VideoDraggable = (props) => {
                 <video ref={currentUserVideoRef} width="100%" height="100%"/>
                 </div>
                 <label className="video-container-title" style={{backgroundColor:styling.title}} >
-                    <span style={{color:styling.fontColor}}>Interviewer</span>
+                    <span style={{color:styling.fontColor}}> {type=="I"?`Interviewer`:`Interviewe`}</span>
                 </label>
             </div>
             <div className='video-divider' style={{backgroundColor:styling.title}}></div> 
@@ -102,7 +102,7 @@ const VideoDraggable = (props) => {
                     
                 </div>
                 <label className="video-container-title" style={{backgroundColor:styling.title}} >
-                    <span style={{color:styling.fontColor}}>Candidate</span>
+                    <span style={{color:styling.fontColor}}>{type=="I"?`Interviewer`:`Interviewe`}</span>
                 </label>
             </div> 
             {

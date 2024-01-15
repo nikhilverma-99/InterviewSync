@@ -44,7 +44,8 @@ const VideoDraggable = (props) => {
     peer.on('call', (call) => {
       var getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
-      getUserMedia({ video: true, audio: true }, (mediaStream) => {
+      getUserMedia({ video: true,  noiseSuppression: true,
+        echoCancellation: true, }, (mediaStream) => {
         currentUserVideoRef.current.srcObject = mediaStream;
         currentUserVideoRef.current.play();
         call.answer(mediaStream)
@@ -63,7 +64,8 @@ const VideoDraggable = (props) => {
     let remotePeerId= await getPeerID()
     var getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
-    getUserMedia({ video: true, audio: { echoCancellation: true } }, (mediaStream) => {
+    getUserMedia({ video: true, audio: {  noiseSuppression: true,
+      echoCancellation: true,} }, (mediaStream) => {
 
       currentUserVideoRef.current.srcObject = mediaStream;
       currentUserVideoRef.current.play();
@@ -78,10 +80,8 @@ const VideoDraggable = (props) => {
   }
   
   return (
-    <>
-       
-  
-        <Draggable style={{height:'100%'}}>
+    <> 
+        <Draggable>
         <div id="draggable" className="no-select column gap-7px" style={{backgroundColor:styling.backgroundColor, border: `2px solid ${styling.title}`,}}> 
             <div className='video-container column' >
                 <div className="video">

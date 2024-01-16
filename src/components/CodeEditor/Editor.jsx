@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import TestEditor from "../TestEditor/TestEditor";
 import "./Editor.css";
+import { debounce } from 'lodash';
 import { HiOutlineCodeBracket } from "react-icons/hi2";
 import { IoSettingsOutline } from "react-icons/io5";
 import socket from "../../socket";
@@ -37,6 +38,13 @@ const CodeEditor = () => {
     lineHeight: 25,
     fontLigatures: true,
   };
+
+  // Debounce the code change function
+const debouncedHandleCodeChange = debounce((newValue, roomID) => {
+  setCode(newValue);
+  socket.emit('codeChange', { newValue, roomID });
+}, 2000);
+
   useEffect(() => { 
 
     setLanguage("63"); //Javascript
@@ -47,14 +55,19 @@ const CodeEditor = () => {
     return () => {
       <></>;
     };
-  }, []);
+  }, []); 
 
   useEffect(() => {
-    socket.on("codeChange", (newCode) => {
-      console.log(newCode)
-      setCode(newCode);
+    socket.on('codeChange', (newCode) => {
+      if(newCode.socketId!==socket.id) {
+        setCode(newCode.newValue);
+      }
+
     });
-  }, [socket]);
+    return () => {
+      debouncedHandleCodeChange.cancel();
+    };
+  }, [socket]); 
 
   const handleSettingClose = ()=>{
     // if(settingOpen) setSettingOpen(false) ;
@@ -164,17 +177,14 @@ const CodeEditor = () => {
   //   socket.emit("codeChange", { newValue, roomID }); // Pass an object with keys newValue and roomID
   // };
 
-  
-  const handleCodeChange = (newValue, event) => { 
+  const handleCodeChange = (newValue, event) => {
+
     setCode(newValue);
-    let roomID =  localStorage.getItem("roomID")
-    // if(roomID==null){
-      // console.log(newValue)
-    //   alert("Invalid room")
-    // }
-     socket.emit('codeChange',{newValue,roomID});
-    //socket.emit('codeChange',newValue);
-  }
+    let roomID = localStorage.getItem("roomID");
+    socket.emit('codeChange', { newValue, roomID,socketId: socket.id }); // Pass an object with keys newValue and roomID
+  };
+  
+   
 
   const handleSettingOpen = () => {
     setSettingOpen((cSetting) => {

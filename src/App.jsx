@@ -2,14 +2,14 @@ import { useEffect, useState, createContext, useContext,lazy,Suspense  } from 'r
 import NavBar from './components/NavBar/NavBar'
 import Hero from './components/Hero/Hero'  
 import './App.css'
-import Editor from './components/CodeEditor/Editor'
+// import Editor from './components/CodeEditor/Editor'
 import Loading from './components/Loading/Loading'
-import TextEditor from './components/QuestionTextEditor/TextEditor'
+// import TextEditor from './components/QuestionTextEditor/TextEditor'
 const ProblemEditor = lazy(()=>import('./components/Problem+Editor/ProblemEditor'))
 const Login = lazy(()=>import('./components/Login/Login'))
-import Table from './components/Table/Table'
+// import Table from './components/Table/Table'
 // import Error from './components/Error/Error'
-import MaterialTable from './components/Table/MaterialTable'
+// import MaterialTable from './components/Table/MaterialTable'
 import { Route, Routes } from 'react-router-dom'
 import VideoCall from './components/Dyanamic Width Components/VideoCall'
 import HowItWorks from './components/How it Works/HowItWorks'

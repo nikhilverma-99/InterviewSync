@@ -1,48 +1,64 @@
-.problemEditor
-{
-    background-color:#3f3f3f;
-    padding: 1rem;
-    display: flex;
-    gap:0.5rem;
-    margin: 0 1rem;
-    border-radius: 10px;
-    height: 92vh
+
+.adjustableContainer {
+  display: flex;
+  height: 92vh; 
+  position: relative;
+  padding:0 1vh 1vh 1vh;
+  gap:0.5rem; 
 }
-.testcases
-  {
-    display: block;
-  }
 
-  .intersection
-  {
-    content:'';
-    width:0.4rem;
-    border-radius: 200px;
-    background-color: #252525;
-  }
-  .intersection:hover
-  {
-    cursor: ew-resize;
-  }
+.left { 
+  padding: 0.5rem;
+  border-radius: 10px; 
 
-  .problemNavbar
+}
+
+.right { 
+  border-radius: 10px; 
+  padding: 0.5rem;
+}
+
+
+
+.middle { 
+  cursor: ew-resize; /* Set the cursor to indicate resizable */
+}
+
+.drag-info {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #fff;
+  padding: 5px;
+  border: 1px solid #000;
+}
+
+.resizing .middle {
+  background-color: #ccc; /* Change color to indicate resizing */
+}
+
+
+.problemNavbar
 {
-    display: flex;
-    width: 100vw;  
-    /* background-color: #F8FCFA; */
-    display: flex; 
-    align-items: center; 
-    height: 6rem;
-    padding: 3.4rem 1.4rem; 
+  display: flex;
+  width: 100vw;  
+  /* background-color: #F8FCFA; */
+  display: flex; 
+  align-items: center; 
+  height: 8vh;
+  padding: 3.4rem 1.4rem; 
 }
 .problemNavbar img
 {
-    height: 4.2rem;
+  height: 4.2rem;
 }
 
 .problemEditorSection
 { 
-  height: 100vh;
-  z-index: -1; 
-  position: absolute;
+height: 100vh;
+}
+
+.middle:hover
+{
+  background-color  :blue !important;
 }

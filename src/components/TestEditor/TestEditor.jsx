@@ -10,14 +10,14 @@ const CodeEditorWindow = ({ onChange, language, code, theme,options }) => {
   if(theme){
     {
       setTheme(theme) 
-      console.log(theme)
+      // console.log(theme)
     }
   }
 
   if(code)
   {
     setValue(code) 
-    console.log(code);
+    // console.log(code);
     
   }
 
@@ -29,12 +29,12 @@ const CodeEditorWindow = ({ onChange, language, code, theme,options }) => {
   return (
     <code >
       <Editor
-        height="81vh"
+        height="90%"
         width={`100%`} 
         language={language} 
-        value={value}
+        value={code}
         theme={cTheme} 
-        onChange={handleEditorChange} 
+        onChange={onChange} 
         options={options}
         loading={<img  src={Logo}/>}
       />

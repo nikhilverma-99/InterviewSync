@@ -35,23 +35,13 @@
 .navLinks
 {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column; 
+    justify-content: center; 
     gap:1.1rem; 
      
 }
 
-.navLink
-{    font-size: 1.8rem;
-    width: 85%;
-    display: flex;
-    align-items: center;
-    gap: 1.1rem;
-    height: 2.4rem;
-    padding: 2.4rem 2.1rem;
-    border-radius: 11px;
-}
+
 .navLink-icon
 {
     font-size: 2.4rem;
@@ -70,7 +60,7 @@
     border-bottom-right-radius: 8px;
 }
 
-.navLink-active
+.active
 {
     background: #12455778; 
     
@@ -89,3 +79,22 @@
     height: 9%;
     background: #071e26;
 }
+ 
+
+.admin-btn,
+.admin-btn:link,
+.admin-btn:visited {
+  display: flex; 
+  text-decoration: none;
+  font-size: 1.8rem;
+  font-weight: 400;
+  padding: 1.1rem 1.8rem;
+  border-radius: 9px;
+  color: #d3eaf2;
+  justify-content: flex-start;
+  gap:1.1rem; 
+  border: none;
+  cursor: pointer; 
+  transition: all 0.3s;
+}
+ 

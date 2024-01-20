@@ -72,10 +72,10 @@
 {
     background: rgba(0, 0, 0, 0.541) ;
     backdrop-filter: blur(2.4px); /* Apply a blur effect to the container */
-    border-radius: 10px;
+    border-radius:7px;
     padding: 20px;
     width: 100%;
-    height: 100%;
+    height: 100.4%;
     text-align: center;
     position: absolute;
     top:0;

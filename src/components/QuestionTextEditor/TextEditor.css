@@ -142,9 +142,10 @@
     background-color:rgba(0, 28, 53, 0.883);
     padding: 1rem;
     display: flex;
-    gap:0.5rem;
-    margin: 1rem;
-    border-radius: 10px;
+    gap:0.5rem; 
+    height: 92vh;
+    color:white;
+    width:82vw;
      
 }
  

@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import { MdAddCircleOutline } from "react-icons/md";
 import { IoIosSave } from "react-icons/io";
 import { MdDelete } from "react-icons/md";
-import { BiReflectVertical } from "react-icons/bi";
-
+import { BiReflectVertical } from "react-icons/bi";  
+import Logo from '../../images/Logo.svg'
+import WhiteLogo from '../../images/LightLogo.svg'
 import "./TextEditor.css";
+import { EditorThemeColor } from "../constants/theme";
 
 import Question from "../Question/Question";
 const RichTextEditor = () => {
@@ -65,11 +67,11 @@ const RichTextEditor = () => {
     setQuestionData(data);
   }, [question, difficulty, examples, constraints, questionDescription]);
   return (
-    <>
+    <> 
       <div className="adminEditor">
         <section
           className="question-section"
-          style={{ backgroundColor: "rgb(1, 17, 31)" }}
+          style={{ backgroundColor: "rgb(1, 17, 31)",width:'70%' }}
         >
           <div className="heading-container">
             <div className="heating-content question-container">

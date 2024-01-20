@@ -17,7 +17,7 @@ import Admin from './components/Admin/Admin'
 import Dashboard from './components/Admin/DashBoard/Dashboard'
 import CreateInterview from './components/Admin/DashBoard/CreateInterview'
 import AllInterview from './components/Admin/DashBoard/AllInterview'
-import Adjustable from './components/Adjustable/Adjustable'
+// import Adjustable from './components/Adjustable/Adjustable'
 
 
 // import Pricing from './components/pricing/Pricing'

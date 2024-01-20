@@ -4,7 +4,7 @@ import Hero from './components/Hero/Hero'
 import './App.css'
 // import Editor from './components/CodeEditor/Editor'
 import Loading from './components/Loading/Loading'
-// import TextEditor from './components/QuestionTextEditor/TextEditor'
+import TextEditor from './components/QuestionTextEditor/TextEditor'
 const ProblemEditor = lazy(()=>import('./components/Problem+Editor/ProblemEditor'))
 const Login = lazy(()=>import('./components/Login/Login'))
 // import Table from './components/Table/Table'
@@ -14,6 +14,12 @@ import { Route, Routes } from 'react-router-dom'
 import VideoCall from './components/Dyanamic Width Components/VideoCall'
 import HowItWorks from './components/How it Works/HowItWorks'
 import Admin from './components/Admin/Admin'
+import Dashboard from './components/Admin/DashBoard/Dashboard'
+import CreateInterview from './components/Admin/DashBoard/CreateInterview'
+import AllInterview from './components/Admin/DashBoard/AllInterview'
+import Adjustable from './components/Adjustable/Adjustable'
+
+
 // import Pricing from './components/pricing/Pricing'
 const CodeCollabContext = createContext();
  
@@ -23,27 +29,27 @@ function App() {
     <>
       <CodeCollabContext.Provider value={{selectedTheme,setSelectedTheme}}> 
       <Suspense fallback={<Loading></Loading>}>
-        <Routes>
-          <Route path='/' element={
-            <> 
-              <NavBar></NavBar>
-              <Hero></Hero>
-              <HowItWorks></HowItWorks>
-              {/* <Pricing></Pricing> */}
-              {/* <Editor></Editor> */}
-              {/* <Error></Error> */}
-              {/* <Table></Table>
-              <MaterialTable></MaterialTable> */} 
-              <Admin></Admin>
-            </>}> 
-          </Route>  
-
-          <Route path='/enterInterview' element={<Login></Login>}></Route>
-          <Route path='/videocalling' element={<VideoCall></VideoCall>}></Route> 
-
-            <Route path='/problemEditor/:type' element={<ProblemEditor></ProblemEditor>}></Route>
-
+      <Routes>
+            <Route   path='/' element={
+                <> 
+                <NavBar></NavBar>
+                <Hero></Hero>
+                <HowItWorks></HowItWorks>
+                {/* <Adjustable></Adjustable> */}
+                {/* <ProblemEditor></ProblemEditor> */}
+                </>
+            }/> 
+            <Route path='enterInterview' element={<Login></Login>}></Route>
+            <Route path='videocalling' element={<VideoCall></VideoCall>}></Route>  
+            <Route path='problemEditor/:type' element={<ProblemEditor></ProblemEditor>}></Route>
+          
+            <Route path='dashboard' element={<Admin/>}>
+                <Route index element={<Dashboard/>}/>
+                <Route path='createInterview' element={<CreateInterview/>}/>
+                <Route path='allInterview' element={<AllInterview/>}/> 
+            </Route>
         </Routes>
+
         </Suspense>  
       </CodeCollabContext.Provider> 
 

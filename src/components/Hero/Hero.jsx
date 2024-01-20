@@ -19,7 +19,7 @@ const Hero = () => {
                 </p> 
                 <div className='hero-links'>
                   <NavLink  to= '/enterInterview' className='btn btn-startCoding'>Start Coding !</NavLink> 
-                  <NavLink to='/videocalling' className='btn btn-Learnmore'>Learn More</NavLink>
+                  <NavLink to='/dashboard' className='btn btn-Learnmore'>Learn More</NavLink>
                 </div>
              
 

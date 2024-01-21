@@ -101,9 +101,55 @@
 .admin-navbar-title
 {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     height: 100%;
     font-size: 2.4rem;
-    color:#d3eaf2
+    color: #d3eaf2;
+    padding-right: 6.4rem;
 }
+.admin-navbar-icon
+{
+    border: 2px solid #d3eaf2;
+    border-radius: 68px;
+    padding: 5px;
+    height: 2.8rem;
+    width: 2.8rem;
+}
+.admin-navbar-user
+{
+    display: flex; 
+    align-items: center;
+    gap: 0.9rem;
+    font-size: 1.8rem;
+    position: relative;
+}
+
+.admin-navbar-user
+{
+    cursor: pointer;
+}
+.dropdown-content
+{
+    position: absolute;
+    font-size: 1.4rem;
+    top:150%;
+    color:red;
+    width:17rem;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap:0.8rem;
+    padding: 1.1rem;
+    border-radius: 5px;
+    background-color: #97d1e4;
+    color:#012f3f
+}
+
+.dropdown-content li
+{
+    display: flex; 
+    align-items: center;
+    gap:0.8rem;
+}
+ 

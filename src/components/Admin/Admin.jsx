@@ -1,10 +1,14 @@
-import React from "react";
+import React,{useState} from "react";
 import './Admin.css'
 import { Outlet ,NavLink,useLocation} from "react-router-dom";
 import { SlPeople } from "react-icons/sl";
 import { IoIosCreate } from "react-icons/io";
 import Logo from '../../images/LightLogo.svg'
 import { LuLayoutDashboard } from "react-icons/lu";
+import { FaUser } from "react-icons/fa";
+
+import { RiShutDownLine } from "react-icons/ri";
+import { MdLockOpen } from "react-icons/md";
 const Admin = () => {
   const location = useLocation();
   const getTitle = () => {
@@ -18,6 +22,11 @@ const Admin = () => {
       default:
         return 'Dashboard';
     }
+  };
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setDropdownOpen(!isDropdownOpen);
   };
   return <main className="admin-container">
       <div className="leftMenu"> 
@@ -57,6 +66,17 @@ const Admin = () => {
         <nav className="admin-navbar">
           <div className='admin-navbar-title'>
            {getTitle()} 
+          <div className="admin-navbar-user" onClick={toggleDropdown}>
+            <FaUser className="admin-navbar-icon"></FaUser>
+            <span>Amazon</span>
+            {!isDropdownOpen && (
+                <ul className="dropdown-content">
+                  <li ><RiShutDownLine style={{width:'2.1rem'}}></RiShutDownLine>Change Password</li>
+                  <li  ><MdLockOpen style={{width:'2.1rem'}}></MdLockOpen>Logout</li>
+                </ul>
+              )}
+          </div>
+          
           </div>
           </nav>
         <section className="rightMenu">  

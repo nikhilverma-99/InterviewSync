@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const APILink =  'https://codecollab-k6wq.onrender.com/';
+const APILink =  'https://codecollab-k6wq.onrender.com/api/v1';
 
 const API = axios.create({baseURL:APILink}) 
 
@@ -21,5 +21,13 @@ export const saveCandidateID = ({roomID,peerID})=>{
 
 export const getCandidatePeerId = ({roomID})=>{
     let res = API.post('/peer/getcandidatepeerid',{roomID:roomID})
+    return res;
+}
+
+export const saveProblem =(questionObject)=>{
+    let res = API.post('/problem/add', questionObject)
+    console.log("Save Problem");
+    
+    console.log(questionObject)
     return res;
 }

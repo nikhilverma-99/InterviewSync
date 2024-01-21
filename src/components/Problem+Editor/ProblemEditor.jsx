@@ -56,7 +56,7 @@ const Adjustable = () => {
     examples:[{
         input:'words = ["abc","aabc","bc"]',output:'true',explanation:`Move the first 'a' in words[1] to the front of words[2],to make words[1] = "abc" and words[2] = "abc". All the strings are now equal to "abc", so return true.`
     }],
-    question:"Redistribute Characters to Make All Strings Equal",
+    title:"Redistribute Characters to Make All Strings Equal",
     questionDescription:[
         "You are given an array of strings words (0-indexed).",
         "In one operation, pick two distinct indices i and j, where words[i] is a non-empty string, and move any character from words[i] to any position in words[j].\n\n",

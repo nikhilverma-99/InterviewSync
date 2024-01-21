@@ -18,14 +18,10 @@ function Login() {
   
   async function LoginButton() {  
       setLoading(true)
-      try{
-
-        const test = await axios.get('/api/v1/test')
-        console.log(test);
+      try{ 
+        
         let user_email = email.split("/")[0]
-        let type = email.split("/")[1];
-        const testing = await axios.post('/api/v1/auth/enterInterview',{email:user_email,roomID:"123"})
-        console.log(testing)
+        let type = email.split("/")[1]; 
         let res = await api.joinInterview({user_email})
         console.log(res)
         if(res.status==200){

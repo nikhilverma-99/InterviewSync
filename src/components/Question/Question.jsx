@@ -67,7 +67,7 @@ const Question = (props) => {
         </div>
       </div>
       <div className="question-description">
-        {questionData?.questionDescription?.map((val) => {
+        {questionData?.description?.map((val) => {
           return <p className="question-paragraph">{val}</p>;
         })}
       </div>

@@ -7,7 +7,7 @@ import Logo from '../../images/Logo.svg'
 import WhiteLogo from '../../images/LightLogo.svg'
 import "./TextEditor.css";
 import { EditorThemeColor } from "../constants/theme";
-
+import * as api from '../../Axios'
 import Question from "../Question/Question";
 const RichTextEditor = () => {
   const [question, setQuestion] = useState("");
@@ -42,7 +42,7 @@ const RichTextEditor = () => {
     setQuestionDescription(newQuestionDescription);
   };
 
-  const handleChange = () => {
+  const handleChange = async () => {
     const data = {
       problemImage:"",// to be changed
       title:question,
@@ -53,6 +53,7 @@ const RichTextEditor = () => {
       customTestCases:[{input:"",output:""}]// To be changed
     };
 
+    api.saveProblem(data);
     // Perform the logic to save 'data' to your backend or wherever you need to store it
     console.log("Changed Data:", data);
     setQuestionData(data);
@@ -262,7 +263,7 @@ const RichTextEditor = () => {
           <div className="add-btn btn-save end" onClick={handleChange}>
             <div className="btn-content">
               <IoIosSave className="add-btn-save" />
-              <span>Save Changes</span>
+              <span>Save</span>
             </div>
           </div>
         </section>

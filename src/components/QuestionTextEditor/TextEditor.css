@@ -138,13 +138,12 @@
 }
 
 .adminEditor
-{
-    background-color:rgba(0, 28, 53, 0.883); 
-    display: flex;
-    gap:0.5rem; 
-    height: 90vh;
-    color:white;
-    width:82vw;
-     
+{ 
+  padding: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  height: 90vh;
+  color: white;
+  width: 82vw;
 }
  

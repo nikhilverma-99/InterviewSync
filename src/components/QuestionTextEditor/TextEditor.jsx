@@ -14,7 +14,7 @@ const RichTextEditor = () => {
   const [questionDescription, setQuestionDescription] = useState([""]);
   const [difficulty, setDifficulty] = useState("Easy");
   const [examples, setExamples] = useState([
-    { input: "", output: "", explanation: "" },
+    { input: "", output: "", explanation: "",image:"" },
   ]);
   const [constraints, setConstraints] = useState([]);
   const [questionData, setQuestionData] = useState();
@@ -44,11 +44,13 @@ const RichTextEditor = () => {
 
   const handleChange = () => {
     const data = {
-      question,
+      problemImage:"",// to be changed
+      title:question,
       difficulty,
       examples,
-      constraints,
-      questionDescription,
+      constraints:constraints,
+      description:questionDescription,
+      customTestCases:[{input:"",output:""}]// To be changed
     };
 
     // Perform the logic to save 'data' to your backend or wherever you need to store it
@@ -58,11 +60,13 @@ const RichTextEditor = () => {
 
   useEffect(() => {
     const data = {
-      question,
+      problemImage:"",// to be changed
+      title:question,
       difficulty,
       examples,
-      constraints,
-      questionDescription,
+      constraints:constraints,
+      description:questionDescription,
+      customTestCases:[{input:"",output:""}]// To be changed
     };
     setQuestionData(data);
   }, [question, difficulty, examples, constraints, questionDescription]);
@@ -180,6 +184,18 @@ const RichTextEditor = () => {
                       handleExampleChange(index, "output", e.target.value);
                     }}
                   />
+
+                    <label>Image:</label>
+                  <input
+                    className="question-input"
+                    type='file'
+                    value={example.image}
+                    style={{ color: "black", fontFamily: "Rubik, sans-serif" }}
+                    onChange={(e) => {
+                      handleExampleChange(index, "image", e.target.value);
+                    }}
+                  />
+
 
                   <label>Explanation:</label>
                   <textarea

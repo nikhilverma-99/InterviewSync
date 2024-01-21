@@ -51,7 +51,7 @@ const Question = (props) => {
       }}
     >
       <div className="heading-container">
-        <a className="heating-content">{questionData?.question}</a>
+        <a className="heating-content">{questionData?.title}</a>
       </div>
       <div className="tags">
         <div className="tag-content">
@@ -67,7 +67,7 @@ const Question = (props) => {
         </div>
       </div>
       <div className="question-description">
-        {questionData.questionDescription.map((val) => {
+        {questionData?.questionDescription?.map((val) => {
           return <p className="question-paragraph">{val}</p>;
         })}
       </div>

@@ -1,11 +1,10 @@
 
 .adjustableContainer {
   display: flex;
-  height: 90vh; 
+  height: 92vh; 
   position: relative;
   padding:0 1vh 1vh 1vh;
-  gap:0.5rem;
-  width:100%;
+  gap:0.5rem; 
 }
 
 .left { 

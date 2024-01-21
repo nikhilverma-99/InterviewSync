@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "./login.css";
 // import { ToastContainer, toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
+import axios from 'axios' 
 import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Bars } from "react-loading-icons"; 
@@ -17,26 +18,35 @@ function Login() {
   
   async function LoginButton() {  
       setLoading(true)
+      try{
 
-      let user_email = email.split("/")[0]
-      let type = email.split("/")[1];
-      let res = await api.joinInterview({user_email})
-      console.log(res)
-      if(res.status==200){
-
-        localStorage.setItem("roomID",res.data)
-        socket.emit('joininterview',res.data) 
-        if(type=="I"){
-          navigate('/problemEditor/I') 
-        }else if(type=="C"){
-          navigate('/problemEditor/C') 
-        }else{
-          alert("please enter your type")
-        }
-
-
-      }else{
+        const test = await axios.get('/api/v1/test')
+        console.log(test);
+        
+        let user_email = email.split("/")[0]
+        let type = email.split("/")[1];
+        let res = await api.joinInterview({user_email})
         console.log(res)
+        if(res.status==200){
+  
+          localStorage.setItem("roomID",res.data)
+          socket.emit('joininterview',res.data) 
+          if(type=="I"){
+            navigate('/problemEditor/I') 
+          }else if(type=="C"){
+            navigate('/problemEditor/C') 
+          }else{
+            alert("please enter your type")
+          }
+  
+  
+        }else{
+          console.log(res)
+        }
+      }
+      catch(e)
+      {
+        console.log(e)
       }
       setLoading(false)
   }

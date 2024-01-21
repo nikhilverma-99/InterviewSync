@@ -1,12 +1,24 @@
 import React from "react";
 import './Admin.css'
-import { Outlet ,NavLink} from "react-router-dom";
+import { Outlet ,NavLink,useLocation} from "react-router-dom";
 import { SlPeople } from "react-icons/sl";
 import { IoIosCreate } from "react-icons/io";
 import Logo from '../../images/LightLogo.svg'
 import { LuLayoutDashboard } from "react-icons/lu";
 const Admin = () => {
-    
+  const location = useLocation();
+  const getTitle = () => {
+    switch (location.pathname) {
+      case '/dashboard':
+        return 'Dashboard';
+      case '/dashboard/allInterview':
+        return 'All Interviews';
+      case '/dashboard/createInterview':
+        return 'Create Interview';
+      default:
+        return 'Dashboard';
+    }
+  };
   return <main className="admin-container">
       <div className="leftMenu"> 
          <header >
@@ -40,8 +52,13 @@ const Admin = () => {
 
          </div>
       </div>
+
       <div> 
-        <nav className="admin-navbar">DashBoard</nav>
+        <nav className="admin-navbar">
+          <div className='admin-navbar-title'>
+           {getTitle()} 
+          </div>
+          </nav>
         <section className="rightMenu">  
          <Outlet/>
         </section>

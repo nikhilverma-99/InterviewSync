@@ -18,7 +18,7 @@ const Error = () => {
                 Look like you're lost
             </h3> 
             <p>the page you are looking for not avaible!</p> 
-            <NavLink to='/' style={{borderRadius:'50px'}}class="btn link_404 ">Go to Home</NavLink>
+            <NavLink to='/' style={{ borderRadius: '98px',textDecoration: 'none',background: '#012f3f',padding: '1.1rem 2rem',color: 'white',margin: '2.2rem',}}class="btn link_404 ">Go to Home</NavLink>
       </div>
       </div>
       </div>
@@ -28,3 +28,4 @@ const Error = () => {
 };
 
 export default Error;
+

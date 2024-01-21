@@ -18,7 +18,9 @@ const Admin = () => {
       case '/dashboard/allInterview':
         return 'All Interviews';
       case '/dashboard/createInterview':
-        return 'Create Interview';
+        return 'Create Interview' ;
+        case '/dashboard/addQuestion':
+        return 'Add Question';
       default:
         return 'Dashboard';
     }
@@ -56,6 +58,14 @@ const Admin = () => {
        
               <IoIosCreate className="navLink-icon"/>
               <span>Create Interview</span>
+             
+         </NavLink>
+         <NavLink to='addQuestion' className={({ isActive }) =>
+              isActive ? 'admin-btn active' : 'admin-btn'
+            }> 
+       
+              <IoIosCreate className="navLink-icon"/>
+              <span>Add Question</span>
              
          </NavLink>
 

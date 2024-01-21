@@ -4,7 +4,7 @@ import Hero from './components/Hero/Hero'
 import './App.css'
 // import Editor from './components/CodeEditor/Editor'
 import Loading from './components/Loading/Loading'
-import TextEditor from './components/QuestionTextEditor/TextEditor'
+const TextEditor = lazy(()=> import('./components/QuestionTextEditor/TextEditor')) 
 const ProblemEditor = lazy(()=>import('./components/Problem+Editor/ProblemEditor'))
 const Login = lazy(()=>import('./components/Login/Login'))
 // import Table from './components/Table/Table'
@@ -17,6 +17,7 @@ import Admin from './components/Admin/Admin'
 import Dashboard from './components/Admin/DashBoard/Dashboard'
 import CreateInterview from './components/Admin/DashBoard/CreateInterview'
 import AllInterview from './components/Admin/DashBoard/AllInterview'
+
 // import Adjustable from './components/Adjustable/Adjustable'
 
 
@@ -47,6 +48,7 @@ function App() {
                 <Route index element={<Dashboard/>}/>
                 <Route path='createInterview' element={<CreateInterview/>}/>
                 <Route path='allInterview' element={<AllInterview/>}/> 
+                <Route path='addQuestion' element={<TextEditor/>}/>  
             </Route>
         </Routes>
 

@@ -69,7 +69,7 @@ const Admin = () => {
           <div className="admin-navbar-user" onClick={toggleDropdown}>
             <FaUser className="admin-navbar-icon"></FaUser>
             <span>Amazon</span>
-            {!isDropdownOpen && (
+            {isDropdownOpen && (
                 <ul className="dropdown-content">
                   <li ><RiShutDownLine style={{width:'2.1rem'}}></RiShutDownLine>Change Password</li>
                   <li  ><MdLockOpen style={{width:'2.1rem'}}></MdLockOpen>Logout</li>

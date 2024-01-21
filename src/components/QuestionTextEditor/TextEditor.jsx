@@ -191,7 +191,7 @@ const RichTextEditor = () => {
                     className="question-input"
                     type='file'
                     value={example.image}
-                    style={{ color: "black", fontFamily: "Rubik, sans-serif" }}
+                    style={{ color: "white", fontFamily: "Rubik, sans-serif" }}
                     onChange={(e) => {
                       handleExampleChange(index, "image", e.target.value);
                     }}

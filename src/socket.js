@@ -1,6 +1,6 @@
 import socketIOClient from 'socket.io-client';
 
-const socketLink = `https://codecollab-k6wq.onrender.com/api/v1`;
+const socketLink = `/api/v1`;
 const socket = socketIOClient(socketLink,{
     reconnection: true,
     reconnectionAttempts: 5,

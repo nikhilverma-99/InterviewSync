@@ -145,6 +145,7 @@
     background-color: #97d1e4;
     color:#012f3f; 
     right:-50%;
+    z-index:100;
 }
 
 .dropdown-content li

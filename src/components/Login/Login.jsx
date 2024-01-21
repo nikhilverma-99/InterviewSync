@@ -21,6 +21,7 @@ function Login() {
       let user_email = email.split("/")[0]
       let type = email.split("/")[1];
       let res = await api.joinInterview({user_email})
+      console.log(res)
       if(res.status==200){
 
         localStorage.setItem("roomID",res.data)
@@ -48,6 +49,7 @@ function Login() {
     let value = e.target.value;
     setToken(value);
   }
+  
   useEffect(()=>{
     
     // if (currentUser) {

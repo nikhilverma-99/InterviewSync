@@ -1,12 +1,14 @@
 import axios from 'axios'
 
-const APILink =  '/api/v1';
+ 
 
-const API = axios.create({baseURL:APILink}) 
+const API = axios.create({
+    baseURL: "/api/v1",
+  }); 
 
-export const joinInterview = ({email})=>{
+export const joinInterview = async({email})=>{
 
-    let res = API.post('/auth/enterInterview',{email:email,roomID:"123"})
+    let res = await API.post('/auth/enterInterview',{email:email,roomID:"123"})
     return res;
 }
 export const saveInterviewID = ({roomID , peerID})=>{

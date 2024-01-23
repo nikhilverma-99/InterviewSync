@@ -16,6 +16,7 @@ const RichTextEditor = () => {
   const [examples, setExamples] = useState([
     { input: "", output: "", explanation: "",image:"" },
   ]);
+  const [tag,setTag] = useState('');
   const [constraints, setConstraints] = useState([]);
   const [questionData, setQuestionData] = useState();
   const handleExampleChange = (index, field, value) => {
@@ -47,6 +48,7 @@ const RichTextEditor = () => {
       problemImage:"",// to be changed
       title:question,
       difficulty,
+      tag,
       examples,
       constraints:constraints,
       description:questionDescription,
@@ -106,6 +108,9 @@ const RichTextEditor = () => {
               <option value="Medium">Medium</option>
               <option value="Hard">Hard</option>
             </select>
+
+            <label>Tags:</label>
+            <input className="question-input" style={{ color: "black", fontFamily: "Rubik, sans-serif" }}type="text" value={tag} onChange={(e)=>setTag(e.target.value)}/>
           </div>
 
           <div className="question-description">

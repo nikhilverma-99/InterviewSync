@@ -1,0 +1,8 @@
+.stats-grid
+{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap:2.8rem;
+    padding:2.2rem 1rem;
+    justify-items: center
+}

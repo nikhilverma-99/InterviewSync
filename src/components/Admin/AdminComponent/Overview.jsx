@@ -2,12 +2,18 @@ import React from "react";
 import { IoNewspaperOutline } from "react-icons/io5";
 import './Overview.css'
 const Overview = (props) => {
-  return <article className="dashboard-overview" > 
+
+  const overviewData = props?.overviewData;
+  if(!overviewData) return null ;
+  console.log(overviewData)
+  return <article className="dashboard-overview" style={{backgroundColor:overviewData?.statsBackground, color:overviewData?.color, borderBottom:`6px solid ${overviewData?.color}`}} > 
   <div className="stats-row">
-    <span>27</span>
-    <IoNewspaperOutline className="stats-icon"/>
+    <span>{props?.stats}</span>
+    <div className="icon-holder" style={{backgroundColor:overviewData?.iconBackground}} > 
+     {overviewData?.icons}
+    </div>
   </div>
-  <span className="stats-title">Pending Application</span>
+  <span className="stats-title">{props?.title}</span>
   </article>;
 };
 

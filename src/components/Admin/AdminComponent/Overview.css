@@ -2,8 +2,8 @@
 {
     height:17rem;
     border-radius:0.6rem;
-    width:100%;
-    min-width: 42rem;
+    /* width:70%; */
+    min-width: 40rem;
     padding:2.2rem;
     display: flex;flex-direction: column;
     gap:1.1rem;

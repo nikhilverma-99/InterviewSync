@@ -12,5 +12,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 4.4rem;
+    padding: 4.4rem;
+    min-width: 50.5rem
 }

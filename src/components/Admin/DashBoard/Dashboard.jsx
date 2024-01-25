@@ -26,9 +26,12 @@ const Dashboard = () => {
   <section className="stats-grid"> 
   <Overview overviewData={PendingJobs} title='Pending Jobs' stats='27' ></Overview>
   <Overview overviewData={InterviewScheduled} title='Interview Scheduled' stats='14'></Overview>
+  <div>
+
   <Overview overviewData={JobsDeclined} title='Jobs Declined' stats='25'></Overview>
+  </div>
   </section>
-  <section className="dashboard-graph" style={{ width: '100%', height: '40rem' }}>
+  <section className="dashboard-graph" style={{ width: '100%', height: '40rem',minWidth:'50rem' }}>
 
   <Graph></Graph>
   </section>

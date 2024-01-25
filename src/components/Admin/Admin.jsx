@@ -72,7 +72,7 @@ const Admin = () => {
          </div>
       </div>
 
-      <div> 
+      <div style={{height:`calc(100vh - 1.8rem)`,width:`calc(100vw - 29.6rem)`}}> 
         <nav className="admin-navbar">
           <div className='admin-navbar-title'>
            {getTitle()} 

@@ -26,7 +26,7 @@ const Dashboard = () => {
   <section className="stats-grid"> 
   <Overview overviewData={PendingJobs} title='Pending Jobs' stats='27' ></Overview>
   <Overview overviewData={InterviewScheduled} title='Interview Scheduled' stats='14'></Overview>
-  <div>
+  <div className="decline-job">
 
   <Overview overviewData={JobsDeclined} title='Jobs Declined' stats='25'></Overview>
   </div>

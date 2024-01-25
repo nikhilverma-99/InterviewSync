@@ -1,0 +1,19 @@
+@media(max-width:82rem)
+{
+    .stats-grid { 
+        grid-template-columns: repeat(2,1fr) !important;
+    }
+    .decline-job{
+        grid-column: 1/-1;
+    }
+}
+
+@media(max-width:70rem)
+{
+    .stats-grid { 
+        grid-template-columns: repeat(1,1fr) !important;
+    }
+    .decline-job{
+        /* grid-column: 1/span 2; */
+    }
+}

@@ -2,6 +2,7 @@ import { useEffect, useState, createContext, useContext,lazy,Suspense  } from 'r
 import NavBar from './components/NavBar/NavBar'
 import Hero from './components/Hero/Hero'  
 import './App.css'
+import './mediaquery.css'
 // import Editor from './components/CodeEditor/Editor'
 import Loading from './components/Loading/Loading'
 const TextEditor = lazy(()=> import('./components/QuestionTextEditor/TextEditor')) 
@@ -35,9 +36,7 @@ function App() {
                 <> 
                 <NavBar></NavBar>
                 <Hero></Hero>
-                <HowItWorks></HowItWorks> 
-                {/* <Adjustable></Adjustable> */}
-                {/* <ProblemEditor></ProblemEditor> */}
+                <HowItWorks></HowItWorks>  
                 </>
             }/> 
             <Route path='enterInterview' element={<Login></Login>}></Route>

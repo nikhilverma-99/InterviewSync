@@ -2,7 +2,7 @@ import axios from 'axios'
 const API = axios.create({
     baseURL: "/api/v1",
   }); 
-
+//   /api/v1/interview
 export const joinInterview = async({email})=>{
 
     let res = await API.post('/auth/enterInterview',{email:email,roomID:"123"})
@@ -25,8 +25,12 @@ export const getCandidatePeerId = ({roomID})=>{
 
 export const saveProblem =(questionObject)=>{
     let res = API.post('/problem/add', questionObject)
-    console.log("Save Problem");
+    console.log("Save Problem"); 
+    return res;
+}
+// /interview/create
+export const createInterview = async (formData)=>{ 
     
-    console.log(questionObject)
+    let res = await API.post('/interview/create', formData)   
     return res;
 }

@@ -6,6 +6,7 @@ import { FaRankingStar } from "react-icons/fa6";
 import { MdOutlineContactPage } from "react-icons/md";
 import { CiCalendarDate } from "react-icons/ci";
 import { IoIosTimer } from "react-icons/io";
+import * as api from '../../../Axios'
 const CreateInterview = () => { 
   const [candidate, setCandidate] = useState({
     name: "",
@@ -17,13 +18,22 @@ const CreateInterview = () => {
   const [interviewer, setInterviewer] = useState({
     name: "",
     email: "",
-    date: "",
+    date: new Date(),
     time: ""
   });
 
   // Event handler for updating Candidate details
   const handleCandidateChange = (e) => {
     const { name, value } = e.target;
+
+    if(name==='resume')
+    {
+      setCandidate((prevCandidate) => ({
+        ...prevCandidate,
+        [name]: e.target.files[0]
+      }));
+      return;
+    }
     setCandidate((prevCandidate) => ({
       ...prevCandidate,
       [name]: value
@@ -38,13 +48,29 @@ const CreateInterview = () => {
       [name]: value
     }));
   };
+ 
+  const createInterview = async()=>{  
+    const formData = new FormData() ; 
+    const interviewData = {
+      inv_email:interviewer.email,
+      can_email:candidate.email,
+      role:candidate.position,
+      date:interviewer.date,
+      time:interviewer.time,
+      company:"Amazon"
+    }
+    formData.append('data',JSON.stringify(interviewData))    
+    formData.append('file', candidate.resume ) ; 
 
-  const createInterview = ()=>{
-    console.log(candidate)
-    console.log(interviewer)
+    const resumeUpload = api.createInterview(formData)
+    console.log(resumeUpload);
+    
+    console.log("Upload Function finished !");
+    
   }
 
-  return <><section class="interview-Info">
+  return <>
+  <section class="interview-Info">
   <div class="information">
     <div class="form-heading">
       <span>Candidate Details</span>

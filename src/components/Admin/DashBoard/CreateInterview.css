@@ -60,7 +60,7 @@
 
 .form-field label
 {
-width:14rem
+width:7rem
 }
 
 .form-fields
@@ -83,4 +83,15 @@ width:14rem
 .create-interview
 {
     background-color: #45be41;
+}
+
+.label-icon
+{
+  display: flex;
+  gap:1.1rem;
+  align-items:center;
+}
+.label-icon
+{
+  font-size: 1.6rem;
 }

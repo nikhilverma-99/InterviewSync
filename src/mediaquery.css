@@ -118,6 +118,10 @@
   .step-img-box:nth-child(6) {
     grid-row: 5
   }
+  .planPricing
+  {
+    height:48rem !important; 
+  }
  }
 
  

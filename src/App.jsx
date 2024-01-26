@@ -22,7 +22,7 @@ import AllInterview from './components/Admin/DashBoard/AllInterview'
 // import Adjustable from './components/Adjustable/Adjustable'
 
 
-// import Pricing from './components/pricing/Pricing'
+import Pricing from './components/pricing/Pricing'
 const CodeCollabContext = createContext();
  
 function App() { 
@@ -37,6 +37,7 @@ function App() {
                 <NavBar></NavBar>
                 <Hero></Hero>
                 <HowItWorks></HowItWorks>  
+                <Pricing></Pricing>
                 </>
             }/> 
             <Route path='enterInterview' element={<Login></Login>}></Route>

@@ -1,21 +1,19 @@
 import React from 'react';
-import { Line } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
-  PointElement,
-  LineElement,
+  BarElement,
   Title,
   Tooltip,
   Legend,
 } from 'chart.js';
+import { Bar } from 'react-chartjs-2'; 
 
 ChartJS.register(
   CategoryScale,
   LinearScale,
-  PointElement,
-  LineElement,
+  BarElement,
   Title,
   Tooltip,
   Legend
@@ -25,42 +23,43 @@ export const options = {
   responsive: true,
   plugins: {
     legend: {
+      display:false,
       position: 'top',
     },
     title: {
       display: true,
-      text: 'Interview Stats',
+      text: 'Interview Analysis',
+      font: {
+        family: 'Rubik', // Specify your custom font family here
+        size: 16, // Set the font size,
+        weight:500,
+        color:'#002244'
+      }
     },
   },
 };
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+const labels = ['Pending', 'Interview Scheduled', 'Jobs Declined'];
+
+const datasets = [
+  {
+    label: ' ',
+    data: [10, 5, 23],
+    borderColor:['#002244','#0b6623','#960018'],
+    backgroundColor: ['#002244b3', '#0b6623b3', '#960018b3'],
+    borderWidth: 4, // Set the border width
+    barThickness: 55, // Set the bar width
+    borderRadius:7
+  },
+];
 
 export const data = {
   labels,
-  datasets: [
-    {
-      label: 'Pending Jobs',
-      data: [8, 7, 9, 10, 21, 53, 70],
-      borderColor: '#002244',
-       
-    },
-    {
-      label: 'Interview Scheduled',
-      data: [20, 22, 44, 12, 32, 55, 76],
-      borderColor: '#0b6623',
-      
-    },{
-      label: 'Jobs Declined',
-      data: [21, 34, 11, 33, 12, 43, 21],
-      borderColor: '#960018',
-      
-    },
-  ],
+  datasets,
 };
 
 const Graph = () => {
-  return <Line options={options} data={data} />;
+  return <Bar options={options} data={data} />;
 };
 
 export default Graph;

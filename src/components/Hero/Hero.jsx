@@ -8,7 +8,7 @@ const Hero = () => {
      <section className="section-hero">
         <div className="hero">
             <div className="hero-img-box">
-              <img className="hero-img" src={HeroImage}/>
+              <img className="hero-img" alt="hero-img" src={HeroImage}/>
             </div> 
             <div className="hero-text-box">
                 <h1 className="heading-primary">

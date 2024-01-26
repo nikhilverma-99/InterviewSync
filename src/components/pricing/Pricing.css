@@ -1,0 +1,150 @@
+.pricing-grid
+{
+    display: grid; 
+    margin-top: 7.4rem;
+
+    gap:2.2rem;
+    justify-items: center;
+
+    align-items: center;
+   
+}
+
+
+.grid--3-cols
+{
+    grid-template-columns: repeat(3,1fr);
+}
+
+.planPricing
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3.6rem;
+    gap:1.8rem;
+
+    width:fit-content;
+    min-width: 37rem;
+
+    height: 44rem;
+    /* background-color: aqua; */
+    border: 2px solid #7cc0d8;
+
+    color: #0f172a;
+    border-radius: 12px;
+
+    position: relative;
+
+    /* overflow: hidden; */
+    
+}
+.planHeader
+{
+    display: flex;
+    flex-direction: column;
+    gap:0.4rem;
+    align-items: center;
+    
+}
+.planName
+{
+    text-transform: uppercase;
+    font-size: 2.4rem;
+    font-weight: 500;
+}
+
+.planPrice
+{
+    font-size: 4.4rem;
+    font-weight: 700;
+}
+.planTag
+{
+    font-size: 1.4rem;
+
+}
+
+.plan-details
+{
+    list-style: none;
+    font-size: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    margin-top: 1.8rem;
+}
+
+.plan-details li
+{
+    display: flex;
+    gap:1.1rem;
+    align-items: center;
+    justify-content: flex-start;
+}
+.getStarted-btn
+{
+    width:80%;
+     
+    background-color: #0b2d39;
+    color:#e9f5f9;
+    padding: 1.4rem;
+
+    font-size: 2.2rem;
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    align-self: center;
+
+    margin-top: 3.2rem;
+}
+
+.getStarted-btn:hover
+{
+    cursor: pointer;
+}
+
+.pricing-container
+{
+    max-width: 140rem;
+    padding: 2.2rem 3.2rem;
+    margin: 0 auto;
+    padding-top: 0;
+}
+.mostPopular
+{
+    background-color: #0f172a;
+    color:white;
+    border: none;
+
+    width:fit-content;
+    min-width: 37rem;
+
+    height: 48rem;
+}
+.mostPopular::after
+ {
+    content: 'Most Popular';
+    position: absolute;
+
+    background-color: #10b981;
+    border-radius: 10px;
+    color: #fdfeff;
+    font-size: 1.4rem;
+    font-weight: 500;
+    padding: 0.7rem 0.6rem;
+    width:13rem;
+    text-align: center;
+
+    top:-10px;
+    right:14px;
+ }
+
+ .btn-mostPopular
+ {
+    background-color: #6366f1;
+    /* margin-top: 4.8rem; */
+ }

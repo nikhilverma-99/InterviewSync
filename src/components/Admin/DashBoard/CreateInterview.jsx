@@ -5,9 +5,8 @@ import { MdOutlineMarkEmailRead } from "react-icons/md";
 import { FaRankingStar } from "react-icons/fa6";
 import { MdOutlineContactPage } from "react-icons/md";
 import { CiCalendarDate } from "react-icons/ci";
-import { IoIosTimer } from "react-icons/io";
-import { Circles } from 'react-loading-icons'
-
+import { IoIosTimer } from "react-icons/io"; 
+import LoadingIcons from 'react-loading-icons'
 import * as api from '../../../Axios'
 const CreateInterview = () => { 
 
@@ -160,9 +159,9 @@ const CreateInterview = () => {
   
 </section>
 {
-  loading?<div className="create-btn-div"  >
+  !loading?<div className="create-btn-div"  >
     <div className="btn create-interview">
-      <Circles style={{height: '100%'}}/>
+      <LoadingIcons.TailSpin style={{height: '100%'}}/>
     </div>
   </div>  :  
   <div className="create-btn-div" onClick={createInterview}>

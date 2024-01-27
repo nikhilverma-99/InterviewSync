@@ -27,7 +27,7 @@ const CodeCollabContext = createContext();
  
 function App() { 
   const [selectedTheme, setSelectedTheme] = useState('');   
-  return (
+  return ( 
     <>
       <CodeCollabContext.Provider value={{selectedTheme,setSelectedTheme}}> 
       <Suspense fallback={<Loading></Loading>}>

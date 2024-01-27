@@ -57,10 +57,7 @@ const Table = () => {
                 <td>{val.inv_email}</td>
                 <td>{val.role}</td>
                 <td>  
-                <input placeholder="Date" disabled="true" name="date" value={new Date(val.date).toISOString().split('T')[0]} type="date"  style={{fontFamily: 'Rubik,sans-serif',
-    borderRadius: '7px',
-    border: '1px solid grey',width:'12rem',
-    padding: '1.1rem'}}/>
+                <input placeholder="Date" disabled="true" name="date" value={new Date(val.date).toISOString().split('T')[0]} type="date"  style={{fontFamily: 'Rubik,sans-serif', border: 'none',padding: '1.1rem'}}/>
                 </td>
                 <td> { val.time}
                 

@@ -9,7 +9,7 @@ const TextEditor = lazy(()=> import('./components/QuestionTextEditor/TextEditor'
 const ProblemEditor = lazy(()=>import('./components/Problem+Editor/ProblemEditor'))
 const Login = lazy(()=>import('./components/Login/Login'))
 // import Table from './components/Table/Table'
-import Error from './components/Error/Error'
+const Error = lazy(()=> import('./components/Error/Error')) 
 // import MaterialTable from './components/Table/MaterialTable'
 import { Route, Routes } from 'react-router-dom'
 import VideoCall from './components/Dyanamic Width Components/VideoCall'

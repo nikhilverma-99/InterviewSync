@@ -46,19 +46,31 @@ const Table = () => {
         </thead>
 
         <tbody>
-          {allInterview && allInterview?.map((val, index) => (
-            <tr key={index}>
-             <td>{index+1}</td>
-             <td>{val.can_email}</td>
-             <td>{val.inv_email}</td>
-             <td>{val.role}</td>
-             <td>{val.date}</td>
-             <td>{val.time}</td>
-             <td>{val.status}</td>
-             <td id={val._id}>D</td>
-             <td id={val._id}>R</td> 
-            </tr>
-          ))}
+          {allInterview && allInterview?.map((val, index) => {
+            // Convert val.time to a Date object
+            const dateObject = new Date(val.time.replace(/-/g, '/'));
+
+            return (
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td>{val.can_email}</td>
+                <td>{val.inv_email}</td>
+                <td>{val.role}</td>
+                <td>  
+                <input placeholder="Date" disabled="true" name="date" value={new Date(val.date).toISOString().split('T')[0]} type="date"  style={{fontFamily: 'Rubik,sans-serif',
+    borderRadius: '7px',
+    border: '1px solid grey',width:'12rem',
+    padding: '1.1rem'}}/>
+                </td>
+                <td> { val.time}
+                
+                </td>
+                <td>{val.status}</td>
+                <td id={val._id}>D</td>
+                <td id={val._id}>R</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table> 
     </section>
@@ -66,3 +78,4 @@ const Table = () => {
 };
 
 export default Table;
+    

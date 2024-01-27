@@ -3,8 +3,7 @@ const API = axios.create({
     baseURL: "/api/v1",
   }); 
 //   /api/v1/interview
-export const joinInterview = async({email})=>{
-
+export const joinInterview = async({email})=>{ 
     let res = await API.post('/auth/enterInterview',{email:email,roomID:"123"})
     return res;
 }
@@ -32,5 +31,10 @@ export const saveProblem =(questionObject)=>{
 export const createInterview = async (formData)=>{ 
     
     let res = await API.post('/interview/create', formData)   
+    return res;
+}
+
+export const getAllInterview = async()=>{
+    let res = await API.post('/interview/get',{company:"Example Corp"})   
     return res;
 }

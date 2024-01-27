@@ -1,7 +1,7 @@
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Table.css";
-
+import * as api from '../../Axios'
 
 const interviewData = [
   {
@@ -94,7 +94,8 @@ const Table = () => {
   const [sortKey, setSortKey] = useState("Candidate Name");
   const [sortOrder, setSortOrder] = useState("asc");
   const [searchQuery, setSearchQuery] = useState("");
-
+   
+  
   // Sorting logic
   const sortedData = interviewData.slice().sort((a, b) => {
     const compareValue = a[sortKey].localeCompare(b[sortKey]);
@@ -128,6 +129,11 @@ const Table = () => {
     setCurrentPage(1); // Reset to the first page when searching
   };
 
+  useEffect(async()=>{
+    const tableData = await api.getAllInterview() ;
+    console.log(tableData);
+    
+  },[])
   return (
     <section className="table-container">
       <div className="search-container">

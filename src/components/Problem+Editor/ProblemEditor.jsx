@@ -23,6 +23,10 @@ const Adjustable = () => {
   const rightStyle = {
     background: 'green', 
   };
+  const middleStyle={ width: '2.5px',
+  borderRadius:'5px', 
+  backgroundColor: `${themeBackground[selectedTheme]}`, 
+  cursor: 'ew-resize' }
 
   const handleMouseDown = (event) => {
     // Check if the event target is the middle div
@@ -90,7 +94,7 @@ const Adjustable = () => {
         <div
           className="middle"
           onMouseDown={handleMouseDown}
-          style={{ width: '2.5px',borderRadius:'5px', backgroundColor: `${themeBackground[selectedTheme]}`, cursor: 'ew-resize' }}
+          style={ middleStyle }
         ></div>
 
         <div className="right" style={{ ...rightStyle, backgroundColor:`${themeBackground[selectedTheme]}`, width: `calc(50% - ${dragOffset}px)` }}>

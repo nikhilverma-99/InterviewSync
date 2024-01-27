@@ -1,0 +1,102 @@
+
+.interview-Info
+{
+   
+    display:flex;
+    flex-direction: column;
+  gap:1.1rem;
+/*     #bee0ec;  */
+  color:#071e26;
+  align-items: center;
+  justify-content: center; 
+  font-size:1.2rem;
+  margin-top: 5.1rem;
+}
+.information
+{
+  padding:2.4rem 1.1rem;
+  background-color:#bee0ec; 
+  width:45%;
+  min-width:50rem;
+  border-radius:0.5rem;
+  
+   display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.1rem;
+
+    border-bottom: 5px solid #071e26;
+}
+ 
+
+.form-heading
+{
+  display:flex;
+  justify-content:center;
+  font-size:1.8rem;
+  font-weight:600;
+  color:#071e26;
+}
+
+.form-input {
+    height: fit-content;
+    width: 100%!important;
+    font-family: Rubik,sans-serif;
+  font-size:1.1rem;
+    border-radius: 7px;
+    outline: none;
+    border: 1px solid grey;
+    padding: 1rem;
+    letter-spacing: 0.8px;
+  background-color:inherit;
+}
+
+.form-field
+{
+  display:flex;
+  gap:2.2rem;
+  align-items:center;
+}
+
+.form-field label
+{
+width:7rem
+}
+
+.form-fields
+{
+  display:flex;
+  flex-direction:column;
+  gap:1.1rem;
+  width:70%;
+}
+.create-btn-div
+{
+ 
+    padding: 2.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:#ffffff;
+    
+
+}
+
+.create-interview
+{
+   display: flex;align-items: center; justify-content: center;
+    background-color: #45be41;
+    width:24rem !important;
+    height: 6.6rem;
+}
+
+.label-icon
+{
+  display: flex;
+  gap:1.1rem;
+  align-items:center;
+}
+.label-icon
+{
+  font-size: 1.6rem;
+}

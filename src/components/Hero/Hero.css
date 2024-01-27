@@ -31,7 +31,7 @@
     font-weight:500;
 }
 .btn-startCoding
-{ background-color: #1A384F;
+{ background-color: #0f172a;
     color:#F8FCFA;
     border-radius: 82px !important; 
     z-index: 1;
@@ -68,5 +68,5 @@
 }
 .hero-text-box
 {
-    color: #1a384f;
+    color: #0f172a;
 }

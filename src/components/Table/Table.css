@@ -1,41 +1,88 @@
- 
-  
-  .content-table {
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 1.1rem;
-    min-width: 400px;
-    border-radius: 5px 5px 0 0;
-    overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-  }
-  
-  .content-table thead tr {
-    background-color: #01305b;
-    color: #ffffff;
-    text-align: left;
-    font-weight: bold;
-  }
-  
-  .content-table th,
-  .content-table td {
-    padding: 12px 15px;
-  }
-  
-  .content-table tbody tr {
-    border-bottom: 1px solid #dddddd;
-  }
-  
-  .content-table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
-  }
-  
-  .content-table tbody tr:last-of-type {
-    border-bottom: 2px solid #01305b;
-  }
-  
-  .content-table tbody tr.active-row {
-    font-weight: bold;
-    color: #01305b;
-  }
-  
+.content-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 1.1rem;
+  min-width: 400px;
+  width:100%;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.content-table thead tr {
+  background-color: #01305b;
+  color: #ffffff;
+  text-align: left;
+  font-size: 1.4rem;
+}
+
+.content-table th {
+  padding: 12px 15px;
+  font-weight: bold;
+}
+
+.content-table th {
+  font-weight: 500;
+  height: 7rem; /* Setting lighter font weight for non-first columns in the header */
+}
+
+.content-table td {
+  padding: 12px 15px;
+}
+
+.content-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+  height: 6rem;
+  font-size: 1.4rem;
+
+}
+
+.content-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type {
+  border-bottom: 2px solid #01305b;
+}
+
+.content-table tbody tr.active-row {
+  /* font-weight: bold; */
+  color: #01305b;
+}
+
+
+.table-container
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 80%;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  margin: 0 5px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.search-container
+{
+  display: flex;
+  gap: 1.1rem;
+
+  align-self: flex-start;
+  align-items:center;
+}
+
+.search-container label{
+  width: 28rem;
+  font-size: 1.4rem;
+}

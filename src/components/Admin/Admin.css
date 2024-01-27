@@ -5,13 +5,14 @@
     display: grid;
     grid-template-columns: auto 1fr;
     box-sizing: border-box;
-
+    width:100vw;
     padding: 0.7rem;
     margin: 0;
 }
 
 .leftMenu
-{   width:28rem;
+{   height: calc(100vh - 1.5rem); 
+    width:28rem;
     padding: 0 1.1rem;
     background: #071e26;
     color: #e9f5f9;
@@ -58,6 +59,8 @@
     background: #d3eaf2;
     height: 91%  ;
     border-bottom-right-radius: 8px;
+    padding:1.4rem;
+    overflow: scroll;
 }
 
 .active
@@ -70,13 +73,13 @@
 {
     height: 2px;
     background: #0f3c4c;
-    width: 86%;
+    width: 100%;
     border-radius: 50px;
 }
 .admin-navbar
 {
     border-top-right-radius: 8px;
-    height: 9%;
+    height: 9vh;
     background: #071e26;
 }
  

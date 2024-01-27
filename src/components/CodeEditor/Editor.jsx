@@ -27,7 +27,7 @@ const CodeEditor = () => {
   const [settingOpen, setSettingOpen] = useState(false);
   const [code, setCode] = useState("");
  
-  const { selectedTheme, setSelectedTheme } = useCodeCollabContext();
+  const { selectedTheme, setSelectedTheme } = useCodeCollabContext(); 
   
 
   const editorOptions = {
@@ -181,6 +181,7 @@ const debouncedHandleCodeChange = debounce((newValue, roomID) => {
 
     setCode(newValue);
     let roomID = localStorage.getItem("roomID");
+    console.log(newValue)
     socket.emit('codeChange', { newValue, roomID,socketId: socket.id }); // Pass an object with keys newValue and roomID
   };
   
@@ -346,18 +347,26 @@ const debouncedHandleCodeChange = debounce((newValue, roomID) => {
         </section>
       )}
       <div
-        onClick={runCode}
+        
         className="editor-bottom"
-        style={{ backgroundColor: `${EditorThemeColor[selectedTheme]}`, }}
+        style={{ backgroundColor: `${EditorThemeColor[selectedTheme]}`,gap:'1.1rem' }}
       >
         <div
-          className="btn-run"
+          className="btn-run" onClick={runCode}
           style={{ backgroundColor: `${buttonTheme[selectedTheme]}`,color:fontColor[selectedTheme] }}
         >
           <IoPlay className="btn-run-icon" />
           <a>Run</a>
         </div>
+        <div
+          className="btn-run" onClick={runCode}
+          style={{ backgroundColor: `#45be41`,color:'white',padding:'0.4rem 0.8rem' }}
+        >
+           
+          <a style={{padding:'0.4rem 0.8rem'}}>Submit</a>
+        </div>
       </div>
+      
     </div>
   );
 };

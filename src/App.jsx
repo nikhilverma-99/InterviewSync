@@ -2,13 +2,14 @@ import { useEffect, useState, createContext, useContext,lazy,Suspense  } from 'r
 import NavBar from './components/NavBar/NavBar'
 import Hero from './components/Hero/Hero'  
 import './App.css'
+import './mediaquery.css'
 // import Editor from './components/CodeEditor/Editor'
 import Loading from './components/Loading/Loading'
 const TextEditor = lazy(()=> import('./components/QuestionTextEditor/TextEditor')) 
 const ProblemEditor = lazy(()=>import('./components/Problem+Editor/ProblemEditor'))
 const Login = lazy(()=>import('./components/Login/Login'))
 // import Table from './components/Table/Table'
-import Error from './components/Error/Error'
+const Error = lazy(()=> import('./components/Error/Error')) 
 // import MaterialTable from './components/Table/MaterialTable'
 import { Route, Routes } from 'react-router-dom'
 import VideoCall from './components/Dyanamic Width Components/VideoCall'
@@ -21,12 +22,12 @@ import AllInterview from './components/Admin/DashBoard/AllInterview'
 // import Adjustable from './components/Adjustable/Adjustable'
 
 
-// import Pricing from './components/pricing/Pricing'
+import Pricing from './components/pricing/Pricing'
 const CodeCollabContext = createContext();
  
 function App() { 
   const [selectedTheme, setSelectedTheme] = useState('');   
-  return (
+  return ( 
     <>
       <CodeCollabContext.Provider value={{selectedTheme,setSelectedTheme}}> 
       <Suspense fallback={<Loading></Loading>}>
@@ -35,9 +36,8 @@ function App() {
                 <> 
                 <NavBar></NavBar>
                 <Hero></Hero>
-                <HowItWorks></HowItWorks> 
-                {/* <Adjustable></Adjustable> */}
-                {/* <ProblemEditor></ProblemEditor> */}
+                <HowItWorks></HowItWorks>  
+                <Pricing></Pricing>
                 </>
             }/> 
             <Route path='enterInterview' element={<Login></Login>}></Route>

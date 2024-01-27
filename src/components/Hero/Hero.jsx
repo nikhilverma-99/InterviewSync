@@ -8,7 +8,7 @@ const Hero = () => {
      <section className="section-hero">
         <div className="hero">
             <div className="hero-img-box">
-              <img className="hero-img" src={HeroImage}/>
+              <img className="hero-img" alt="hero-img" src={HeroImage}/>
             </div> 
             <div className="hero-text-box">
                 <h1 className="heading-primary">
@@ -24,24 +24,24 @@ const Hero = () => {
              
 
                 <div className="delivered-meals">
-                <div className="delivered-imgs">
-                {Object.values(customerImages).map((value, index) => { 
-                return ( 
-                  <> 
-                  <img
-                    src={value}
-                    className="customer_image"
-                    alt="customer"
-                    loading="lazy" 
-                  />
-                  </> 
-                );
-              })}
-                </div>
-                <p className="delivered-text"> 
-                  Join <span>1M + </span>active users collaborating now!
-                </p>
-                </div>
+                  <div className="delivered-imgs">
+                  {Object.values(customerImages).map((value, index) => { 
+                  return ( 
+                    <> 
+                    <img
+                      src={value}
+                      className="customer_image"
+                      alt="customer"
+                      loading="lazy" 
+                    />
+                    </> 
+                  );
+                })}
+                  </div>
+                  <p className="delivered-text"> 
+                    Join <span>1M + </span>active users collaborating now!
+                  </p>
+                  </div>
             </div>
            
         </div>

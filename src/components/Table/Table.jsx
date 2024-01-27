@@ -1,51 +1,78 @@
-import React from "react";
-import "./Table.css"
- 
-const interviewData = [
-    {
-        "Job Role": "Software Engineer",
-        "Candidate Name": "John Doe",
-        "Candidate Exp.": "5 years",
-        "Candidate Resume": "link_to_resume.pdf",
-        "Interview Timing": "2024-01-06 10:00 AM",
-        "Technical Skills": `["JavaScript", "React", "Node.js"]`
-    },
-    {
-        "Job Role": "Data Scientist",
-        "Candidate Name": "Jane Smith",
-        "Candidate Exp.": "3 years",
-        "Candidate Resume": "link_to_resume.pdf",
-        "Interview Timing": "2024-01-07 2:30 PM",
-        "Technical Skills": `["Python", "Machine Learning", "Data Analysis"]`
-    },
-    // Add more dummy data as needed
-];
-console.log(Object.keys(interviewData[0]))
+import React, { useState, useEffect } from "react";
+import "./Table.css";
+import * as api from '../../Axios' 
 const Table = () => {
-  return <section>
-            <table class="content-table">
-            <thead>
-                <tr>
-                    <th>S.No</th>
-                    {Object.keys(interviewData[0]).map((val) => (
-                        <th key={val}>{val}</th>
-                    ))}
-                </tr>
-            </thead>
+ 
+  const [allInterview, setAllInterview] = useState([])
+ 
+  
 
-                <tbody>
-                    {interviewData.map((val, index) => (
-                        <tr key={index}>
-                            <td>{index+1}</td>
-                            {Object.keys(val).map((key) => (
-                                <td key={key}>{val[key]}</td>
-                            ))}
-                        </tr>
-                    ))}
-                </tbody>
+  const getAllInterviews = async()=>{
+    const interviewsData = await api.getAllInterview();
+    console.log(interviewsData.data);
+    
+    if(interviewsData.data)
+    {
+      console.log(interviewsData.data);
+      
+      setAllInterview(interviewsData.data);
+    }
 
-            </table> 
-         </section>;
+    
+  }
+ 
+  useEffect(()=>{
+    getAllInterviews();
+  },[])
+  
+
+  return (
+    <section className="table-container">
+  
+      <table className="content-table">
+        <thead>
+          <tr>
+             <th>S.No</th>
+             <th>Candidate Email</th> 
+             <th>Interviewer Email</th> 
+             <th>Job Role</th> 
+             <th>Date</th> 
+             <th>Time</th> 
+             <th>Status</th> 
+             <th> </th> 
+             <th> </th> 
+
+          </tr>
+        </thead>
+
+        <tbody>
+          {allInterview && allInterview?.map((val, index) => {
+            // Convert val.time to a Date object
+            const dateObject = new Date(val.time.replace(/-/g, '/'));
+
+            return (
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td>{val.can_email}</td>
+                <td>{val.inv_email}</td>
+                <td>{val.role}</td>
+                <td>  
+                <input placeholder="Date" disabled="true" name="date" value={new Date(val.date).toISOString().split('T')[0]} type="date"  style={{fontFamily: 'Rubik,sans-serif', border: 'none',padding: '1.1rem'}}/>
+                </td>
+                <td> { val.time}
+                
+                </td>
+                <td>{val.status}</td>
+                <td id={val._id}>D</td>
+                <td id={val._id}>R</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table> 
+    </section>
+  );
 };
 
 export default Table;
+    

@@ -13,10 +13,9 @@ export const EditorThemeColor ={
     'cobalt':'#fff',
     'vs-dark':'#fff'
   }
-  export const themes = {
-    "vs-dark": "Dark Theme",
+  export const themes = { 
+    cobalt: "Dark Theme",
     "vs-light": "Light Theme",
-    cobalt: "Cobalt Theme",
   };
   export const settingRight = {
     "vs-dark": "#4d4d4d",

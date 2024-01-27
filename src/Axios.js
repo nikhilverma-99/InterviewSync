@@ -2,9 +2,8 @@ import axios from 'axios'
 const API = axios.create({
     baseURL: "/api/v1",
   }); 
-
-export const joinInterview = async({email})=>{
-
+//   /api/v1/interview
+export const joinInterview = async({email})=>{ 
     let res = await API.post('/auth/enterInterview',{email:email,roomID:"123"})
     return res;
 }
@@ -25,8 +24,23 @@ export const getCandidatePeerId = ({roomID})=>{
 
 export const saveProblem =(questionObject)=>{
     let res = API.post('/problem/add', questionObject)
-    console.log("Save Problem");
-    
-    console.log(questionObject)
+    console.log("Save Problem"); 
     return res;
+}
+// /interview/create
+export const createInterview = async (formData)=>{ 
+    
+    let res = await API.post('/interview/create', formData)   
+    return res;
+}
+
+export const getAllInterview = async()=>{
+    let res = await API.post('/interview/get',{company:"Amazon"})   
+    return res;
+}
+
+export const GetAnalyticsData = async()=>{
+    let res = await API.get('/interview/getwindow/weekly/Amazon' )   
+    return res;
+    
 }

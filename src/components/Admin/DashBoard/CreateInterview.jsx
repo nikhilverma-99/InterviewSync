@@ -159,7 +159,7 @@ const CreateInterview = () => {
   
 </section>
 {
-  !loading?<div className="create-btn-div"  >
+  loading?<div className="create-btn-div"  >
     <div className="btn create-interview">
       <LoadingIcons.TailSpin style={{height: '100%'}}/>
     </div>

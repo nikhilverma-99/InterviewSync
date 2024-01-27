@@ -94,44 +94,20 @@ const Table = () => {
   const [sortKey, setSortKey] = useState("Candidate Name");
   const [sortOrder, setSortOrder] = useState("asc");
   const [searchQuery, setSearchQuery] = useState("");
-   
+   const [tableData,setTableData] = useState([]) ;
   
-  // Sorting logic
-  const sortedData = interviewData.slice().sort((a, b) => {
-    const compareValue = a[sortKey].localeCompare(b[sortKey]);
-    return sortOrder === "asc" ? compareValue : -compareValue;
-  });
 
-  // Filtering logic based on search query
-  const filteredData = sortedData.filter((item) =>
-    item["Candidate Name"].toLowerCase().includes(searchQuery.toLowerCase())
-  );
-
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
-
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-  const handleSort = (key) => {
-    if (key === sortKey) {
-      // Toggle sortOrder if clicking on the same key
-      setSortOrder((order) => (order === "asc" ? "desc" : "asc"));
-    } else {
-      // Set new sort key and default to ascending order
-      setSortKey(key);
-      setSortOrder("asc");
-    }
-  };
-
+ 
   const handleSearch = (event) => {
     setSearchQuery(event.target.value);
     setCurrentPage(1); // Reset to the first page when searching
   };
 
   useEffect(async()=>{
-    const tableData = await api.getAllInterview() ;
-    console.log(tableData);
+    const getTable = await api.getAllInterview() ;
+    console.log(getTable);
+
+    setTableData(getTable.data)
     
   },[])
   return (
@@ -151,54 +127,31 @@ const Table = () => {
       <table className="content-table">
         <thead>
           <tr>
-            <th style={{ width: "50px" }}>S.No</th>
-            <th style={{ width: "150px" }} onClick={() => handleSort("Job Role")}>
-              Job Role {sortKey === "Job Role" && (sortOrder === "asc" ? '\u2191' : '\u2193')}
-            </th>
-            <th style={{ width: "150px" }} onClick={() => handleSort("Candidate Name")}>
-              Candidate Name 
-              <span>
-              {sortKey === "Candidate Name" && (sortOrder === "asc" ?'\u2191' : '\u2193')}
-
-              </span>
-              
-            </th>
-            <th style={{ width: "100px" }} onClick={() => handleSort("Candidate Exp.")}>
-              Candidate Exp .
-              <span>
-                {sortKey === "Candidate Exp." && (sortOrder === "asc" ? '\u2191' : '\u2193')}
-                </span>
-            </th>
-            <th style={{ width: "200px" }}>Candidate Resume</th>
-            <th style={{ width: "200px" }} onClick={() => handleSort("Interview Timing")}>
-              Interview Timing 
-              <span>
-                {sortKey === "Interview Timing" && (sortOrder === "asc" ? '\u2191' : '\u2193')}
-                </span>
-            </th>
-            <th style={{ width: "200px" }}>Technical Skills</th>
+            <th>S.No</th>
+            <th>Candidate Email</th>
+            <th>Interviewer Email</th>
+            <th>Job Role</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Status</th> 
           </tr>
         </thead>
 
         <tbody>
-          {currentItems.map((val, index) => (
+          {getTable.map((val, index) => (
             <tr key={index}>
-              <td>{index + 1 + indexOfFirstItem}</td>
-              {Object.keys(val).map((key) => (
-                <td key={key}>{val[key]}</td>
-              ))}
+              <td>{index + 1}</td>
+              <td>{val.can_email}</td>
+              <td>{val.inv_email}</td>
+              <td>{val.role}</td>
+              <td>{val.date}</td>
+              <td>{val.time}</td>
+              <td>{val.status}</td>
             </tr>
           ))}
-        </tbody>
-      </table>
-
-      <div className="pagination">
-        {Array.from({ length: Math.ceil(filteredData.length / itemsPerPage) }, (_, index) => (
-          <button key={index} onClick={() => paginate(index + 1)}>
-            {index + 1}
-          </button>
-        ))}
-      </div>
+        </tbody> 
+      </table> 
+  
     </section>
   );
 };

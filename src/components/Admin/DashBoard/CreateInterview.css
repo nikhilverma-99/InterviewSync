@@ -72,17 +72,22 @@ width:7rem
 }
 .create-btn-div
 {
+ 
     padding: 2.2rem;
     display: flex;
     align-items: center;
     justify-content: center;
     color:#ffffff;
+    
 
 }
 
 .create-interview
 {
+   display: flex;align-items: center; justify-content: center;
     background-color: #45be41;
+    width:24rem !important;
+    height: 6.6rem;
 }
 
 .label-icon

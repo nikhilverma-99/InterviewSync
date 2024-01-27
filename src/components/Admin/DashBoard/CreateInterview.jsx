@@ -6,8 +6,12 @@ import { FaRankingStar } from "react-icons/fa6";
 import { MdOutlineContactPage } from "react-icons/md";
 import { CiCalendarDate } from "react-icons/ci";
 import { IoIosTimer } from "react-icons/io";
+import { Circles } from 'react-loading-icons'
+
 import * as api from '../../../Axios'
 const CreateInterview = () => { 
+
+  const [loading, setLoading] = useState(false)
   const [candidate, setCandidate] = useState({
     name: "",
     email: "",
@@ -50,22 +54,31 @@ const CreateInterview = () => {
   };
  
   const createInterview = async()=>{  
-    const formData = new FormData() ; 
-    const interviewData = {
-      inv_email:interviewer.email,
-      can_email:candidate.email,
-      role:candidate.position,
-      date:interviewer.date,
-      time:interviewer.time,
-      company:"Amazon"
-    }
-    formData.append('data',JSON.stringify(interviewData))    
-    formData.append('file', candidate.resume ) ; 
 
-    const resumeUpload = api.createInterview(formData)
-    console.log(resumeUpload);
-    
-    console.log("Upload Function finished !");
+    setLoading(true) ;
+    try{
+      const formData = new FormData() ; 
+      const interviewData = {
+        inv_email:interviewer.email,
+        can_email:candidate.email,
+        role:candidate.position,
+        date:interviewer.date,
+        time:interviewer.time,
+        company:"Amazon"
+      }
+      formData.append('data',JSON.stringify(interviewData))    
+      formData.append('file', candidate.resume ) ; 
+  
+      const resumeUpload = await api.createInterview(formData)
+      console.log(resumeUpload);
+      
+      console.log("Upload Function finished !"); 
+    }
+    catch(e)
+    {
+      console.log(e); 
+    }
+    setLoading(false) ;
     
   }
 
@@ -146,11 +159,19 @@ const CreateInterview = () => {
   </div> 
   
 </section>
-<div className="create-btn-div" onClick={createInterview}>
+{
+  loading?<div className="create-btn-div"  >
     <div className="btn create-interview">
-      <span>Create Interview</span>
+      <Circles style={{height: '100%'}}/>
     </div>
+  </div>  :  
+  <div className="create-btn-div" onClick={createInterview}>
+  <div className="btn create-interview">
+    <span>Create Interview</span>
   </div>
+</div>
+}
+   
 </>
 };
 

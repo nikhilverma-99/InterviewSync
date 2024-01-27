@@ -39,26 +39,12 @@ export const options = {
   },
 };
 
-const labels = ['Pending', 'Interview Scheduled', 'Jobs Declined'];
-
-const datasets = [
-  {
-    label: ' ',
-    data: [10, 5, 23],
-    borderColor:['#002244','#0b6623','#960018'],
-    backgroundColor: ['#002244b3', '#0b6623b3', '#960018b3'],
-    borderWidth: 4, // Set the border width
-    barThickness: 55, // Set the bar width
-    borderRadius:7
-  },
-];
-
-export const data = {
-  labels,
-  datasets,
-};
-
-const Graph = () => {
+const labels = ['Pending', 'Candidate Selected', 'Jobs Declined']; 
+const Graph = (props) => {
+  const data = {
+    labels,
+    datasets:props.data,
+  };
   return <Bar options={options} data={data} />;
 };
 

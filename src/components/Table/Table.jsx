@@ -46,7 +46,7 @@ const Table = () => {
         </thead>
 
         <tbody>
-          {allInterview?.map((val, index) => (
+          {allInterview && allInterview?.map((val, index) => (
             <tr key={index}>
              <td>{index+1}</td>
              <td>{val.can_email}</td>

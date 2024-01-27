@@ -3,7 +3,11 @@ import "./Question.css";
 import { fontColor } from "../constants/theme";
 import { useCodeCollabContext } from "../../App";
 const Question = (props) => {
-  const { selectedTheme } = useCodeCollabContext();
+  const { selectedTheme ,setSelectedTheme } = useCodeCollabContext();
+  if(!selectedTheme)
+  {
+    setSelectedTheme('cobalt')
+  }
   const EditorThemeColor = {
     "vs-dark": "#2f2f2f",
     "vs-light": "#eceff1",

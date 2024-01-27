@@ -38,3 +38,9 @@ export const getAllInterview = async()=>{
     let res = await API.post('/interview/get',{company:"Amazon"})   
     return res;
 }
+
+export const GetAnalyticsData = async()=>{
+    let res = await API.get('/interview/getwindow/weekly/Amazon' )   
+    return res;
+    
+}

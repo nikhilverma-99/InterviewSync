@@ -35,6 +35,6 @@ export const createInterview = async (formData)=>{
 }
 
 export const getAllInterview = async()=>{
-    let res = await API.post('/interview/get',{company:"Example Corp"})   
+    let res = await API.post('/interview/get',{company:"Amazon"})   
     return res;
 }

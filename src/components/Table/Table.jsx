@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Table.css";
-import * as api from '../../Axios' 
+import * as api from '../../Axios'
+import { MdModeEdit,MdDelete } from "react-icons/md"; 
 const Table = () => {
  
   const [allInterview, setAllInterview] = useState([])
@@ -20,7 +21,12 @@ const Table = () => {
 
     
   }
- 
+ const statusBackground ={
+  pending:'#00224480', selected:'#0b66236e', decline:'#9600185c'
+ }
+ const statusColor ={
+  pending:'#002244', selected:'#075e1e', decline:'#960018'
+ } 
   useEffect(()=>{
     getAllInterviews();
   },[])
@@ -40,16 +46,13 @@ const Table = () => {
              <th>Time</th> 
              <th>Status</th> 
              <th> </th> 
-             <th> </th> 
-
+             <th> </th>  
           </tr>
         </thead>
 
         <tbody>
           {allInterview && allInterview?.map((val, index) => {
-            // Convert val.time to a Date object
-            const dateObject = new Date(val.time.replace(/-/g, '/'));
-
+            // Convert val.time to a Date object  
             return (
               <tr key={index}>
                 <td>{index + 1}</td>
@@ -57,14 +60,17 @@ const Table = () => {
                 <td>{val.inv_email}</td>
                 <td>{val.role}</td>
                 <td>  
-                <input placeholder="Date" disabled="true" name="date" value={new Date(val.date).toISOString().split('T')[0]} type="date"  style={{fontFamily: 'Rubik,sans-serif', border: 'none',padding: '1.1rem'}}/>
+                <input placeholder="Date" disabled="true" name="date" value={new Date(val.date).toISOString().split('T')[0]} type="date"  style={{fontFamily: 'Rubik,sans-serif', border: 'none',padding: '1.1rem',background:'inherit',color: 'black'}}/>
                 </td>
-                <td> { val.time}
-                
+                <td>  
+                <input placeholder="Time" name="time" disabled='true' type="time" value={val.time} style={{fontFamily: 'Rubik,sans-serif', border: 'none' ,background:'inherit',color: 'black'}}/>
+
                 </td>
-                <td>{val.status}</td>
-                <td id={val._id}>D</td>
-                <td id={val._id}>R</td>
+                <td>
+                  <span style={{textTransform:'capitalize',backgroundColor:`${statusBackground[val.status]}`,color:`${statusColor[val.status]}`,padding: '0.4rem 1rem',borderRadius:'100px'}}>{val.status}</span>
+                </td>
+                <td id={val._id}><MdModeEdit style={{fontSize:'2.2rem',color:'#071e26'}}/></td>
+                <td id={val._id}><MdDelete style={{fontSize:'2.2rem',color:'#071e26'}}/></td>
               </tr>
             );
           })}

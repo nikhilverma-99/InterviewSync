@@ -22,10 +22,10 @@ const Table = () => {
     
   }
  const statusBackground ={
-  pending:'#00224480', selected:'#0b66236e', decline:'#9600185c'
+  pending:'#00224480', selected:'#0b66236e', declined:'#9600185c'
  }
  const statusColor ={
-  pending:'#002244', selected:'#075e1e', decline:'#960018'
+  pending:'#002244', selected:'#075e1e', declined:'#960018'
  } 
   useEffect(()=>{
     getAllInterviews();

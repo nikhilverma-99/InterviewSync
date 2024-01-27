@@ -137,6 +137,7 @@ const Table = () => {
           id="search"
           value={searchQuery}
           onChange={handleSearch}
+          className="form-input"
           placeholder="Enter candidate name..."
         />
       </div>
@@ -146,17 +147,28 @@ const Table = () => {
           <tr>
             <th style={{ width: "50px" }}>S.No</th>
             <th style={{ width: "150px" }} onClick={() => handleSort("Job Role")}>
-              Job Role {sortKey === "Job Role" && (sortOrder === "asc" ? "↑" : "↓")}
+              Job Role {sortKey === "Job Role" && (sortOrder === "asc" ? '\u2191' : '\u2193')}
             </th>
             <th style={{ width: "150px" }} onClick={() => handleSort("Candidate Name")}>
-              Candidate Name {sortKey === "Candidate Name" && (sortOrder === "asc" ? "↑" : "↓")}
+              Candidate Name 
+              <span>
+              {sortKey === "Candidate Name" && (sortOrder === "asc" ?'\u2191' : '\u2193')}
+
+              </span>
+              
             </th>
             <th style={{ width: "100px" }} onClick={() => handleSort("Candidate Exp.")}>
-              Candidate Exp. {sortKey === "Candidate Exp." && (sortOrder === "asc" ? "↑" : "↓")}
+              Candidate Exp .
+              <span>
+                {sortKey === "Candidate Exp." && (sortOrder === "asc" ? '\u2191' : '\u2193')}
+                </span>
             </th>
             <th style={{ width: "200px" }}>Candidate Resume</th>
             <th style={{ width: "200px" }} onClick={() => handleSort("Interview Timing")}>
-              Interview Timing {sortKey === "Interview Timing" && (sortOrder === "asc" ? "↑" : "↓")}
+              Interview Timing 
+              <span>
+                {sortKey === "Interview Timing" && (sortOrder === "asc" ? '\u2191' : '\u2193')}
+                </span>
             </th>
             <th style={{ width: "200px" }}>Technical Skills</th>
           </tr>

@@ -11,6 +11,7 @@ const Login = lazy(()=>import('./components/Login/Login'))
 // import Table from './components/Table/Table'
 const Error = lazy(()=> import('./components/Error/Error')) 
 // import MaterialTable from './components/Table/MaterialTable'
+const Register = lazy(()=>import('./components/register/Register'))  
 import { Route, Routes } from 'react-router-dom'
 import VideoCall from './components/Dyanamic Width Components/VideoCall'
 import HowItWorks from './components/How it Works/HowItWorks'
@@ -23,7 +24,6 @@ import AllInterview from './components/Admin/DashBoard/AllInterview'
 
 
 import Pricing from './components/pricing/Pricing'
-import Register from './components/register/Register'
 const CodeCollabContext = createContext();
  
 function App() { 

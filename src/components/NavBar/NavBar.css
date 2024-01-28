@@ -2,7 +2,7 @@
 {
     display: flex;
     width: 100vw; 
-    justify-content: center; 
+    justify-content: space-between; 
     background-color: #F8FCFA;
     display: flex; 
     align-items: center; 
@@ -13,4 +13,29 @@
 .header img
 {
     height: 6.2rem;
+}
+
+.nav-links
+{
+    display: flex;
+    font-size: 1.8rem;
+    gap:1.8rem
+}
+
+.nav-link
+{
+    color:#F8FCFA;
+    text-decoration: none;
+    background-color: #0f172a;
+    padding: 1.1rem 1.1rem;
+    border-radius: 500px;
+    width:12rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nav-link:hover
+{
+    cursor: pointer;
 }

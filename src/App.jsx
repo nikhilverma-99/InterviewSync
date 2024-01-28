@@ -23,6 +23,7 @@ import AllInterview from './components/Admin/DashBoard/AllInterview'
 
 
 import Pricing from './components/pricing/Pricing'
+import Register from './components/register/Register'
 const CodeCollabContext = createContext();
  
 function App() { 
@@ -50,6 +51,7 @@ function App() {
                 <Route path='allInterview' element={<AllInterview/>}/> 
                 <Route path='addQuestion' element={<TextEditor/>}/>  
             </Route>
+            <Route path='/register' element={<Register></Register>}/>
             <Route path='*' element={<Error />} />
         </Routes>
 

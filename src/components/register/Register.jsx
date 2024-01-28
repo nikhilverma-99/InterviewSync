@@ -63,37 +63,33 @@ const Register = () => {
 </form>
 </article>,
 <article className='getStarted-content'>
-          <h1>Creadfsdfte account</h1>
-          <p>We’ll personalize your setup experience accordingly.</p>
+          <h1>Business Information</h1>
+          <p> &nbsp; </p>
           <form className='form-registration'>
             <div className='form-registration-input'>
-              <label>Business Email</label>
+              <label>Street</label>
               <input type='text' className='registration-input' />
             </div>
   
             <div className='form-registration-input'>
-              <label>Password</label>
-              <input type='password' className='registration-input' />
+              <label>City</label>
+              <input type='email' className='registration-input' />
             </div>
   
             <div className='form-registration-input'>
-              <label>First Name</label>
+              <label>State </label>
               <input type='text' className='registration-input' />
             </div>
   
             <div className='form-registration-input'>
-              <label>Last Name</label>
+              <label>Zip Code</label>
               <input type='text' className='registration-input' />
             </div>
    
             <div className='form-registration-input'>
-              <label>Country</label>
-              <select id="cars" name="cars" className='registration-input' style={{ height: '3.2rem' }}>
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="fiat">Fiat</option>
-                <option value="audi">Audi</option>
-              </select>
+              <label>GSTIN</label>
+              <input type='text' className='registration-input' />
+               
             </div>
   
             <div className='registration-btn' onClick={handlePageChange}>
@@ -102,37 +98,33 @@ const Register = () => {
           </form>
 </article>,
 <article className='getStarted-content'>
-      <h1>Create acdsfsdfcount</h1>
-      <p>We’ll personalize your setup experience accordingly.</p>
+      <h1>Representative Information </h1>
+      <p> &nbsp; </p>
       <form className='form-registration'>
         <div className='form-registration-input'>
-          <label>Business Email</label>
+          <label>Name</label>
           <input type='text' className='registration-input' />
         </div>
 
         <div className='form-registration-input'>
-          <label>Password</label>
+          <label>Email</label>
           <input type='password' className='registration-input' />
         </div>
 
         <div className='form-registration-input'>
-          <label>First Name</label>
+          <label>Password</label>
           <input type='text' className='registration-input' />
         </div>
 
         <div className='form-registration-input'>
-          <label>Last Name</label>
+          <label>Position</label>
           <input type='text' className='registration-input' />
         </div>
 
         <div className='form-registration-input'>
-          <label>Country</label>
-          <select id="cars" name="cars" className='registration-input' style={{ height: '3.2rem' }}>
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="fiat">Fiat</option>
-            <option value="audi">Audi</option>
-          </select>
+          <label>Phone Number</label>
+          <input type='text' className='registration-input' />
+           
         </div>
 
         <div className='registration-btn' style={{backgroundColor:'#0BDA51'}}>

@@ -84,6 +84,9 @@ flex-direction:column;
   margin:2.2rem 0;
 }
 
+.registration-btn:hover,.back-btn:hover{
+  cursor: pointer;
+}
 .main
 {
     display: flex; 
@@ -98,7 +101,7 @@ flex-direction:column;
     right: -4.4rem;
     top: 0;
     bottom: 0;
-    width: 50%;
+    width: 47%;
     height:100%;
     background-color: #0f172a;
     margin-left:2.2rem;
@@ -118,3 +121,10 @@ flex-direction:column;
     z-index: 999; /* Ensure it appears above other elements */
 }
 
+
+
+
+
+
+
+ 

@@ -12,10 +12,10 @@ const Login = lazy(()=>import('./components/Login/Login'))
 const Error = lazy(()=> import('./components/Error/Error')) 
 // import MaterialTable from './components/Table/MaterialTable'
 const Register = lazy(()=>import('./components/register/Register'))  
+const Admin  =lazy(()=> import('./components/Admin/Admin')) 
 import { Route, Routes } from 'react-router-dom'
 import VideoCall from './components/Dyanamic Width Components/VideoCall'
 import HowItWorks from './components/How it Works/HowItWorks'
-import Admin from './components/Admin/Admin'
 import Dashboard from './components/Admin/DashBoard/Dashboard'
 import CreateInterview from './components/Admin/DashBoard/CreateInterview'
 import AllInterview from './components/Admin/DashBoard/AllInterview'

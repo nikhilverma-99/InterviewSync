@@ -1,11 +1,13 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import './Register.css';
 
+import Select from 'react-select'; 
+import * as api from '../../Axios'
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 const Register = () => {
 
   const [page,setPage] = useState(0)
-
+  const [allCountries,setAllCountries] = useState([]) ;
   const handlePageChange = ()=>{
     console.log('sdfsdfsfdsdf');
     setPage((prev)=>{
@@ -49,12 +51,13 @@ const Register = () => {
 
   <div className='form-registration-input'>
     <label>Country</label>
-    <select id="cars" name="cars" className='registration-input' style={{ height: '3.2rem' }}>
-      <option value="volvo">Volvo</option>
-      <option value="saab">Saab</option>
-      <option value="fiat">Fiat</option>
-      <option value="audi">Audi</option>
-    </select>
+    <Select
+  id="countries"
+  name="countries"
+  className='registration-input-select'
+  styles={{ control: styles => ({ ...styles, border:'nonee' }) }}
+  options={allCountries.map((val) => ({ value: val.name, label: val.name }))}
+/>
   </div>
 
   <div className='registration-btn' onClick={handlePageChange}>
@@ -133,6 +136,16 @@ const Register = () => {
       </form>
 </article>
 ]
+
+const getAllCountries = async()=>{
+  const countries = await api.getAllCountries();
+  console.log(countries[0].name);
+  
+  setAllCountries(countries);
+}
+useEffect(()=>{ 
+  getAllCountries();
+},[])
   return (
     <div className='getStarted-container'>
       <header className='getStarted-header'>

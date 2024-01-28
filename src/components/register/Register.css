@@ -120,11 +120,12 @@ flex-direction:column;
     margin-left: 2.2rem;
     z-index: 999; /* Ensure it appears above other elements */
 }
-
-
-
-
-
-
-
  
+.registration-input-select
+{
+  background-color:inherit;
+  height:3.2rem; 
+  font-size:1.6rem;
+  outline:none;
+  border-radius:5px; 
+}

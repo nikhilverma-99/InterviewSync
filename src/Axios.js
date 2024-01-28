@@ -44,3 +44,17 @@ export const GetAnalyticsData = async()=>{
     return res;
     
 }
+
+export const getAllCountries = async()=>{
+
+    const apiUrl = 'https://restfulcountries.com/api/v1/countries';
+    const token = `511|dPPBIfGyKvMlTS58ZtWJi7hZjvuByCudKOvqW3Bh`
+    const allCountries = await axios.get(apiUrl, {
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+      }); 
+      return allCountries.data.data
+      
+}

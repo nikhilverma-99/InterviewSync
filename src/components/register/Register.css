@@ -78,6 +78,7 @@ flex-direction:column;
 }
 .registration-btn
 {
+  height:5.4rem;
   display:flex;
   background:#0f172a;
   color:white;

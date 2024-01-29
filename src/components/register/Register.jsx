@@ -187,7 +187,7 @@ setLoading(true)
           </div>
 
           {
-            !isLoading?<div className='registration-btn' style={{backgroundColor:'#45be41'}} >
+            isLoading?<div className='registration-btn' style={{backgroundColor:'#45be41'}} >
                <LoadingIcons.TailSpin style={{height: '140%'}}/>
            </div>
            :

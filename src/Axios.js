@@ -58,3 +58,12 @@ export const getAllCountries = async()=>{
       return allCountries.data.data
       
 }
+
+export const companyRegister = async(formData)=>{
+    console.log(formData);
+    
+    let res = await API.post('/auth/register', formData)   
+    console.log(res);
+    
+    return res;
+}

@@ -1,0 +1,141 @@
+.login-popup-container
+{
+  position:relative;
+  height:100vh;
+  width:100vw;
+}
+
+.login-popup
+{
+ display:flex;
+  position:absolute;
+  top:50%;
+  left:50%;  
+  width:50rem; 
+  
+   height:25rem;
+  transform:translate(-50%,-50%); 
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    
+}
+
+.popup-left
+{
+  background-color: #0f172a;
+/*   width:25%; */
+  color:white;
+  border-top-left-radius:8px;
+  border-bottom-left-radius:8px;
+  padding:1.1rem;
+  width:25%;
+  display:flex;
+/*   flex-direction:column; */
+  justify-content:center;
+  gap:0.4rem;
+  
+}
+
+ 
+.popup-right
+{
+  background-color: #f8fcfa;
+  width:75%;
+  border-top-right-radius:8px;
+  border-bottom-right-radius:8px;
+}
+
+.left-header
+{ 
+  display:flex;
+  align-items:center;
+}
+
+.left-header-logo
+{
+height:2.4rem}
+
+.header-divider
+{
+  height:3px;
+  background-color:#e7e8ea; 
+  width:50%;
+  border-radius:100px; 
+}
+
+.login-input
+{
+  backgroundColor:inherit;
+  height:1.8rem;
+  padding:0.5rem;
+  font-size:1rem;
+  outline:none;
+  border-radius:5px;
+  border:1px solid grey;
+}
+
+
+.form-registration-input
+{ 
+display:flex;
+flex-direction:column;
+  gap:0.4rem;
+}
+.form-registration-input label
+{
+  font-weight:500
+}
+.registration-input
+{
+  backgroundColor:inherit;
+  height:1.8rem;
+  padding:0.5rem;
+  font-size:1rem;
+  outline:none;
+  border-radius:5px;
+  border:1px solid grey;
+}
+
+.login-form
+{
+  height:75%;
+  display: flex;
+    flex-direction: column;
+   padding:1.1rem 2.2rem;
+  gap:0.5rem
+}
+
+.registration-btn
+{
+  display:flex;
+  background:#0f172a;
+  color:white;
+  align-items: center;
+  justify-content: center;
+  justify-self:end;
+  padding:0.8rem;
+  border-radius:5px;
+  font-size:1.4rem; 
+  margin-top:auto;
+}
+
+.rightHeading
+{
+     padding: 1.1rem 0 0 2.2rem;
+  display:flex;
+  flex-direction:column;
+  gap:0.4rem;
+  height:25%;
+}
+
+.rightHeading h1
+{
+  font-size:1.6rem;
+  font-weight:500;
+}
+
+.rightHeading p
+{
+  font-size:1.2rem;
+  color:#727272;
+  
+}

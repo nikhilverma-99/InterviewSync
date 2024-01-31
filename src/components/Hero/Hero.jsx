@@ -9,15 +9,15 @@ const Hero = () => {
   return (
      <section className="section-hero">
         <div className="hero">
-            <div className="hero-img-box">
-              <img className="hero-img" alt="hero-img" src={HeroImage}/> 
-            </div> 
+            <figure className="hero-img-box">
+              <img className="hero-img" alt="Man using a Laptop - Hero Image" src={HeroImage}/> 
+            </figure> 
             <div className="hero-text-box">
                 <h1 className="heading-primary">
                 Elevating Interviews with Seamless Collaboration
                 </h1>
                 <p className="hero-description">
-                Elevate your interview experience with InterviewSync, the ultimate platform meticulously crafted for unparalleled efficiency and seamless collaboration – from setup to insightful post-interview feedback.
+                  Elevate your interview experience with InterviewSync, the ultimate platform meticulously crafted for unparalleled efficiency and seamless collaboration – from setup to insightful post-interview feedback.
                 </p> 
                 <div className='hero-links'>
                   <NavLink  to= '/enterInterview' className='btn btn-startCoding'>Start Coding !</NavLink> 
@@ -26,7 +26,7 @@ const Hero = () => {
              
 
                 <div className="delivered-meals">
-                  <div className="delivered-imgs">
+                  <figure className="delivered-imgs">
                   {Object.values(customerImages).map((value, index) => { 
                   return ( 
                     <> 
@@ -39,7 +39,7 @@ const Hero = () => {
                     </> 
                   );
                 })}
-                  </div>
+                  </figure>
                   <p className="delivered-text"> 
                     Join <span>1M + </span>active users collaborating now!
                   </p>

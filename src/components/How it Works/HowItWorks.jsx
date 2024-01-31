@@ -19,17 +19,17 @@ function HowItWorks() {
         <div class="step-text-box">
           <p class="step-number">01</p>
           <h3 class="heading-tertiary">
-          Interview Setup
+            Interview Setup
           </h3>
           <p class="step-description">
-          CodeCollab simplifies initiation. Companies register, schedule interviews, and provide details. Interviewers get unique tokens via email for a secure and personalized setup.
+           CodeCollab simplifies initiation. Companies register, schedule interviews, and provide details. Interviewers get unique tokens via email for a secure and personalized setup.
           </p>
         </div>
         <div class="step-img-box"> 
           <img   
             src={Image2}
             className="step-img"
-            alt="App Screen 1"
+            alt="How it works Image 2"
             loading="lazy" 
           />
         </div> 
@@ -37,7 +37,7 @@ function HowItWorks() {
         <img   
             src={Image3}
             className="step-img"
-            alt="App Screen 1"
+            alt="How it works image 3"
             loading="lazy" 
           />
         </div>
@@ -59,7 +59,7 @@ function HowItWorks() {
         <img   
             src={Image1}
             className="step-img"
-            alt="App Screen 1"
+            alt="How it works Image 1"
             loading="lazy" 
           />
         </div>
@@ -67,7 +67,7 @@ function HowItWorks() {
         <img   
             src={Image4}
             className="step-img"
-            alt="App Screen 1"
+            alt="How ot works image 4"
             loading="lazy" 
           />
         </div>

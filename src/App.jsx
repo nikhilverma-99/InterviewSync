@@ -19,7 +19,7 @@ import HowItWorks from './components/How it Works/HowItWorks'
 import Dashboard from './components/Admin/DashBoard/Dashboard'
 import CreateInterview from './components/Admin/DashBoard/CreateInterview'
 import AllInterview from './components/Admin/DashBoard/AllInterview'
-
+const UserLogin  = lazy(()=>import('./components/UserLogin/UserLogin')) 
 // import Adjustable from './components/Adjustable/Adjustable'
 
 
@@ -52,6 +52,7 @@ function App() {
                 <Route path='addQuestion' element={<TextEditor/>}/>  
             </Route>
             <Route path='/register' element={<Register></Register>}/>
+            <Route path='/login' element={<Login></Login>}/>
             <Route path='*' element={<Error />} />
         </Routes>
 

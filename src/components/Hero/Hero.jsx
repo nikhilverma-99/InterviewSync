@@ -1,14 +1,16 @@
 import React from 'react';
 import './Hero.css'
 import customerImages from './customerImages';
-import HeroImage from '../../images/hero.png'
+import HeroImage from '../../images/Hero.webp' 
+
 import { NavLink } from 'react-router-dom';
-const Hero = () => {
+const Hero = () => { 
+
   return (
      <section className="section-hero">
         <div className="hero">
             <div className="hero-img-box">
-              <img className="hero-img" alt="hero-img" src={HeroImage}/>
+              <img className="hero-img" alt="hero-img" src={HeroImage}/> 
             </div> 
             <div className="hero-text-box">
                 <h1 className="heading-primary">

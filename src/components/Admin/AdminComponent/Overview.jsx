@@ -15,7 +15,7 @@ const Overview = (props) => {
         fontWeight: 'bold'
       }}
       fill={overviewData?.color || 'defaultColor'}
-      speed={1}
+      speed={1} 
     />
 
     }

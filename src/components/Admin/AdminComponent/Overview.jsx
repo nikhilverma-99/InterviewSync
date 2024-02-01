@@ -12,9 +12,10 @@ const Overview = (props) => {
       props.stats ? <span>{props?.stats}</span>:  <LoadingIcons.ThreeDots
       style={{
         height: '1.8rem',
-        fill: overviewData?.color || 'blue', // Provide a default color if overviewData or color is undefined
         fontWeight: 'bold'
       }}
+      fill={overviewData?.color || 'defaultColor'}
+      speed={1}
     />
 
     }

@@ -52,7 +52,7 @@ function App() {
                 <Route path='addQuestion' element={<TextEditor/>}/>  
             </Route>
             <Route path='/register' element={<Register></Register>}/>
-            <Route path='/login' element={<Login></Login>}/>
+            <Route path='/login' element={<UserLogin></UserLogin>}/>
             <Route path='*' element={<Error />} />
         </Routes>
 

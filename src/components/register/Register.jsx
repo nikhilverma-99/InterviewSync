@@ -5,6 +5,9 @@ import Select from 'react-select';
 import * as api from '../../Axios'
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import LoadingIcons from 'react-loading-icons'
+
+import RegisterSide from '../../images/register-side.png'
+import Logo from '../../images/Logo.svg'
 const Register = () => {
 
   const [page,setPage] = useState(0)
@@ -214,17 +217,20 @@ useEffect(()=>{
     <div className='getStarted-container'>
       <header className='getStarted-header'>
         <figure>
-          <img src="https://codecollab-k6wq.onrender.com/assets/Logo-RdZz1ygO.svg" alt="logo" style={{ height: '5.1rem' }} />
+          <img src= {Logo} alt="logo" style={{ height: '5.1rem' }} />
         </figure>
       </header> 
       <main className='main'> 
+      <div className="row">
+
       <div  style={{fontSize:'3.6rem',alignSelf:'flex-start',margin:'5.6rem 1.1rem 0 0',width:'4rem'}}>
 
       { page!=0?<IoArrowBackCircleOutline className="back-btn" onClick={handlePageDec}/>:null }
       </div>
       {  getStartedComponent[page] }
+      </div>
         <aside className='getStarted-aside' style={{ zIndex: 1000, paddingLeft:'4.4rem' }}>  
-          <img src="https://i.ibb.co/CJBMwbG/register-side.png" alt="register-side" border="0"/> 
+          <img src= {RegisterSide} alt="register-side" border="0" style={{width:'64rem'}}/> 
         </aside> 
       </main>
     </div>

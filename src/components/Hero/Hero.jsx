@@ -1,7 +1,7 @@
 import React from 'react';
 import './Hero.css'
 import customerImages from './customerImages';
-import HeroImage from '../../images/Hero.webp' 
+import HeroImage from '../../images/Hero.png' 
 
 import { NavLink } from 'react-router-dom';
 const Hero = () => { 

@@ -35,10 +35,11 @@
     color:#F8FCFA;
     border-radius: 82px !important; 
     z-index: 1;
+    border:2px solid #096bb6;
 }
 .btn-Learnmore
 {
-    background-color:#A5D8FF;
+    background-color:#cde9ff;
     color: #1A384F;
     border-radius: 82px !important;
 }

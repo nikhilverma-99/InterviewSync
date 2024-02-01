@@ -28,7 +28,7 @@
     text-decoration: none;
     background-color: #0f172a;
     padding: 1.1rem 1.1rem;
-    border-radius: 500px;
+    border-radius: 10px;
     width:12rem;
     font-weight: 500;
     display: flex;
@@ -38,4 +38,13 @@
 .nav-link:hover
 {
     cursor: pointer;
+    background-color: rgb(26, 42, 80);
+    color:white;
+
+}
+
+.btn-login
+{
+    background-color: inherit;
+    color:#0f172a;
 }

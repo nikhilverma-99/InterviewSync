@@ -15,8 +15,8 @@ const NavBar = () => {
           />
       </figure>
           <div className='nav-links'> 
+            <NavLink to='/login' className='nav-link btn-login'>  Login</NavLink>
             <NavLink  to= '/register' className='nav-link'>Register</NavLink> 
-            <NavLink to='/login' className='nav-link'>  Login</NavLink>
           </div>
       </header> 
   )

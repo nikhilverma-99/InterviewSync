@@ -20,7 +20,7 @@ const Hero = () => {
                   Elevate your interview experience with InterviewSync, the ultimate platform meticulously crafted for unparalleled efficiency and seamless collaboration – from setup to insightful post-interview feedback.
                 </p> 
                 <div className='hero-links'>
-                  <NavLink  to= '/enterInterview' className='btn btn-startCoding'>Start Coding !</NavLink> 
+                  <NavLink  to= '/problemEditor/I' className='btn btn-startCoding'>Start Coding!</NavLink> 
                   <NavLink to='/dashboard' className='btn btn-Learnmore'>Learn More</NavLink>
                 </div>
              

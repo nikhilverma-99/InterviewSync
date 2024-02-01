@@ -1,7 +1,8 @@
 import { useEffect, useState, createContext, useContext,lazy,Suspense  } from 'react'
+ 
 import './App.css'
 import './mediaquery.css' 
-const LandingPage = lazy(()=>import('./components/LandingPage/LandingPage'))  
+import LandingPage from './components/LandingPage/LandingPage'
 import Loading from './components/Loading/Loading'
 const TextEditor = lazy(()=> import('./components/QuestionTextEditor/TextEditor')) 
 const ProblemEditor = lazy(()=>import('./components/Problem+Editor/ProblemEditor'))
@@ -16,7 +17,9 @@ import CreateInterview from './components/Admin/DashBoard/CreateInterview'
 import AllInterview from './components/Admin/DashBoard/AllInterview'
 const UserLogin  = lazy(()=>import('./components/UserLogin/UserLogin')) 
 // import Adjustable from './components/Adjustable/Adjustable'
- 
+
+
+import Pricing from './components/pricing/Pricing'
 const CodeCollabContext = createContext();
  
 function App() { 

@@ -1,14 +1,24 @@
 import React from "react";
 import { IoNewspaperOutline } from "react-icons/io5";
 import './Overview.css'
+import LoadingIcons from 'react-loading-icons'
 const Overview = (props) => {
 
   const overviewData = props?.overviewData;
-  if(!overviewData) return null ;
-  console.log(overviewData)
+  if(!overviewData) return null ; 
   return <article className="dashboard-overview" style={{backgroundColor:overviewData?.statsBackground, color:overviewData?.color, borderBottom:`6px solid ${overviewData?.color}`}} > 
   <div className="stats-row">
-    <span>{props?.stats}</span>
+    {
+      props.stats ? <span>{props?.stats}</span>:  <LoadingIcons.ThreeDots
+      style={{
+        height: '1.8rem',
+        fill: overviewData?.color || 'blue', // Provide a default color if overviewData or color is undefined
+        fontWeight: 'bold'
+      }}
+    />
+
+    }
+    
     <div className="icon-holder" style={{backgroundColor:overviewData?.iconBackground}} > 
      {overviewData?.icons}
     </div>

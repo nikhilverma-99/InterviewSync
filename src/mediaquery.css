@@ -135,7 +135,7 @@
         font-size: 40% !important;
     }
     .hero{
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
     }
     .hero-img {
         width: 80%;

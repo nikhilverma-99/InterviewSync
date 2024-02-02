@@ -221,7 +221,7 @@ useEffect(()=>{
         </figure>
       </header> 
       <main className='main'> 
-      <div className="row">
+      <div className="row" style={{width:'100%'}}>
 
       <div  style={{fontSize:'3.6rem',alignSelf:'flex-start',margin:'5.6rem 1.1rem 0 0',width:'4rem'}}>
 
@@ -230,7 +230,7 @@ useEffect(()=>{
       {  getStartedComponent[page] }
       </div>
         <aside className='getStarted-aside' style={{ zIndex: 1000, paddingLeft:'4.4rem' }}>  
-          <img src= {RegisterSide} alt="register-side" border="0" style={{width:'64rem'}}/> 
+          <img src= {RegisterSide} alt="register-side" border="0" /> 
         </aside> 
       </main>
     </div>

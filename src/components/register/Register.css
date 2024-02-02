@@ -29,7 +29,7 @@ padding:0 2.2rem;
 .getStarted-content
 {
   padding:5.6rem 0 0;
-  width:45%;
+  width:100%;
  
 }
 
@@ -146,4 +146,7 @@ input::-webkit-inner-spin-button {
 .row
 {
   display: flex;
+}
+.getStarted-aside img{
+  width:64rem;
 }

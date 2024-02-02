@@ -29,7 +29,8 @@
     }
     .getStarted-aside
     {
-        display: none;
+      display: none;
+     
     }
     .getStarted-container:before {
         
@@ -102,14 +103,21 @@
     .grid--3-cols {
         grid-template-columns: repeat(1, 1fr) !important;
       }
-
+      .form-registration
+      { 
+        grid-template-columns:repeat(1,1fr) !important; 
+      }
+      .getStarted-content { 
+        width: 84%;
+    }
       .premium
       { 
         grid-column: 1/-1; 
       }
       .getStarted-aside
       {
-        display: none;
+        /* display: none; */
+        width:54rem;
       }
 
       .getStarted-container:before

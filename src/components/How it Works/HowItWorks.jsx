@@ -1,9 +1,9 @@
 import React from 'react'  
 import './HowItWorks.css'
-import Image1 from '../../images/how-it-works1.webp'
-import Image2 from '../../images/how-it-works2.webp'
-import Image3 from '../../images/how-it-works3.webp'
-import Image4 from '../../images/how-it-works4.webp'
+import Image1 from '../../images/conductingInterview.webp'
+import Image2 from '../../images/interviewSetup .webp'
+import Image3 from '../../images/joinigInterview.webp'
+import Image4 from '../../images/postInterview .webp'
 
 function HowItWorks() {
   return (

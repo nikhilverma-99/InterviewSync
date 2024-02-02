@@ -67,3 +67,11 @@ export const companyRegister = async(formData)=>{
     
     return res;
 }
+
+export const login = async (credentials)=>{
+    console.log("Login");
+    
+    let res = await API.post('/auth/login', credentials)   
+    console.log(res);
+    return res ;
+}

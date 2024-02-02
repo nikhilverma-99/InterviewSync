@@ -74,11 +74,11 @@ const UserLogin = () => {
           <p> Welcome Back !</p>
           <span>Sign in to continue your seamless experience.</span>
         </article>
-        <figure className="login-cartoon-container">
+        
+       </div>
+       <figure className="login-cartoon-container">
           <img src={loginCartoon} alt='Interview Sync Cartoon' className="cartoon-img"/>
         </figure>
-       </div>
-
       </section>
 };
 

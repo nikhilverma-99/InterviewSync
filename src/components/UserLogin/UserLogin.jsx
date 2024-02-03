@@ -27,7 +27,6 @@ const UserLogin = () => {
   const handleLogin = async()=>{
 
     setLoading(true)
-    navigate('/dashboard')
 
     try{
       await api.login(credentials);

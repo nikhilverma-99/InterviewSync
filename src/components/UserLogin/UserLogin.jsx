@@ -1,17 +1,19 @@
 import React,{useState} from "react";
 import './UserLogin.css'
-import { NavLink } from "react-router-dom";
+import { NavLink,useNavigate } from "react-router-dom";
 import loginCartoon from '../../images/loginPage.webp'
 import Logo from '../../images/Logo.svg';
 import * as api from '../../Axios'
 import LoadingIcons from 'react-loading-icons'
-
+import { toast } from 'react-toastify';
 const UserLogin = () => {
   const[loading,setLoading] = useState(false)
   const[credentials,setCredentials] = useState({
     email:"",
     password:""
   })
+
+  const navigate = useNavigate() ;
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     console.log(name);
@@ -25,12 +27,30 @@ const UserLogin = () => {
   const handleLogin = async()=>{
 
     setLoading(true)
+    navigate('/dashboard')
+
     try{
       await api.login(credentials);
-
+      toast.success('User Logged in!', {
+        position: "top-center",
+         progress: undefined,
+       theme: "colored", 
+       style:{
+         fontSize:'1.4rem'
+       }
+       });
+        navigate('/dashboard')
     }
      catch(e){
-
+      console.log(e.message)
+     toast.error(`${e.message}`, {
+         position: "top-center",
+          progress: undefined,
+        theme: "colored", 
+        style:{
+          fontSize:'1.4rem'
+        }
+        });
      }
      setLoading(false)
     

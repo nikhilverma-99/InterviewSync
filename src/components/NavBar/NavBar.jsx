@@ -17,7 +17,7 @@ const NavBar = () => {
           />
       </figure>
       
-          <div className= {isNavOpen?'nav-links navOpen':'nav-links'}>  
+          <div className= {isNavOpen?'nav-links navOpen nav-responsive':'nav-links'}>  
             <NavLink to='/login' className='nav-link btn-login'>  Login</NavLink>
             <NavLink  to= '/register' className='nav-link'>Register</NavLink> 
           </div>

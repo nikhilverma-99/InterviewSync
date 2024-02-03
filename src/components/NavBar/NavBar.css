@@ -1,5 +1,6 @@
 .header
 {
+     
     display: flex;
     width: 100vw; 
     justify-content: space-between; 
@@ -19,7 +20,8 @@
 {
     display: flex;
     font-size: 1.8rem;
-    gap:1.8rem
+    gap:1.8rem;
+    transition: all 1s ease;
 }
 
 .nav-link
@@ -30,6 +32,7 @@
     padding: 1.1rem 1.1rem;
     border-radius: 10px;
     width:12rem;
+    height:4.4rem;
     font-weight: 500;
     display: flex;
     align-items: center;
@@ -48,3 +51,18 @@
     background-color: inherit;
     color:#0f172a;
 }
+
+.nav-icon
+{
+    font-size: 3.2rem;
+    
+}
+.nav-icon:hover
+{
+    cursor: pointer;
+}
+.nav-responsive
+{
+    display: none;
+}
+ 

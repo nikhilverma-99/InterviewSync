@@ -89,10 +89,6 @@
 
 
  @media(max-width:60rem){
-    html
-    {
-        font-size: 45% !important;
-    }
     .grid--3-cols {
         grid-template-columns: repeat(2, 1fr) !important;
       }

@@ -9,14 +9,21 @@ const Table = () => {
   
 
   const getAllInterviews = async()=>{
-    const interviewsData = await api.getAllInterview();
-    console.log(interviewsData.data);
-    
-    if(interviewsData.data)
-    {
+    try {
+      
+      const interviewsData = await api.getAllInterview();
+      console.log(interviewsData)
       console.log(interviewsData.data);
       
-      setAllInterview(interviewsData.data);
+      if(interviewsData.data)
+      {
+        console.log(interviewsData.data);
+        
+        setAllInterview(interviewsData.data);
+      }
+    } catch (error) {
+      console.log(error);
+      
     }
 
     

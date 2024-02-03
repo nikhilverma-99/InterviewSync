@@ -20,17 +20,23 @@ import Dashboard from './components/Admin/DashBoard/Dashboard'
 import CreateInterview from './components/Admin/DashBoard/CreateInterview'
 import AllInterview from './components/Admin/DashBoard/AllInterview'
 const UserLogin  = lazy(()=>import('./components/UserLogin/UserLogin')) 
-// import Adjustable from './components/Adjustable/Adjustable'
-
-
+// import Adjustable from './components/Adjustable/Adjustable'  
 import Pricing from './components/pricing/Pricing'
+import { currentUser } from './components/utils/currentUser'
 const CodeCollabContext = createContext();
  
 function App() { 
   const [selectedTheme, setSelectedTheme] = useState('');   
+  const[cUser,setCUser] = useState(null)
+
+  useEffect(async()=>{
+    const cUser = await currentUser() ;
+    console.log("App cUser"+cUser)
+    setCUser(cUser)
+  },[])
   return ( 
     <>
-      <CodeCollabContext.Provider value={{selectedTheme,setSelectedTheme}}> 
+      <CodeCollabContext.Provider value={{selectedTheme,setSelectedTheme,cUser,setCUser}}> 
       <Suspense fallback={<Loading></Loading>}>
       <Routes>
             <Route   path='/' element={

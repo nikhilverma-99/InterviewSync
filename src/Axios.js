@@ -40,7 +40,7 @@ export const getAllInterview = async()=>{
 }
 
 export const GetAnalyticsData = async()=>{
-    let res = await API.get('/interview/getwindow/weekly/Amazon' )   
+    let res = await API.get('/interview/getwindow/weekly' )   
     return res;
     
 }
@@ -72,6 +72,19 @@ export const login = async (credentials)=>{
     console.log("Login");
     
     let res = await API.post('/auth/login', credentials)   
+    console.log(res);
+    return res ;
+}
+
+
+export const logout = async()=>{  
+    let res = await API.post('/auth/logout')  
+    return res ;
+}
+
+export const currentUser = async ( )=>{  
+    
+    let res = await API.get('/auth/loggeduser')   
     console.log(res);
     return res ;
 }

@@ -1,16 +1,21 @@
 import React,{useState} from "react";
 import './Admin.css'
-import { Outlet ,NavLink,useLocation} from "react-router-dom";
+import { Outlet ,NavLink,useLocation,useNavigate} from "react-router-dom";
 import { SlPeople } from "react-icons/sl";
 import { IoIosCreate } from "react-icons/io";
 import Logo from '../../images/LightLogo.svg'
 import { LuLayoutDashboard } from "react-icons/lu";
 import { FaUser } from "react-icons/fa";
-
+import * as api from '../../Axios'
 import { RiShutDownLine } from "react-icons/ri";
 import { MdLockOpen } from "react-icons/md";
+import { toast } from 'react-toastify';
+import { useCodeCollabContext } from "../../App";
+
 const Admin = () => {
+  const { setCUser } = useCodeCollabContext();
   const location = useLocation();
+  const navigate = useNavigate() ;
   const getTitle = () => {
     switch (location.pathname) {
       case '/dashboard':
@@ -30,6 +35,28 @@ const Admin = () => {
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
   };
+
+  const logout = async()=>{
+    console.log("Logout!");
+    
+    try{
+      await api.logout();
+      toast.success('User Logged out Successfully!', {
+        position: "top-center",
+         progress: undefined,
+       theme: "colored", 
+       style:{
+         fontSize:'1.4rem'
+       }
+       });
+       navigate('/')
+       setCUser(null)
+    }
+    catch(e)
+    {
+
+    }
+  }
   return <main className="admin-container">
       <div className="leftMenu"> 
          <header >
@@ -81,8 +108,8 @@ const Admin = () => {
             <span>Amazon</span>
             {isDropdownOpen && (
               <ul className="dropdown-content">
-                  <li  ><MdLockOpen style={{width:'2.1rem'}}></MdLockOpen>Change Password</li>
-                  <li ><RiShutDownLine style={{width:'2.1rem'}}></RiShutDownLine>Logout</li>
+                  <li><MdLockOpen style={{width:'2.1rem'}}></MdLockOpen>Change Password</li>
+                  <li onClick={ (e)=>{ e.stopPropagation(); logout(); }}><RiShutDownLine style={{width:'2.1rem'}} ></RiShutDownLine>Logout</li>
                 </ul>
               )}
           </div>

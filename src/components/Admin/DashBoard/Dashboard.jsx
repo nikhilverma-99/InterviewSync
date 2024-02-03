@@ -1,11 +1,15 @@
 import React, { useEffect,useState } from "react";
 import './Dashboard.css'
+import { useNavigate } from "react-router-dom";
 import Overview from "../AdminComponent/Overview"; 
 import Graph from './Graph'
 import { FaCalendarCheck } from "react-icons/fa";
 import { FaBug } from "react-icons/fa";
 import { MdPendingActions } from "react-icons/md";
 import * as api from '../../../Axios'
+import { useCodeCollabContext } from "../../../App";
+import { toast } from 'react-toastify';
+
 const PendingJobs={
   icons: <MdPendingActions className="stats-icon" />,
   statsBackground:'#bee0ec',
@@ -25,12 +29,26 @@ iconBackground:'#eaccd1'}
 
 const Dashboard = () => {
 
+  const { cUser,setCUser } = useCodeCollabContext();
   const [analyticsData, setAnalyticsData] = useState({})
   const GetAnalyticsData = async()=>{
     const analyticsData = await api.GetAnalyticsData();
     setAnalyticsData(analyticsData.data)
   }
+  const navigate = useNavigate()
   useEffect(()=>{ 
+    console.log(cUser)
+    if(!cUser){
+      toast.error( `User is not LoggedIn!`, {
+        position: "top-center",
+         progress: undefined,
+       theme: "colored", 
+       style:{
+         fontSize:'1.4rem'
+       }
+       });
+      navigate('/login')
+    }
     GetAnalyticsData();
   },[])
   const datasets = [

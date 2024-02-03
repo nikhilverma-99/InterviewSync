@@ -9,7 +9,7 @@ const Overview = (props) => {
   return <article className="dashboard-overview" style={{backgroundColor:overviewData?.statsBackground, color:overviewData?.color, borderBottom:`6px solid ${overviewData?.color}`}} > 
   <div className="stats-row">
     {
-      props.stats ? <span>{props?.stats}</span>:  <LoadingIcons.ThreeDots
+      props.stats!=undefined && props.stats!=null ? <span>{props?.stats}</span>:  <LoadingIcons.ThreeDots
       style={{
         height: '1.8rem',
         fontWeight: 'bold'

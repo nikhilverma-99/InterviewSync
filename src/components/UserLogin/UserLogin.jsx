@@ -6,7 +6,10 @@ import Logo from '../../images/Logo.svg';
 import * as api from '../../Axios'
 import LoadingIcons from 'react-loading-icons'
 import { toast } from 'react-toastify';
+import { useCodeCollabContext } from "../../App";
+
 const UserLogin = () => {
+  const { cUser,setCUser } = useCodeCollabContext(); 
   const[loading,setLoading] = useState(false)
   const[credentials,setCredentials] = useState({
     email:"",
@@ -26,10 +29,9 @@ const UserLogin = () => {
 
   const handleLogin = async()=>{
 
-    setLoading(true)
-
+    setLoading(true) 
     try{
-      await api.login(credentials);
+      const user = await api.login(credentials);
       toast.success('User Logged in!', {
         position: "top-center",
          progress: undefined,
@@ -37,8 +39,10 @@ const UserLogin = () => {
        style:{
          fontSize:'1.4rem'
        }
-       });
-        navigate('/dashboard')
+       }); 
+
+      setCUser(user?.data?.user)
+      navigate('/dashboard')
     }
      catch(e){
       console.log(e.message)

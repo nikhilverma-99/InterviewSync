@@ -22,7 +22,7 @@ function HowItWorks() {
             Interview Setup
           </h3>
           <p class="step-description">
-           CodeCollab simplifies initiation. Companies register, schedule interviews, and provide details. Interviewers get unique tokens via email for a secure and personalized setup.
+           InterviewSync simplifies initiation. Companies register, schedule interviews, and provide details. Interviewers get unique tokens via email for a secure and personalized setup.
           </p>
         </div>
         <div class="step-img-box"> 

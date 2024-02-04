@@ -2,7 +2,7 @@ import React from "react";
 import './PaymentSuccessfull.css'
 import { NavLink } from "react-router-dom";
 import Logo from '../../images/Logo.svg'
-import Tick from '../../images/tick.webp'
+import Tick from '../../images/icons8-tick.gif'
 import Payment from '../../images/Payment.webp'
 import { useNavigate } from "react-router-dom";
 const Details = ({title,data})=>{

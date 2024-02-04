@@ -66,14 +66,14 @@ const Admin = () => {
            <div className="divider">&nbsp;</div>
          </header>  
          <div className="navLinks">
-         <NavLink to='/dashboard' className={({ isActive }) =>
-            isActive ? 'admin-btn active' : 'admin-btn'}>
+         <NavLink to='/dashboard' className={() =>
+            getTitle()=='Dashboard' ? 'admin-btn active' : 'admin-btn'}>
             <LuLayoutDashboard className="navLink-icon" />
             <span>DashBoard</span>
         </NavLink>
 
-         <NavLink to='allInterview' className={({ isActive }) =>
-              isActive ? 'admin-btn active' : 'admin-btn'
+         <NavLink to='allInterview' className={() =>
+            getTitle()=='All Interviews' ? 'admin-btn active' : 'admin-btn'
             }>
  
               <SlPeople className="navLink-icon"/>
@@ -81,16 +81,16 @@ const Admin = () => {
         
          </NavLink>
 
-         <NavLink to='createInterview' className={({ isActive }) =>
-              isActive ? 'admin-btn active' : 'admin-btn'
+         <NavLink to='createInterview' className={() =>
+            getTitle()=='Create Interview' ? 'admin-btn active' : 'admin-btn'
             }> 
        
               <IoIosCreate className="navLink-icon"/>
               <span>Create Interview</span>
              
          </NavLink>
-         <NavLink to='addQuestion' className={({ isActive }) =>
-              isActive ? 'admin-btn active' : 'admin-btn'
+         <NavLink to='addQuestion' className={() =>
+            getTitle()=='Add Question' ? 'admin-btn active' : 'admin-btn'
             }> 
        
               <IoIosCreate className="navLink-icon"/>

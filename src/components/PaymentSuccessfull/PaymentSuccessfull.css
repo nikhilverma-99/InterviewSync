@@ -1,0 +1,102 @@
+.paymentSuccessfull-container
+{
+height:100vh;
+padding:0 2.2rem;
+  max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    min-height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column; 
+}
+
+.paymentSuccessfull-header
+{
+  height:10.1rem;
+  display:flex;
+  align-items: center; 
+  /* position: fixed; */
+  /* top: 0; */
+  width: 100%;
+    padding: 2.2rem ;
+    z-index: 1001; 
+}
+
+.payment-main
+{
+  padding: 3.2rem 2.2rem;
+  height: calc(80vh - 10.1rem);
+
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  color:#1A2359;
+  align-items: center;
+}
+
+.payment-heading
+{
+  height:10.4rem;
+  display: flex;
+  font-size: 1.8rem; 
+  gap:2.2rem;
+  align-items: center;
+}
+.payment-heading-content
+{
+  height:4.4rem;
+  display: flex;
+  font-size: 1.8rem;
+  flex-direction: column;
+}
+
+.payment-content-container
+{
+  display: flex;
+  flex-direction: column;
+}
+
+.payment-details
+{
+  display: flex;
+  flex-direction: column;
+  gap:0.5rem;
+  padding:2.2rem 0;
+}
+.payment-detail
+{
+  display: flex;
+  align-items: center;
+  gap:1.1rem;
+  font-size: 1.6rem;
+}
+.payment-content
+{
+  padding: 2.2rem 0 1.1rem 0;
+}
+
+.payment-salutation
+{ 
+  font-size: 1.4rem;
+  padding: 0 0 2.2rem;
+}
+.btn-takeToDashboard
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:aliceblue;
+  background-color: #1A2359;
+  font-size: 1.8rem;
+  width:fit-content;
+  padding:2.2rem ;
+  border-radius: 15px;
+
+}
+
+ .btn-takeToDashboard:hover
+ {
+  cursor: pointer;
+  /* background-color: rgba(26, 35, 89, 0.952); */
+ }

@@ -8,6 +8,8 @@ import Loading from './components/Loading/Loading'
 const TextEditor = lazy(()=> import('./components/QuestionTextEditor/TextEditor')) 
 const ProblemEditor = lazy(()=>import('./components/Problem+Editor/ProblemEditor'))
 const Login = lazy(()=>import('./components/Login/Login'))
+const PaymentSuccessfull = lazy(()=>import('./components/PaymentSuccessfull/PaymentSuccessfull'))
+// import PaymentSuccessfull from './components/PaymentSuccessfull/PaymentSuccessfull'
 // import Table from './components/Table/Table'
 const Error = lazy(()=> import('./components/Error/Error')) 
 // import MaterialTable from './components/Table/MaterialTable'
@@ -59,6 +61,7 @@ function App() {
             </Route>
             <Route path='/register' element={<Register></Register>}/>
             <Route path='/login' element={<UserLogin></UserLogin>}/>
+            <Route path='/paymentSuccessfull' element={<PaymentSuccessfull></PaymentSuccessfull>}/>
             <Route path='*' element={<Error />} />
         </Routes>
 

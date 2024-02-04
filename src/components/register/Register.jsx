@@ -5,7 +5,7 @@ import Select from 'react-select';
 import * as api from '../../Axios'
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import LoadingIcons from 'react-loading-icons'
-
+import { NavLink } from "react-router-dom";
 import RegisterSide from '../../images/register-side.png'
 import Logo from '../../images/Logo.svg'
 const Register = () => {
@@ -216,9 +216,11 @@ useEffect(()=>{
   return (
     <div className='getStarted-container'>
       <header className='getStarted-header'>
-        <figure>
-          <img src= {Logo} alt="logo" style={{ height: '5.1rem' }} />
-        </figure>
+        <NavLink to='/'>
+          <figure>
+            <img src= {Logo} alt="logo" style={{ height: '5.1rem' }} />
+          </figure> 
+        </NavLink>
       </header> 
       <main className='main'> 
       <div className="row" style={{width:'100%'}}>

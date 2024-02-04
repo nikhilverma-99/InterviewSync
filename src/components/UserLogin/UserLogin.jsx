@@ -61,9 +61,11 @@ const UserLogin = () => {
   return <section class='login-container'>
        <div className="login-left">
         <header className="login-left-header">
-          <figure className="header-image">
-            <img src={Logo} alt="Logo"/>
-          </figure>
+          <NavLink to='/'>
+            <figure className="header-image">
+              <img src={Logo} alt="Logo"/>
+            </figure> 
+          </NavLink>
         </header>
         <div className="login-heading">
           <span>Login</span>

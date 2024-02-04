@@ -60,7 +60,9 @@ const Admin = () => {
   return <main className="admin-container">
       <div className="leftMenu"> 
          <header >
-           <img src={Logo} style={{width:'70%', marginBottom:'1.1rem'}} />
+          <NavLink to='/'>
+            <img src={Logo} style={{width:'70%', marginBottom:'1.1rem'}} /> 
+          </NavLink>
            <div className="divider">&nbsp;</div>
          </header>  
          <div className="navLinks">

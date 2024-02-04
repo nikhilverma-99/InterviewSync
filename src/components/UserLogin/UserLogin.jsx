@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useState,useEffect} from "react";
 import './UserLogin.css'
 import { NavLink,useNavigate } from "react-router-dom";
 import loginCartoon from '../../images/loginPage.webp'
@@ -7,16 +7,16 @@ import * as api from '../../Axios'
 import LoadingIcons from 'react-loading-icons'
 import { toast } from 'react-toastify';
 import { useCodeCollabContext } from "../../App";
-
+import { success,error } from "../utils/toast";
 const UserLogin = () => {
   const { cUser,setCUser } = useCodeCollabContext(); 
+  const navigate = useNavigate() ;
   const[loading,setLoading] = useState(false)
   const[credentials,setCredentials] = useState({
     email:"",
     password:""
   })
 
-  const navigate = useNavigate() ;
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     console.log(name);
@@ -32,32 +32,25 @@ const UserLogin = () => {
     setLoading(true) 
     try{
       const user = await api.login(credentials);
-      toast.success('User Logged in!', {
-        position: "top-center",
-         progress: undefined,
-       theme: "colored", 
-       style:{
-         fontSize:'1.4rem'
-       }
-       }); 
-
+       success('User Logged In !') 
       setCUser(user?.data?.user)
       navigate('/dashboard')
     }
      catch(e){
-      console.log(e.message)
-     toast.error(`${e.message}`, {
-         position: "top-center",
-          progress: undefined,
-        theme: "colored", 
-        style:{
-          fontSize:'1.4rem'
-        }
-        });
+      console.log()
+      error(e?.response?.data?.message); 
      }
      setLoading(false)
     
   }
+
+  useEffect(()=>{
+    console.log(cUser);
+    
+    if(cUser){
+      navigate('/dashboard')
+    }
+  },[cUser,navigate])
   return <section class='login-container'>
        <div className="login-left">
         <header className="login-left-header">

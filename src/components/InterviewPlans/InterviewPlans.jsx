@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./InterviewPlans.css";
 
 import Logo from "../../images/Logo.svg";
@@ -7,14 +7,70 @@ import { BsPeopleFill } from "react-icons/bs";
 import { BiSupport } from "react-icons/bi";
 import { GiTimeSynchronization } from "react-icons/gi";
 import { IoAnalyticsSharp } from "react-icons/io5";
+import { success, error } from "../utils/toast";
+import * as api from "../../Axios";
 
-const icons = [
-  <BsPeopleFill />,
-  <BiSupport />,
-  <GiTimeSynchronization />,
-  <IoAnalyticsSharp />,
-];
 const Pricing = () => {
+  const icons = [
+    <BsPeopleFill />,
+    <BiSupport />,
+    <GiTimeSynchronization />,
+    <IoAnalyticsSharp />,
+  ];
+  const [plans, setPlans] = useState([{}]);
+  const [loading, setLoading] = useState(false);
+
+  const handlePricingButton = async (e) => {
+    try {
+      setLoading(true);
+      const documentID = e.target.id;
+      const keyResponse = await api.getKey();
+      const pricing = await api.checkoutPlanWithId(documentID);
+      const { planType, price } = pricing.data.cPlan;
+      const { amount, id } = pricing.data;
+      const key = keyResponse.data.key;
+      //CALLBACK_URL
+      let CALLBACK_URL =
+        "https://interviewsync.in/api/v1/payment/paymentverification";
+
+      const options = {
+        key: key,
+        amount: amount,
+        currency: "USD",
+        name: `Payment`,
+        description: `InterviewSync payment for Plan-Type: ${planType} ,Priced at INR ${price}`,
+        image: "https://interviewsync.in/assets/Logo-RdZz1ygO.svg",
+        order_id: id,
+        callback_url: CALLBACK_URL,
+        prefill: {
+          name: "",
+          email: "test@example.com",
+          contact: "9999999999",
+        },
+        notes: {
+          // address: location,
+          // userID: _id,
+          // productID: documentID,
+        },
+        theme: {
+          color: "#1A384F",
+        },
+      };
+      const razor = new window.Razorpay(options);
+      razor.open();
+    } catch (error) {
+      console.log(error);
+    }
+    setLoading(false);
+  };
+  useEffect(() => {
+    const getPlans = async () => {
+      let res = await api.getAllPlans();
+      console.log(res.data);
+      setPlans(res.data);
+    };
+    getPlans();
+  }, []);
   return (
     <>
       <section style={{ padding: "6.6rem" }} className="section-pricing">
@@ -45,17 +101,25 @@ const Pricing = () => {
           <div className="pricing-grid grid--3-cols">
             <article className="planPricing">
               <header className="planHeader">
-                <p className="planName">BasicTech</p>
-                <p className="planPrice">$19</p>
-                <p className="planTag">/per month. That's just $4/Interview</p>
+                <p className="planName">{plans[0]?.planName}</p>
+                <p className="planPrice">${plans[0]?.planPrice}</p>
+                <p className="planTag"> {plans[0]?.planTag}</p>
               </header>
               <ul className="plan-details">
-                <li> {icons[0]}5 Interviews/Month</li>
+                <li>
+                  {" "}
+                  {icons[0]}
+                  {plans[0]?.noOfInterviews} Interviews/Month
+                </li>
                 <li> {icons[1]}Priority Support</li>
                 <li>{icons[2]}Code Synchronization</li>
                 <li>{icons[3]}Analytics</li>
               </ul>
-              <div className="getStarted-btn">
+              <div
+                className="getStarted-btn"
+                id={plans[0]?._id}
+                onClick={handlePricingButton}
+              >
                 <div className="buyBtn">
                   <span> Get Started</span>
                 </div>
@@ -64,11 +128,9 @@ const Pricing = () => {
 
             <article className="planPricing mostPopular">
               <header className="planHeader">
-                <p className="planName">ProTech</p>
-                <p className="planPrice">$49</p>
-                <p className="planTag">
-                  /per month. That's just $2.50/Interview
-                </p>
+                <p className="planName">{plans[1]?.planName}</p>
+                <p className="planPrice">${plans[1]?.planPrice}</p>
+                <p className="planTag"> {plans[1]?.planTag}</p>
               </header>
               <ul className="plan-details  ">
                 <li> {icons[0]}20 Interviews/Month</li>
@@ -76,7 +138,11 @@ const Pricing = () => {
                 <li>{icons[2]}Code Synchronization</li>
                 <li>{icons[3]}Analytics</li>
               </ul>
-              <div className="getStarted-btn btn-mostPopular">
+              <div
+                className="getStarted-btn btn-mostPopular"
+                id={plans[1]?._id}
+                onClick={handlePricingButton}
+              >
                 <div className="buyBtn">
                   <span> Get Started</span>
                 </div>
@@ -85,11 +151,9 @@ const Pricing = () => {
 
             <article className="planPricing premium">
               <header className="planHeader">
-                <p className="planName">TechScale</p>
-                <p className="planPrice">$99</p>
-                <p className="planTag">
-                  /per month. That's just $2.0/Interview
-                </p>
+                <p className="planName">{plans[2]?.planName}</p>
+                <p className="planPrice">${plans[2]?.planPrice}</p>
+                <p className="planTag"> {plans[2]?.planTag}</p>
               </header>
               <ul className="plan-details">
                 <li> {icons[0]}50 Interviews/Month</li>
@@ -97,7 +161,11 @@ const Pricing = () => {
                 <li>{icons[2]}Code Synchronization</li>
                 <li>{icons[3]}Analytics</li>
               </ul>
-              <div className="getStarted-btn">
+              <div
+                className="getStarted-btn"
+                id={plans[2]?._id}
+                onClick={handlePricingButton}
+              >
                 <div className="buyBtn">
                   <span> Get Started</span>
                 </div>

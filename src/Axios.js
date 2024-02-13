@@ -105,3 +105,33 @@ export const resetPassword = async (credentialObj) => {
     return error;
   }
 };
+
+export const getKey = async () => {
+  try {
+    let res = await API.get("/payment/getKey");
+    return res;
+  } catch (error) {
+    return error;
+  }
+};
+export const getAllPlans = async () => {
+  try {
+    let res = await API.get("/plan/getall");
+    console.log(res);
+    return res;
+  } catch (error) {
+    console.log(error);
+    return error;
+  }
+};
+
+export const checkoutPlanWithId = async (id) => {
+  try {
+    let res = await API.post(`/payment/checkout/${id}`);
+    console.log(res);
+    return res;
+  } catch (error) {
+    console.log(error);
+    return error;
+  }
+};

@@ -48,9 +48,8 @@ const Pricing = () => {
           contact: "9999999999",
         },
         notes: {
-          // address: location,
-          // userID: _id,
-          // productID: documentID,
+          userID: "65cba65834f2aa107fadc4fc",
+          productID: documentID,
         },
         theme: {
           color: "#1A384F",

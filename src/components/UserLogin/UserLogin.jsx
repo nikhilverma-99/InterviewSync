@@ -42,6 +42,22 @@ const UserLogin = () => {
     setLoading(false);
   };
 
+  const handleExplore = async () => {
+    setLoading(true);
+    try {
+      const user = await api.login({
+        email: "Nik@gmail.com",
+        password: "12345678",
+      });
+      success("User Logged In !");
+      setCUser(user?.data?.user);
+      navigate("/dashboard");
+    } catch (e) {
+      console.log();
+      error(e?.response?.data?.message);
+    }
+    setLoading(false);
+  };
   useEffect(() => {
     console.log(cUser);
 
@@ -88,9 +104,18 @@ const UserLogin = () => {
               <LoadingIcons.Oval style={{ width: "2.4rem" }} />
             </div>
           ) : (
-            <div className="login-btn" onClick={handleLogin}>
-              <span>Login</span>
-            </div>
+            <>
+              <div className="login-btn" onClick={handleExplore}>
+                <span>Explore App</span>
+              </div>
+              <div
+                style={{ margin: "0" }}
+                className="login-btn"
+                onClick={handleLogin}
+              >
+                <span>Login</span>
+              </div>
+            </>
           )}
         </form>
         <div className="other-option">

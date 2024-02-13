@@ -22,6 +22,9 @@ const Login = lazy(() => import("./components/Login/Login"));
 const PaymentSuccessfull = lazy(() =>
   import("./components/PaymentSuccessfull/PaymentSuccessfull")
 );
+const InterviewPlans = lazy(() =>
+  import("./components/InterviewPlans/InterviewPlans")
+);
 // import PaymentSuccessfull from './components/PaymentSuccessfull/PaymentSuccessfull'
 // import Table from './components/Table/Table'
 const Error = lazy(() => import("./components/Error/Error"));
@@ -29,11 +32,13 @@ const Error = lazy(() => import("./components/Error/Error"));
 const Register = lazy(() => import("./components/register/Register"));
 const Admin = lazy(() => import("./components/Admin/Admin"));
 import { Route, Routes } from "react-router-dom";
-import VideoCall from "./components/Dyanamic Width Components/VideoCall";
-import HowItWorks from "./components/How it Works/HowItWorks";
-import Dashboard from "./components/Admin/DashBoard/Dashboard";
+const HowItWorks = lazy(() => import("./components/How it Works/HowItWorks"));
+const Dashboard = lazy(() => import("./components/Admin/DashBoard/Dashboard"));
 import CreateInterview from "./components/Admin/DashBoard/CreateInterview";
-import AllInterview from "./components/Admin/DashBoard/AllInterview";
+const AllInterview = lazy(() =>
+  import("./components/Admin/DashBoard/AllInterview")
+);
+
 const UserLogin = lazy(() => import("./components/UserLogin/UserLogin"));
 const ForgotPassword = lazy(() =>
   import("./components/ForgotPassword/ForgotPassword")
@@ -72,10 +77,6 @@ function App() {
             />
             <Route path="enterInterview" element={<Login></Login>}></Route>
             <Route
-              path="videocalling"
-              element={<VideoCall></VideoCall>}
-            ></Route>
-            <Route
               path="problemEditor/:type"
               element={<ProblemEditor></ProblemEditor>}
             ></Route>
@@ -93,6 +94,10 @@ function App() {
               path="/forgotPassword"
               element={<ForgotPassword></ForgotPassword>}
             />
+            <Route
+              path="/plans"
+              element={<InterviewPlans></InterviewPlans>}
+            ></Route>
             <Route
               path="/paymentSuccessfull"
               element={<PaymentSuccessfull></PaymentSuccessfull>}

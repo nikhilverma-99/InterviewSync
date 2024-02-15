@@ -20,11 +20,10 @@ const Pricing = () => {
   const [plans, setPlans] = useState([{}]);
   const [loading, setLoading] = useState(false);
 
-  const handlePricingButton = async (e) => {
+  const handlePricingButton = async (id) => {
     try {
       setLoading(true);
-      const documentID = e.target.id;
-      console.log(e.target);
+      const documentID =  id
 
       const keyResponse = await api.getKey();
       const pricing = await api.checkoutPlanWithId(documentID);
@@ -120,9 +119,8 @@ const Pricing = () => {
                 <li>{icons[3]}Analytics</li>
               </ul>
               <div
-                className="getStarted-btn"
-                id={plans[0]?._id}
-                onClick={handlePricingButton}
+                className="getStarted-btn" 
+                onClick={handlePricingButton(plans[0]?._id)}
               >
                 <div className="buyBtn">
                   <span> Get Started</span>
@@ -145,7 +143,7 @@ const Pricing = () => {
               <div
                 className="getStarted-btn btn-mostPopular"
                 id={plans[1]?._id}
-                onClick={handlePricingButton}
+                onClick={handlePricingButton(plans[1]?._id)}
               >
                 <div className="buyBtn">
                   <span> Get Started</span>
@@ -168,7 +166,7 @@ const Pricing = () => {
               <div
                 className="getStarted-btn"
                 id={plans[2]?._id}
-                onClick={handlePricingButton}
+                onClick={handlePricingButton(plans[2]?._id)}
               >
                 <div className="buyBtn">
                   <span> Get Started</span>

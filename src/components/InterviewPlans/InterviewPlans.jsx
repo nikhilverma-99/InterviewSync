@@ -24,36 +24,41 @@ const Pricing = () => {
     try {
       setLoading(true);
       const documentID = e.target.id;
+      console.log(e.target);
+
       const keyResponse = await api.getKey();
       const pricing = await api.checkoutPlanWithId(documentID);
-      const { planType, price } = pricing.data.cPlan;
+      console.log(pricing);
+      const { planType, price } = pricing?.data?.cPlan;
       const { amount, id } = pricing.data;
-      const key = keyResponse.data.key;
+      const key = keyResponse?.data?.key;
+      console.log(key);
+      console.log(keyResponse);
+
       //CALLBACK_URL
       let CALLBACK_URL =
         "https://interviewsync.in/api/v1/payment/paymentverification";
 
-      const options = {
-        key: key,
-        amount: amount,
-        currency: "USD",
-        name: `Payment`,
-        description: `InterviewSync payment for Plan-Type: ${planType} ,Priced at INR ${price}`,
-        image: "https://interviewsync.in/assets/Logo-RdZz1ygO.svg",
-        order_id: id,
-        callback_url: CALLBACK_URL,
-        prefill: {
-          name: "",
-          email: "test@example.com",
-          contact: "9999999999",
-        },
-        notes: {
-          userID: "65cba65834f2aa107fadc4fc",
-          productID: documentID,
-        },
-        theme: {
-          color: "#1A384F",
-        },
+        let options = {
+          "key": key, // Enter the Key ID generated from the Dashboard
+          "amount": amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+          "currency": "INR",
+          "name": "InterviewSync Payment",
+          "description": "Test Transaction",
+          "image": "https://interviewsync.in/assets/Logo-RdZz1ygO.svg",
+          "order_id": id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+          "callback_url": CALLBACK_URL,
+          "prefill": {
+              "name": "Gaurav Kumar",
+              "email": "gaurav.kumar@example.com",
+              "contact": "9000090000"
+          },
+          "notes": {
+              "address": "Razorpay Corporate Office"
+          },
+          "theme": {
+              "color": "#3399cc"
+          }
       };
       const razor = new window.Razorpay(options);
       razor.open();

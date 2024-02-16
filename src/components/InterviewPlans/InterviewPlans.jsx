@@ -8,6 +8,7 @@ import { BiSupport } from "react-icons/bi";
 import { GiTimeSynchronization } from "react-icons/gi";
 import { IoAnalyticsSharp } from "react-icons/io5";
 import { success, error } from "../utils/toast";
+import axios from "axios";
 import * as api from "../../Axios";
 
 const Pricing = () => {
@@ -39,7 +40,7 @@ const Pricing = () => {
       console.log(key);
       console.log(keyResponse);
 
-      const callbackURL = `https://interviewsync.in/api/v1/payment/paymentverification`
+      const verificationURL = `https://interviewsync.in/api/v1/payment/paymentverification`
       var options = {
         "key":  key, // Enter the Key ID generated from the Dashboard
         "amount":  amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
@@ -48,7 +49,13 @@ const Pricing = () => {
         "description": "Test Transaction",
         "image": "https://i.ibb.co/XzZMdz5/Screenshot-from-2024-02-16-21-58-56.png",
         "order_id": id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-        "callback_url":callbackURL,
+        "handler": async (response)=>{
+          try{
+            axios.post(verificationURL,response)
+          }catch(e){
+            console.log(e); 
+          }
+      },
         "prefill": {
             "name": "Nikhil  Verma",
             "email": "gaurav.kumar@example.com",

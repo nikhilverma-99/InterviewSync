@@ -24,42 +24,46 @@ const Pricing = () => {
     try {
       setLoading(true);
       const documentID = e.target.id; 
+      console.log(documentID);
+      
+      if(!documentID)return ;
       const keyResponse = await api.getKey();
+      console.log(keyResponse.data.key);
+      
       const pricing = await api.checkoutPlanWithId(documentID);
-      console.log(pricing);
+     console.log(pricing);
+     
       const { planType, price } = pricing?.data?.cPlan;
       const { amount, id } = pricing.data;
       const key = keyResponse?.data?.key;
       console.log(key);
       console.log(keyResponse);
 
-      //CALLBACK_URL
-      let CALLBACK_URL =
-        "https://interviewsync.in/api/v1/payment/paymentverification";
-
-        let options = {
-          "key": key, // Enter the Key ID generated from the Dashboard
-          "amount": amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-          "currency": "INR",
-          "name": "InterviewSync Payment",
-          "description": "Test Transaction",
-          "image": "https://interviewsync.in/assets/Logo-RdZz1ygO.svg",
-          "order_id": id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-          "callback_url": CALLBACK_URL,
-          "prefill": {
-              "name": "Gaurav Kumar",
-              "email": "gaurav.kumar@example.com",
-              "contact": "9000090000"
-          },
-          "notes": {
-              "address": "Razorpay Corporate Office"
-          },
-          "theme": {
-              "color": "#3399cc"
-          }
-      };
-      const razor = new window.Razorpay(options);
-      razor.open();
+      const callbackURL = `http://localhost:5173/api/v1/payment/paymentverification`
+      var options = {
+        "key":  key, // Enter the Key ID generated from the Dashboard
+        "amount":  amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        "currency": "INR",
+        "name": "Acme Corp",
+        "description": "Test Transaction",
+        "image": "https://i.ibb.co/XzZMdz5/Screenshot-from-2024-02-16-21-58-56.png",
+        "order_id": id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        "callback_url":callbackURL,
+        "prefill": {
+            "name": "Nikhil  Verma",
+            "email": "gaurav.kumar@example.com",
+            "contact": "9000090000"
+        },
+        "notes": {
+            "address": "Razorpay Corporate Office"
+        },
+        "theme": {
+            "color": "#3399cc"
+        }
+    };
+    var rzp1 = new Razorpay(options);
+    rzp1.open();
+       
     } catch (error) {
       console.log(error);
     }

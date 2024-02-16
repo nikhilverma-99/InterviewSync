@@ -39,7 +39,7 @@ const Pricing = () => {
       console.log(key);
       console.log(keyResponse);
 
-      const callbackURL = `http://localhost:5173/api/v1/payment/paymentverification`
+      const callbackURL = `https://interviewsync.in/api/v1/payment/paymentverification`
       var options = {
         "key":  key, // Enter the Key ID generated from the Dashboard
         "amount":  amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise

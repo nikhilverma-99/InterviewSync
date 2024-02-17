@@ -51,6 +51,7 @@ const Pricing = () => {
         "order_id": id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
         "handler": async (response)=>{
           try{
+            console.log(response)
             axios.post(verificationURL,response)
           }catch(e){
             console.log(e); 

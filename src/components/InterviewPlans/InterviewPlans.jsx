@@ -10,6 +10,7 @@ import { IoAnalyticsSharp } from "react-icons/io5";
 import { success, error } from "../utils/toast";
 import axios from "axios";
 import * as api from "../../Axios";
+import LoadingIcons from "react-loading-icons";
 
 const Pricing = () => {
   const icons = [
@@ -27,7 +28,10 @@ const Pricing = () => {
       const documentID = e.target.id; 
       console.log(documentID);
       
-      if(!documentID)return ;
+      if(!documentID){
+        setLoading(false)
+        return ;
+      }
       const keyResponse = await api.getKey();
       console.log(keyResponse.data.key);
       
@@ -129,15 +133,20 @@ const Pricing = () => {
                 <li>{icons[2]}Code Synchronization</li>
                 <li>{icons[3]}Analytics</li>
               </ul>
-              <div
-                className="getStarted-btn" 
-                id={plans[0]?._id}
-                onClick={handlePricingButton}
+              {
+                loading?  <div
+                className="getStarted-btn"  
               >
+                <div className="buyBtn">
+                <LoadingIcons.Oval style={{ width: "2.4rem" }} /> 
+                </div>
+              </div>:  
+              <div className="getStarted-btn" id={plans[0]?._id} onClick={handlePricingButton} >
                 <div className="buyBtn">
                   <span> Get Started</span>
                 </div>
               </div>
+              }
             </article>
 
             <article className="planPricing mostPopular">
@@ -152,15 +161,22 @@ const Pricing = () => {
                 <li>{icons[2]}Code Synchronization</li>
                 <li>{icons[3]}Analytics</li>
               </ul>
+              {
+                loading?<div className="getStarted-btn btn-mostPopular" >
+                <div className="buyBtn">
+                  <LoadingIcons.Oval style={{ width: "2.4rem" }} />
+                </div>
+              </div>:
               <div
                 className="getStarted-btn btn-mostPopular"
                 id={plans[1]?._id}
-                onClick={handlePricingButton}
-              >
+                onClick={handlePricingButton} >
                 <div className="buyBtn">
                   <span> Get Started</span>
                 </div>
               </div>
+              }
+               
             </article>
 
             <article className="planPricing premium">
@@ -175,15 +191,21 @@ const Pricing = () => {
                 <li>{icons[2]}Code Synchronization</li>
                 <li>{icons[3]}Analytics</li>
               </ul>
-              <div
-                className="getStarted-btn"
-                id={plans[2]?._id}
-                onClick={handlePricingButton}
+              {
+                loading?  <div
+                className="getStarted-btn" 
               >
+                <div className="buyBtn">
+                <LoadingIcons.Oval style={{ width: "2.4rem" }} /> 
+                </div>
+              </div>:  
+              <div className="getStarted-btn" id={plans[2]?._id} onClick={handlePricingButton} >
                 <div className="buyBtn">
                   <span> Get Started</span>
                 </div>
               </div>
+              }
+               
             </article>
           </div>
         </div>

@@ -1,5 +1,9 @@
+ 
 @media(max-width:87rem)
-{
+{ .payment-main { 
+    
+  font-size: 1.2rem !important;
+}
     .main image
     {
         width:24rem;
@@ -82,17 +86,27 @@
         gap:1.1rem;
     }
 
-   
+    .payment-heading {
+      flex-direction: column-reverse;
+    }
+  .tick,.payment-heading-content 
+  {
+    align-self: flex-start;
+  }
+
     
 }
-
-
+ 
 
  @media(max-width:60rem){
     .grid--3-cols {
         grid-template-columns: repeat(2, 1fr) !important;
       }
-
+      .payment-details
+      {
+       
+        margin:3.2rem 0 0 !important; 
+      }
       .premium
       { 
         grid-column: 1/-1; 
@@ -132,7 +146,25 @@
             .nav-icon
             {z-index: 100000;}
  } 
-
+ @media(max-width:57rem){
+  .payment-main
+  {
+    justify-items: center;
+    grid-template-columns: 1fr !important;  
+  }
+  .payment-heading-content 
+  {
+    align-items: center;
+  }
+  .payment-content-container 
+  {
+    align-items: center;
+  }
+  .tick,.payment-heading-content 
+  {
+    align-self:  center;
+  }
+ }
  @media(max-width:40rem){
     .login-left
     {

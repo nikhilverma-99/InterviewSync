@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./InterviewPlans.css";
 
 import Logo from "../../images/Logo.svg";
-import { NavLink } from "react-router-dom";
+import { NavLink,useNavigate } from "react-router-dom";
 import { BsPeopleFill } from "react-icons/bs";
 import { BiSupport } from "react-icons/bi";
 import { GiTimeSynchronization } from "react-icons/gi";
@@ -19,6 +19,7 @@ const Pricing = () => {
     <GiTimeSynchronization />,
     <IoAnalyticsSharp />,
   ];
+  const navigate = useNavigate();
   const [plans, setPlans] = useState([{}]);
   const [loading, setLoading] = useState(false);
 
@@ -44,7 +45,7 @@ const Pricing = () => {
       console.log(key);
       console.log(keyResponse);
 
-      const verificationURL = `https://interviewsync.in/api/v1/payment/paymentverification`
+      const verificationURL = `http://localhost:5173/api/v1/payment/paymentverification`
       var options = {
         "key":  'rzp_test_o4MMBd6usRZuXl', // Enter the Key ID generated from the Dashboard
         "amount":  1000, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
@@ -56,7 +57,10 @@ const Pricing = () => {
         "handler": async (response)=>{
           try{
             console.log(response)
-            axios.post(verificationURL,response)
+            const verify = await axios.post(verificationURL,response)
+            console.log(verify);
+            navigate(`/paymentsuccessfull?data=${JSON.stringify(verify.data)}`)
+            
           }catch(e){
             console.log(e); 
           }

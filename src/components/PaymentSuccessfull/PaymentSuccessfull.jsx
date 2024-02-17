@@ -28,11 +28,11 @@ const PaymentSuccessfull = () => {
         <div className="payment-heading">
 
           <div className="payment-heading-content">
-            <h1 style={{fontSize:'4.5rem'}}>Payment Successfull </h1>
+            <h1 >Payment Successfull </h1>
             <span>Your payment for the InterviewSync plan was successfull !</span>
           </div>
           
-          <img src={Tick} alt="tick" style={{height:'100%'}}/>
+          <img src={Tick} className='tick' alt="tick" style={{height:'75%'}}/>
         </div>
         
       </div>
@@ -58,7 +58,7 @@ const PaymentSuccessfull = () => {
         <span>Access Your Dashboard</span>
       </div>
    </div>
-   <figure style={{height:'100%'}}>
+   <figure style={{height:'54rem'}}>
     <img src={Payment} alt="payment-succesfull-cartoon" style={{height:'100%'}}/>
    </figure>
   </main>

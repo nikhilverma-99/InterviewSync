@@ -66,7 +66,7 @@ const QuestionSelect = () => {
   ]; 
 
   return <>
-    <header className='paymentSuccessfull-header'>
+    <header className='questionSelect-header'>
       <NavLink to='/'>
         <figure>
           <img src= {Logo} alt="logo" style={{ height: '5.1rem' }} />

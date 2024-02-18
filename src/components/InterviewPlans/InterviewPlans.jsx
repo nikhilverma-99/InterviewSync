@@ -39,7 +39,7 @@ const Pricing = () => {
       const pricing = await api.checkoutPlanWithId(documentID);
      console.log(pricing);
      
-      // const { planType, price } = pricing?.data?.cPlan;
+      const { planType, price } = pricing?.data?.cPlan;
       const { amount, id } = pricing.data;
       const key = keyResponse?.data?.key;
       console.log(key);
@@ -48,7 +48,7 @@ const Pricing = () => {
       const verificationURL = `http://localhost:5173/api/v1/payment/paymentverification`
       var options = {
         "key":  'rzp_test_o4MMBd6usRZuXl', // Enter the Key ID generated from the Dashboard
-        "amount":  1000, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        "amount": amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
         "currency": "INR",
         "name": "Acme Corp",
         "description": "Test Transaction",
@@ -71,7 +71,8 @@ const Pricing = () => {
             "contact": "9000090000"
         },
         "notes": {
-            "address": "Razorpay Corporate Office"
+            "address": "Razorpay Corporate Office",
+            planName:planType
         },
         "theme": {
             "color": "#3399cc"

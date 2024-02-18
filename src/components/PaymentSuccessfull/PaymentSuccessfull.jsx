@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import Logo from '../../images/Logo.svg'
 import Tick from '../../images/icons8-tick.gif'
 import Payment from '../../images/Payment.webp'
-import { useNavigate } from "react-router-dom";
+import { useNavigate ,useSearchParams} from "react-router-dom";
 const Details = ({title,data})=>{
   
   return <div className="payment-detail">
@@ -13,6 +13,10 @@ const Details = ({title,data})=>{
   </div>
 }
 const PaymentSuccessfull = () => {
+  const searchQuery = JSON.parse(useSearchParams()[0].get("data")); 
+
+  console.log(searchQuery);
+  
   const navigate = useNavigate();
   return   <div className='paymentSuccessfull-container'>
   <header className='paymentSuccessfull-header'>
@@ -38,15 +42,15 @@ const PaymentSuccessfull = () => {
       </div>
       <div className="payment-details">
         <span style={{fontSize:'2.8rem',fontWeight:'500'}}>Transaction Details</span>
-        <Details title='Payment Method :' data='Card'/>
-        <Details title='Transaction Id :' data='pay_NWrwXHFj04i2CN'/>
+        <Details title='Payment Method :' data={searchQuery?.paymentMethod}/>
+        <Details title='Transaction Id :' data={searchQuery?.transactionId}/>
 
       </div>
 
       <div className="payment-details">
         <span style={{fontSize:'2.8rem',fontWeight:'500'}}>Payment Details</span>
-        <Details title='Amount :' data='$49'/>
-        <Details title='Plan Name :' data='Premium'/>
+        <Details title='Amount :' data={`$ ${searchQuery.totalAmount}`}/>
+        <Details title='Plan Name :' data={searchQuery?.planType}/>
 
       </div>
 

@@ -78,6 +78,9 @@ const Pricing = () => {
             "color": "#3399cc"
         }
     };
+
+    console.log(options);
+    
     var rzp1 = new Razorpay(options);
     rzp1.open();
        

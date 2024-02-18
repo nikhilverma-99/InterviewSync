@@ -38,6 +38,7 @@ import CreateInterview from "./components/Admin/DashBoard/CreateInterview";
 const AllInterview = lazy(() =>
   import("./components/Admin/DashBoard/AllInterview")
 );
+const InterviewLobby = lazy(()=>import('./components/InterviewLobby/InterviewLobby'))
 import QuestionSelect from "./components/QuestionSelect/QuestionSelect";
 const UserLogin = lazy(() => import("./components/UserLogin/UserLogin"));
 const ForgotPassword = lazy(() =>
@@ -72,15 +73,12 @@ function App() {
                   <Hero></Hero>
                   <HowItWorks></HowItWorks>
                   <Pricing></Pricing>
-                  <QuestionSelect></QuestionSelect>
+                  <QuestionSelect></QuestionSelect> 
                 </>
               }
             />
             <Route path="enterInterview" element={<Login></Login>}></Route>
-            <Route
-              path="problemEditor/:type"
-              element={<ProblemEditor></ProblemEditor>}
-            ></Route>
+            <Route path="problemEditor/:type" element={<ProblemEditor></ProblemEditor>} ></Route>
 
             <Route path="dashboard" element={<Admin />}>
               <Route index element={<Dashboard />} />
@@ -88,21 +86,12 @@ function App() {
               <Route path="allInterview" element={<AllInterview />} />
               <Route path="addQuestion" element={<TextEditor />} />
             </Route>
-            <Route path="/register" element={<Register></Register>} />
-            <Route path="/login" element={<UserLogin></UserLogin>} />
-            <Route path="/login" element={<UserLogin></UserLogin>} />
-            <Route
-              path="/forgotPassword"
-              element={<ForgotPassword></ForgotPassword>}
-            />
-            <Route
-              path="/plans"
-              element={<InterviewPlans></InterviewPlans>}
-            ></Route>
-            <Route
-              path="/paymentSuccessfull"
-              element={<PaymentSuccessfull></PaymentSuccessfull>}
-            />
+            <Route path="/register" element={<Register></Register>}/>
+            <Route path="/login" element={<UserLogin></UserLogin>} /> 
+            <Route path="/forgotPassword" element={<ForgotPassword></ForgotPassword>}/>
+            <Route path="/plans" element={<InterviewPlans></InterviewPlans>} ></Route>
+            <Route path="/paymentSuccessfull" element={<PaymentSuccessfull></PaymentSuccessfull>}/>
+            <Route path="/interviewLobby" element={<InterviewLobby></InterviewLobby>}/>
             <Route path="*" element={<Error />} />
           </Routes>
         </Suspense>

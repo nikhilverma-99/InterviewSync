@@ -38,7 +38,7 @@ import CreateInterview from "./components/Admin/DashBoard/CreateInterview";
 const AllInterview = lazy(() =>
   import("./components/Admin/DashBoard/AllInterview")
 );
-
+import QuestionSelect from "./components/QuestionSelect/QuestionSelect";
 const UserLogin = lazy(() => import("./components/UserLogin/UserLogin"));
 const ForgotPassword = lazy(() =>
   import("./components/ForgotPassword/ForgotPassword")
@@ -72,6 +72,7 @@ function App() {
                   <Hero></Hero>
                   <HowItWorks></HowItWorks>
                   <Pricing></Pricing>
+                  <QuestionSelect></QuestionSelect>
                 </>
               }
             />

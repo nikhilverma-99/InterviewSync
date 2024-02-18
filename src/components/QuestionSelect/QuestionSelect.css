@@ -1,0 +1,154 @@
+.question-row
+{
+  display:flex;
+  justify-content: space-between;
+  align-items:center; 
+  background:#01111f;
+  padding:1rem 4.4rem;
+  color:#f8fcfa;   border-bottom: 2px solid #ffffff1c
+}
+.questionPtick
+{
+      display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+}
+.difficulty-tag
+{
+ 
+    padding:0.1rem 0.7rem;
+  border-radius:100px;
+  text-transform: capitalize;
+   display: flex;
+    align-items: center;  
+    align-items: center;
+}
+.difficulty-tag 
+{
+    font-size: 1.4rem;
+}
+.medium
+{
+   background:#ffcc0099;
+  color:#ffcc00;
+}
+.hard
+{
+   background:#ff000054;
+  color:#ff0000;
+}
+
+.easy
+{
+  background:#5de92f73;
+    color:#3eff00;
+  
+}
+.search-bar::placeholder {
+  color: white;
+}
+.search-bar
+{
+  height:2.2rem;
+  width:10rem;
+   width: 200px; /* Set the width to your desired value */
+   font-family: 'Rubik', sans-serif; 
+   font-size: 14px; /* Set the font size */ 
+   padding: 0.2rem 1.1rem; /* Example padding */
+   border: 1px solid #ccc;
+   border-radius:8px;
+    box-shadow: 0 1px 2px rgba(1, 0, 0, 0.1);
+}
+.question-bar
+{
+   background:#01111f; 
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
+  height:5.5rem;
+}
+.questionSearch
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:1.1rem;
+    font-size: 1.6rem;
+}
+.question-bar input[type=text]
+{ 
+  min-width:20rem;
+   background:#01111f;
+  color:white; 
+  height:3.2rem;
+} 
+.form-select
+{
+/*     width: 8.6rem; */
+    padding: 0.5rem 1rem; 
+    font-size: 1.4rem;
+    font-family: inherit;
+    outline: none; 
+    min-width: max-content;
+    width: 18rem;
+    background-color: #01111f;
+    border-radius: 9px;
+    border: none;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.select-difficulty
+{
+    padding: 0.5rem 0.7rem; 
+    font-size: 1.8rem;
+  max-width: max-content;
+  color:white
+  
+}
+
+.question-panel
+{
+   
+    width: 85rem;
+    height: calc(100vh - 11.1rem);
+    background-color: #01111f;
+    overflow: scroll;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    scrollbar-color: #ffcc00;
+}
+
+#medium
+{
+   background:#ffcc0099;
+  color:#ffcc00;
+}
+#hard
+{
+   background:#ff000054;
+  color:#ff0000;
+}
+
+#easy
+{
+  background:#5de92f73;
+    color:#3eff00;
+  
+}
+
+.paymentSuccessfull-header
+{
+  height:10.1rem;
+  display:flex;
+  align-items: center; 
+  /* position: fixed; */
+  /* top: 0; */
+  width: 100%;
+    padding: 2.2rem ;
+    background-color: #01111f;
+    z-index: 1001; 
+}

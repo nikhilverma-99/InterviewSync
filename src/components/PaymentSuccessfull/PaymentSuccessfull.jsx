@@ -50,7 +50,7 @@ const PaymentSuccessfull = () => {
       <div className="payment-details">
         <span style={{fontSize:'2.8rem',fontWeight:'500'}}>Payment Details</span>
         <Details title='Amount :' data={`$ ${searchQuery.totalAmount}`}/>
-        <Details title='Plan Name :' data={searchQuery?.planType}/>
+        <Details title='Plan Name :' data={searchQuery?.planName}/>
 
       </div>
 

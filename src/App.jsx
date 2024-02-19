@@ -72,8 +72,7 @@ function App() {
                   <NavBar></NavBar>
                   <Hero></Hero>
                   <HowItWorks></HowItWorks>
-                  <Pricing></Pricing>
-                  <QuestionSelect></QuestionSelect> 
+                  <Pricing></Pricing> 
                 </>
               }
             />
@@ -92,6 +91,7 @@ function App() {
             <Route path="/plans" element={<InterviewPlans></InterviewPlans>} ></Route>
             <Route path="/paymentSuccessfull" element={<PaymentSuccessfull></PaymentSuccessfull>}/>
             <Route path="/interviewLobby" element={<InterviewLobby></InterviewLobby>}/>
+            <Route path="/questionSelect" element={<QuestionSelect></QuestionSelect>}/> 
             <Route path="*" element={<Error />} />
           </Routes>
         </Suspense>

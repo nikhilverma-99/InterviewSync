@@ -3,10 +3,10 @@ const API = axios.create({
   baseURL: "/api/v1",
 });
 //   /api/v1/interview
-export const joinInterview = async ({ email }) => {
+export const joinInterview = async ({ email,roomID }) => {
   let res = await API.post("/auth/enterInterview", {
     email: email,
-    roomID: "123",
+    roomID: roomID,
   });
   return res;
 };
@@ -30,7 +30,20 @@ export const saveProblem = (questionObject) => {
   console.log("Save Problem");
   return res;
 };
+export const getAllProblem = () => {
+  let res = API.post("/problem/get");
+  console.log("Got Problem");
+  return res;
+};
+
 // /interview/create
+export const saveInterviewProblems = async (interviewId,selectedProblem) => {
+ 
+  console.log(selectedProblem);
+  
+  let res = await API.post("/interviewroom/selectproblems",{_id:interviewId,problemId:selectedProblem}  );
+  return res;
+};
 export const createInterview = async (formData) => {
   let res = await API.post("/interview/create", formData);
   return res;

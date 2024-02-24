@@ -18,25 +18,26 @@ function Login() {
   
   async function LoginButton() {  
       setLoading(true)
-      try{ 
-        
+      try{  
         let user_email = email.split("/")[0]
-        let type = email.split("/")[1]; 
-        let res = await api.joinInterview({user_email})
-        console.log(res)
+        let res = await api.joinInterview({email:user_email, roomID:token})
+        let type = res.data.type;
+        console.log(res) 
         if(res.status==200){
-  
-          localStorage.setItem("roomID",res.data)
-          socket.emit('joininterview',res.data) 
-          if(type=="I"){
-            navigate('/problemEditor/I') 
+          const interviewId = res?.data?.invObj?._id;
+          localStorage.setItem("roomID",res.data.roomID)
+          console.log(localStorage.getItem("roomID"));
+          
+          socket.emit('joininterview',res.data.roomID) 
+          if(type=="I"){  
+            const resumeLink = res?.data?.invObj?.resume_url; 
+            navigate(`/questionSelect?_id=${interviewId}&resumeUrl=${btoa(resumeLink)}`) 
           }else if(type=="C"){
-            navigate('/problemEditor/C') 
+            console.log(res)
+            navigate(`/interviewLobby`) 
           }else{
             alert("please enter your type")
-          }
-  
-  
+          }   
         }else{
           console.log(res)
         }

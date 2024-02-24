@@ -1,21 +1,36 @@
 import React,{useState, useEffect} from "react";
 import './InterviewLobby.css'
  
+import socket from "../../socket";
 import LobbyData from './lobbyData'
 import Logo from '../../images/Logo.svg'
 import LoadingIcons from "react-loading-icons";
-
+import { useNavigate     } from "react-router-dom";
 const InterviewLobby = () => {
   const [index, setIndex] = useState(0);
+  const [redirect, setRedirect] = useState(false);
+  const navigate = useNavigate();
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      // Increment the index to switch to the next image
+    const intervalId = setInterval(() => { 
       setIndex((prevIndex) => (prevIndex + 1) % LobbyData.length);
-    }, 4500); // 2000 milliseconds = 2 seconds
-
-    // Clear the interval when the component unmounts
-    return () => clearInterval(intervalId);
+    }, 4500); // 2000 milliseconds = 2 seconds 
+    
+    return () =>{ 
+      clearInterval(intervalId);
+    } 
   }, []);
+
+  
+  useEffect(()=>{
+    socket.on( 'interview-started',()=>{
+      console.log("Redirectiong to b ahjsd sasd");
+      
+      navigate('/problemEditor/C')
+    });
+    return () =>{
+      socket.off('interview-started'); 
+    } 
+  },[socket])
 
   return <main style={{height:'100vh'}}>
     <header className='lobby-header'> 

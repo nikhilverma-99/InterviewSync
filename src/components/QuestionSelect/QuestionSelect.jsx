@@ -1,16 +1,23 @@
-import React,{useState} from "react";
-import './QuestionSelect.css'
- 
+import React, { useState,useEffect } from "react";
+import "./QuestionSelect.css";
+
+import socket from "../../socket";
+import { useSearchParams,useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
-import {error} from '../utils/toast'
-import Logo from '../../images/LightLogo.svg'
- 
-const QuestionRow = ({ questionData, selectedQuestions, setSelectedQuestions }) => {
+import { error,success } from "../utils/toast";
+import Logo from "../../images/LightLogo.svg";
+import * as api from '../../Axios'
+const QuestionRow = ({
+  questionData,
+  selectedQuestions,
+  setSelectedQuestions,
+}) => {
   const [isChecked, setIsChecked] = useState(false);
 
   const handleCheckboxChange = () => {
-    const questionId = questionData?.id;
-
+    const questionId = questionData?._id;
+    
+    
     if (!isChecked) {
       // Check if the question is already selected
       if (!selectedQuestions.includes(questionId)) {
@@ -21,14 +28,17 @@ const QuestionRow = ({ questionData, selectedQuestions, setSelectedQuestions }) 
           setIsChecked(true);
         } else {
           // Display an alert if the limit is exceeded
-          error('You can select up to 4 questions.');
+          error("You can select up to 4 questions.");
         }
       }
     } else {
       // Remove the question from selectedQuestions
-      setSelectedQuestions((prevSelected) => prevSelected.filter(id => id !== questionId));
+      setSelectedQuestions((prevSelected) =>
+        prevSelected.filter((id) => id !== questionId),
+      );
       setIsChecked(false);
     }
+    console.log(selectedQuestions);
   };
 
   return (
@@ -36,88 +46,123 @@ const QuestionRow = ({ questionData, selectedQuestions, setSelectedQuestions }) 
       <div className="questionPtick">
         <input
           type="checkbox"
-          id={questionData?.id}
+          id={questionData?._id}
           name="vehicle1"
           value="Bike"
           checked={isChecked}
           onChange={handleCheckboxChange}
         />
-        <div>{questionData.description}</div>
+        <div>{questionData?.title}</div>
       </div>
-      <div className='difficulty-tag' id={questionData.tag.toLowerCase()}>{questionData.tag}</div>
+      <div className="difficulty-tag" id={questionData?.difficulty.toLowerCase()}>
+        {questionData?.difficulty}
+      </div>
     </div>
   );
 };
 const QuestionSelect = () => {
-
-  const [selectedQuestions, setSelectedQuestions] =useState([])
-  const addSelectedQuestions = ()=>{ 
-  console.log(selectedQuestions);
-  
-  }
-  const dummyQuestionData = [
-    { id: "q1a2b3c4", description: "Implement a function to find the sum of two numbers in JavaScript.", tag: "easy" },
-    { id: "q5x6y7z8", description: "Explain the life cycle methods in React.", tag: "medium" },
-    { id: "q9p0o1i2", description: "Write a basic Redux reducer for managing a counter state.", tag: "medium" },
-    { id: "q7u8i9o0", description: "Implement a function to reverse a linked list in JavaScript.", tag: "hard" },
-    { id: "q6t7y8u9", description: "How to use hooks in React?", tag: "easy" },
-    { id: "q5t4r3e2", description: "Difference between state and props in React?", tag: "medium" },
-    { id: "q1o2p3i4", description: "Explain the concept of asynchronous programming.", tag: "hard" },
-  ]; 
-
-  return <>
-    <header className='questionSelect-header'>
-      <NavLink to='/'>
-        <figure>
-          <img src= {Logo} alt="logo" style={{ height: '5.1rem' }} />
-        </figure> 
-      </NavLink>
-    </header>  
-    <div class="question-panel"> 
-      <div class="question-bar">
+  const [selectedQuestions, setSelectedQuestions] = useState([]);
+  const [allQuestion , setAllQuestion] = useState([])
+  const params = useSearchParams();
+  const navigate = useNavigate();
+  const handleStartInterview = async() => {
+    try { 
+      if(selectedQuestions.length>=1 && selectedQuestions.length<=4)
+      {   
+        const saveInterviewProblems = await api.saveInterviewProblems(params[0].get("_id"),selectedQuestions)
+        console.log(saveInterviewProblems);
+        // localStorage.setItem("roomID",res.data)
+        const room = localStorage.getItem("roomID")
+        console.log(room);
         
-        <div className="questionSearch">
-          <label>Question:</label>
-          <input class="search-bar" type="text" placeholder="Search Question"/>
+        socket.emit('interview-started',room) 
+        success(`Inteview Problems Created reirecting to room !`)
+        navigate('/problemEditor/I')
+      }
+      else{
+        error('Please select questions !')
+      } 
+      console.log(selectedQuestions);
+    } catch (error) {
+       error(error)
+      
+    }
+  }; 
+
+  
+  // const id = useSearchParams()[0].get("_id"); 
+
+  useEffect(()=>{
+  const fetchAllProblems = async ()=>{
+    const allProblems = await api.getAllProblem();
+    console.log(allProblems); 
+    setAllQuestion(allProblems?.data)
+    //difficulty _id  title
+  }
+  fetchAllProblems();
+  },[])
+  return (
+    <>
+      <header className="questionSelect-header">
+        <NavLink to="/">
+          <figure>
+            <img src={Logo} alt="logo" style={{ height: "5.1rem" }} />
+          </figure>
+        </NavLink>
+        <div className="divstartInterviewBtn" onClick={handleStartInterview} >
+            <div className="startInterviewBtn">
+              <span>Start Interview</span>
+            </div>
+          </div>
+      </header>
+      <div className="row questionSelect">
+        
+          <div class="question-panel">
+            <div class="question-bar">
+              <div className="questionSearch">
+                <label>Question:</label>
+                <input
+                  class="search-bar"
+                  type="text"
+                  placeholder="Search Question"
+                />
+              </div>
+
+              <div className="questionSearch">
+                <label for="difficulty">Select Difficulty:</label>
+                <select class="form-select select-difficulty" id="difficulty">
+                  <option value="easy">Easy</option>
+                  <option value="medium">Medium</option>
+                  <option value="hard">Hard</option>
+                </select>
+              </div>
+
+              <div className="questionSearch">
+                <label for="difficulty">Tags:</label>
+                <select class="form-select select-difficulty" id="difficulty">
+                  <option value="easy">Easy</option>
+                  <option value="medium">Medium</option>
+                  <option value="hard">Hard</option>
+                </select>
+              </div>
+            </div>
+            {allQuestion.map((question, index) => (
+              <QuestionRow
+                key={index}
+                questionData={question}
+                selectedQuestions={selectedQuestions}
+                setSelectedQuestions={setSelectedQuestions}
+              />
+            ))}
+          </div> 
+          <div>
+            <iframe  style={{height:'100%',width:`calc(100vw - 85rem)`}} src={atob(params[0].get("resumeUrl"))} />
           </div>
 
-        <div className="questionSearch"> 
-          <label for="difficulty">Select Difficulty:</label>
-          <select class="form-select select-difficulty" id="difficulty">
-              <option value="easy">Easy</option>
-              <option value="medium">Medium</option>
-              <option value="hard">Hard</option>
-          </select>
-        </div>
-        
-        <div className="questionSearch">
-          
-          <label for="difficulty">Tags:</label>
-        <select class="form-select select-difficulty" id="difficulty">
-            <option value="easy">Easy</option>
-            <option value="medium">Medium</option>
-            <option value="hard">Hard</option>
-        </select>
-        </div>
-      </div> 
-          {
-          dummyQuestionData.map((question, index) => (
-            <QuestionRow
-              key={index}
-              questionData={question}
-              selectedQuestions={selectedQuestions}
-              setSelectedQuestions={setSelectedQuestions}
-            />
-          ))
-          }    
+         
       </div>
-    <div>
-
-
-          <button onClick={addSelectedQuestions}>COnduct Interview</button>  
-   </div>
-   
-  </> 
+    </>
+  );
 };
 
 export default QuestionSelect;

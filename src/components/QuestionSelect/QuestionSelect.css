@@ -1,3 +1,11 @@
+.row{
+  display: flex;
+}
+.questionSelect
+{
+    height: calc(100vh - 10.1rem);
+
+}
 .question-row
 {
   display:flex;
@@ -114,7 +122,6 @@
 {
    
     width: 85rem;
-    height: calc(100vh - 11.1rem);
     background-color: #01111f;
     overflow: scroll;
     overflow-x: hidden;
@@ -145,10 +152,30 @@
   height:10.1rem;
   display:flex;
   align-items: center; 
-  /* position: fixed; */
-  /* top: 0; */
+  
+justify-content: space-between;
   width: 100%;
     padding: 2.2rem ;
     background-color: #01111f;
     z-index: 1001; 
+}
+
+.divstartInterviewBtn
+{
+  display: flex;
+  justify-content: flex-end;
+}
+ 
+.startInterviewBtn
+{
+  padding: 1.1rem 2.2rem ;
+  background-color: #40ff00;
+  font-size: 1.6rem;
+
+  border-radius: 5px; 
+}
+
+.divstartInterviewBtn:hover
+{
+  cursor: pointer;
 }

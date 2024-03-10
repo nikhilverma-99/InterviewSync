@@ -3,7 +3,7 @@ import "./login.css";
 // import { ToastContainer, toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
 import axios from 'axios' 
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useSearchParams } from "react-router-dom";
 import { useState } from "react";
 import { Bars } from "react-loading-icons"; 
 import logo from "../../images/Logo.svg"; 
@@ -15,6 +15,7 @@ function Login() {
   let [token, setToken] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const params = useSearchParams();
   
   async function LoginButton() {  
       setLoading(true)
@@ -34,7 +35,7 @@ function Login() {
             navigate(`/questionSelect?_id=${interviewId}&resumeUrl=${btoa(resumeLink)}`) 
           }else if(type=="C"){
             console.log(res)
-            navigate(`/interviewLobby`) 
+            navigate(`/interviewLobby?_id=${interviewId}`); 
           }else{
             alert("please enter your type")
           }   
@@ -60,6 +61,12 @@ function Login() {
   
   useEffect(()=>{
     
+    const credentials = params[0].get("data");
+    credentials = atob(JSON.parse(credentials))
+    console.log(credentials)
+
+    setEmail(credentials.email);
+    setToken(credentials.token) ;
     // if (currentUser) {
     //   toast.success(` User is already logged in !`, {
     //     position: toast.POSITION.TOP_CENTER,

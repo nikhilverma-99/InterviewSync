@@ -5,11 +5,13 @@ import socket from "../../socket";
 import LobbyData from './lobbyData'
 import Logo from '../../images/Logo.svg'
 import LoadingIcons from "react-loading-icons";
-import { useNavigate     } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 const InterviewLobby = () => {
   const [index, setIndex] = useState(0);
   const [redirect, setRedirect] = useState(false);
   const navigate = useNavigate();
+  const params = useSearchParams();
+
   useEffect(() => {
     const intervalId = setInterval(() => { 
       setIndex((prevIndex) => (prevIndex + 1) % LobbyData.length);
@@ -25,7 +27,7 @@ const InterviewLobby = () => {
     socket.on( 'interview-started',()=>{
       console.log("Redirectiong to b ahjsd sasd");
       
-      navigate('/problemEditor/C')
+      navigate(`/problemEditor/C?_id=${params[0].get("_id")}}`);
     });
     return () =>{
       socket.off('interview-started'); 

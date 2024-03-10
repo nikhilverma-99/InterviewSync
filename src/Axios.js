@@ -36,6 +36,11 @@ export const getAllProblem = () => {
   return res;
 };
 
+export const getProblemById = (interviewId) => {
+  let res = API.post("/problem/getproblems",{_id:interviewId}); 
+  return res;
+};
+
 // /interview/create
 export const saveInterviewProblems = async (interviewId,selectedProblem) => {
  

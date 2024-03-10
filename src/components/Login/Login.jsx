@@ -59,13 +59,17 @@ function Login() {
     setToken(value);
   }
 
-  useEffect(() => { 
-    const credentials = JSON.parse(atob(params[0]?.get("data")));
-    console.log(credentials);
+  useEffect(() => {
+    const data = params[0]?.get("data");
 
-    if(credentials){
-      setEmail(credentials.email);
-      setToken(credentials.token) ; 
+    if (data) {
+      const credentials = JSON.parse(atob(data));
+      console.log(credentials);
+
+      if (credentials) {
+        setEmail(credentials.email);
+        setToken(credentials.token);
+      }
     }
     // if (currentUser) {
     //   toast.success(` User is already logged in !`, {

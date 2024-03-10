@@ -61,12 +61,13 @@ function Login() {
   
   useEffect(()=>{
     
-    const credentials = params[0].get("data");
+    console.log(params[0].get("data"))
+    const credentials = params[0]?.get("data");
     credentials = atob(JSON.parse(credentials))
     console.log(credentials)
 
-    setEmail(credentials.email);
-    setToken(credentials.token) ;
+    // setEmail(credentials.email);
+    // setToken(credentials.token) ;
     // if (currentUser) {
     //   toast.success(` User is already logged in !`, {
     //     position: toast.POSITION.TOP_CENTER,

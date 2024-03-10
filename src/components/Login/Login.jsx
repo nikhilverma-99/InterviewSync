@@ -91,7 +91,7 @@ function Login() {
     //   navigate("/")
     // }
     // }
-  });
+  },[]);
   return (
     <div id="loginContainer">
       <div class="authorize-background"></div>

@@ -37,7 +37,7 @@ function Login() {
           );
         } else if (type == "C") {
           console.log(res);
-          navigate(`/interviewLobby?_id=${interviewId}`);
+          navigate(`/interviewLobby?_id=${res?.data?._id}`);
         } else {
           alert("please enter your type");
         }
@@ -59,13 +59,14 @@ function Login() {
     setToken(value);
   }
 
-  useEffect(() => {
-    console.log(params[0].get("data"));
+  useEffect(() => { 
     const credentials = JSON.parse(atob(params[0]?.get("data")));
     console.log(credentials);
 
-    setEmail(credentials.email);
-    setToken(credentials.token) ;
+    if(credentials){
+      setEmail(credentials.email);
+      setToken(credentials.token) ; 
+    }
     // if (currentUser) {
     //   toast.success(` User is already logged in !`, {
     //     position: toast.POSITION.TOP_CENTER,

@@ -6,6 +6,7 @@ import { HiOutlineCodeBracket } from "react-icons/hi2";
 import { IoSettingsOutline } from "react-icons/io5";
 import socket from "../../socket";
 import CodeSnippet from "./CodeSnippet/codeSnippet.json";
+import axios from "axios";
 import {
   fontSizes,
   programmingLanguages,
@@ -20,13 +21,13 @@ import { defineTheme } from "../lib/defineTheme";
 import { useCodeCollabContext } from "../../App";
 //constants
 import {themes,EditorThemeColor,settingRight,settingLeft,buttonTheme,editorLanguage,fontColor} from '../constants/theme'
-const CodeEditor = () => {
+const CodeEditor = ({input,setOutput}) => {
   const [fontSize, setFontSize] = useState(18);
   const [tabSize, setTabSize] = useState(2);
   const [language, setLanguage] = useState(63);
   const [settingOpen, setSettingOpen] = useState(false);
   const [code, setCode] = useState("");
- 
+ const[processing,setProcessing] = useState(false)
   const { selectedTheme, setSelectedTheme } = useCodeCollabContext(); 
   
 
@@ -100,7 +101,7 @@ const debouncedHandleCodeChange = debounce((newValue, roomID) => {
       language_id: language,
       // encode source code in base64
       source_code: btoa(code),
-      stdin: btoa(customInput),
+      stdin: btoa(input),
     };
     const options = {
       method: "POST",
@@ -127,9 +128,9 @@ const debouncedHandleCodeChange = debounce((newValue, roomID) => {
       })
       .catch((err) => {
         let error = err.response ? err.response.data : err;
-        setProcessing(false);
         console.log(error);
       });
+    setProcessing(false);
   };
 
   const checkStatus = async (token) => {
@@ -160,6 +161,8 @@ const debouncedHandleCodeChange = debounce((newValue, roomID) => {
         // showSuccessToast(`Compiled Successfully!`)
         console.log(response);
         console.log("response.data", atob(response.data.stdout));
+        if(response.data.stderr) setOutput(atob(response.data.stderr))
+        if (response.data.stdout) setOutput(atob(response.data.stdout));
 
         return;
       }
@@ -360,7 +363,7 @@ const debouncedHandleCodeChange = debounce((newValue, roomID) => {
         </div>
         <div
           className="btn-run" onClick={runCode}
-          style={{ backgroundColor: `#45be41`,color:'white',padding:'0.4rem 0.8rem' }}
+          style={{ backgroundColor: `#45be41`,color:'white',padding:'0.4rem 0.8rem',display:'none' }}
         >
            
           <a style={{padding:'0.4rem 0.8rem'}}>Submit</a>

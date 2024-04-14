@@ -4,8 +4,7 @@ import "./login.css";
 // import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { NavLink, useNavigate, useSearchParams } from "react-router-dom";
-import { useState } from "react";
-import { Bars } from "react-loading-icons";
+import { useState } from "react"; 
 import logo from "../../images/Logo.svg";
 import socket from "../../socket";
 import * as api from "../../Axios";
@@ -19,15 +18,12 @@ function Login() {
 
   async function LoginButton() {
     setLoading(true);
-    try {
-      let user_email = email.split("/")[0];
-      let res = await api.joinInterview({ email: user_email, roomID: token });
-      let type = res.data.type;
-      console.log(res);
+    try { 
+      let res = await api.joinInterview({ email: email, roomID: token });
+      let type = res?.data?.type; 
       if (res.status == 200) {
         const interviewId = res?.data?.invObj?._id;
-        localStorage.setItem("roomID", res.data.roomID);
-        console.log(localStorage.getItem("roomID"));
+        localStorage.setItem("roomID", res.data.roomID); 
 
         socket.emit("joininterview", res.data.roomID);
         if (type == "I") {

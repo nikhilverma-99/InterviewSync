@@ -187,9 +187,7 @@ const debouncedHandleCodeChange = debounce((newValue, roomID) => {
     console.log(newValue)
     socket.emit('codeChange', { newValue, roomID,socketId: socket.id }); // Pass an object with keys newValue and roomID
   };
-  
    
-
   const handleSettingOpen = () => {
     setSettingOpen((cSetting) => {
       return !cSetting;

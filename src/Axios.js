@@ -3,7 +3,7 @@ const API = axios.create({
   baseURL: "/api/v1",
 });
 //   /api/v1/interview
-export const joinInterview = async ({ email,roomID }) => {
+export const joinInterview = async ({ email, roomID }) => {
   let res = await API.post("/auth/enterInterview", {
     email: email,
     roomID: roomID,
@@ -37,16 +37,18 @@ export const getAllProblem = () => {
 };
 
 export const getProblemById = (interviewId) => {
-  let res = API.post("/problem/getproblems",{_id:interviewId}); 
+  let res = API.post("/interviewroom/getproblems", { _id: interviewId });
   return res;
 };
 
 // /interview/create
-export const saveInterviewProblems = async (interviewId,selectedProblem) => {
- 
+export const saveInterviewProblems = async (interviewId, selectedProblem) => {
   console.log(selectedProblem);
-  
-  let res = await API.post("/interviewroom/selectproblems",{_id:interviewId,problemId:selectedProblem}  );
+
+  let res = await API.post("/interviewroom/selectproblems", {
+    _id: interviewId,
+    problemId: selectedProblem,
+  });
   return res;
 };
 export const createInterview = async (formData) => {

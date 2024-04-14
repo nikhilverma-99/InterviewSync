@@ -24,9 +24,10 @@ const InterviewLobby = () => {
   }, []);
 
   useEffect(() => {
-    const interviewStarted = async(() => {
-      return await.getProblemById(params[0].get("_id"));
-    });
+    const interviewStarted = async () => {
+      const data = await getProblemById(params[0].get("_id"));
+      return data;
+    };
     const alreadyStarted = interviewStarted; //api call
     if (alreadyStarted?.data?.interviewObj?.problems.length > 0) {
       navigate(`/problemEditor/C?_id=${params[0].get("_id")}}`);

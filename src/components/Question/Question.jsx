@@ -3,10 +3,9 @@ import "./Question.css";
 import { fontColor } from "../constants/theme";
 import { useCodeCollabContext } from "../../App";
 const Question = (props) => {
-  const { selectedTheme ,setSelectedTheme } = useCodeCollabContext();
-  if(!selectedTheme)
-  {
-    setSelectedTheme('cobalt')
+  const { selectedTheme, setSelectedTheme } = useCodeCollabContext();
+  if (!selectedTheme) {
+    setSelectedTheme("cobalt");
   }
   const EditorThemeColor = {
     "vs-dark": "#2f2f2f",
@@ -14,6 +13,9 @@ const Question = (props) => {
     cobalt: "#01111f",
   };
   const questionData = props.questionData;
+  const incIndex = props.incIndex;
+  const index = props.index;
+  console.log(incIndex);
   if (!questionData) {
     return null; // or some placeholder content
   }
@@ -54,8 +56,26 @@ const Question = (props) => {
         color: `${fontColor[selectedTheme]}`,
       }}
     >
-      <div className="heading-container">
-        <a className="heating-content">{questionData?.title}</a>
+      <div
+        className="heading-container"
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <div>
+          <span className="heating-content">{index + 1} .&nbsp;</span>
+          <a className="heating-content">{questionData?.title}</a>
+        </div>
+        <span
+          style={{ fontSize: "50px", fontWeight: "bold" }}
+          className="rightInc"
+          onClick={incIndex}
+        >
+          {" "}
+          &rarr;
+        </span>
       </div>
       <div className="tags">
         <div className="tag-content">
@@ -76,7 +96,7 @@ const Question = (props) => {
         })}
       </div>
       <div className="question-examples">
-        {questionData.examples.map((val, index) => {
+        {questionData.example.map((val, index) => {
           return (
             <div className="question-example">
               <p className="example">Example {index + 1}: </p>

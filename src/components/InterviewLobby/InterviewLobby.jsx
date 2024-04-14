@@ -27,7 +27,7 @@ const InterviewLobby = () => {
     const interviewStarted = async () => {
       const data = await getProblemById(params[0].get("_id"));
       if (data?.data?.interviewObj?.problems.length > 0) {
-        navigate(`/problemEditor/C?_id=${params[0].get("_id")}}`);
+        navigate(`/problemEditor/C?_id=${params[0].get("_id")}`);
       }
     };
     interviewStarted(); //api call

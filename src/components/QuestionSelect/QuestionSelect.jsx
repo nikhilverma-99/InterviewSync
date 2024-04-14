@@ -81,7 +81,7 @@ const QuestionSelect = () => {
 
         socket.emit("interview-started", room);
         success(`Inteview Problems Created reirecting to room !`);
-        navigate(`/problemEditor/I?_id=${params[0].get("_id")}}`);
+        navigate(`/problemEditor/I?_id=${params[0].get("_id")}`);
       } else {
         error("Please select questions !");
       }

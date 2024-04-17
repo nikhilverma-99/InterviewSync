@@ -61,7 +61,7 @@ const InterviewLobby = () => {
             </div>
           </div>
           <div className="image-transition-container">
-            {LobbyData.map((val, i) => (
+            {LobbyData?.map((val, i) => (
               <img
                 key={i}
                 src={val.img}

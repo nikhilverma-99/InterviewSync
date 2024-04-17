@@ -4,6 +4,8 @@ import Editor from "../CodeEditor/Editor";
 import VideoDraggable from "../VideoDraggable/VideoDraggable";
 import { useCodeCollabContext } from "../../App";
 
+import { useSearchParams } from "react-router-dom";
+import { getProblemById } from "../../Axios";
 import Logo from "../../images/Logo.svg";
 import WhiteLogo from "../../images/LightLogo.svg";
 import {
@@ -17,12 +19,13 @@ const Adjustable = () => {
   const [dragging, setDragging] = useState(false);
   const [dragOffset, setDragOffset] = useState(0);
   const [leftContent, setLeftContent] = useState("Left Content");
-
+  const [questions, setQuestions] = useState([]);
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
-
+  const [cIndex, setcIndex] = useState(0);
   const containerRef = useRef(null);
   const { selectedTheme, setSelectedTheme } = useCodeCollabContext();
+  const params = useSearchParams();
 
   const leftStyle = {
     background: "red",
@@ -71,22 +74,44 @@ const Adjustable = () => {
       `1 <= words[i].length <= 100`,
       `words[i] consists of lowercase English letters.`,
     ],
-    difficulty: [`Hard`],
-    examples: [
+    difficulty: `Hard`,
+    example: [
       {
         input: 'words = ["abc","aabc","bc"]',
         output: "true",
         explanation: `Move the first 'a' in words[1] to the front of words[2],to make words[1] = "abc" and words[2] = "abc". All the strings are now equal to "abc", so return true.`,
       },
     ],
-    title: "Redistribute Characters to Make All Strings Equal",
-    questionDescription: [
+    title: "RedistribuaSDADdte Characters to Make All Strings Equal",
+    description: [
       "You are given an array of strings words (0-indexed).",
       "In one operation, pick two distinct indices i and j, where words[i] is a non-empty string, and move any character from words[i] to any position in words[j].\n\n",
       "Return true if you can't make every string in words equal using any number of operations, and false otherwise.",
     ],
   };
 
+  const incIndex = () => {
+    // alert("increase");
+
+    setcIndex((prevIndex) => (prevIndex + 1)%questions.length);
+  };
+  useEffect(() => {
+    const interviewStarted = async () => {
+      const data = await getProblemById(params[0].get("_id"));
+      if (data?.data?.interviewObj?.problems.length > 0) {
+        setQuestions(() => {
+          return data.data.interviewObj.problems;
+        });
+
+        console.log(data);
+      }
+    };
+    interviewStarted();
+  }, []);
+
+  useEffect(() => {
+    console.log(questions);
+  }, [questions]);
   return (
     <>
       <VideoDraggable
@@ -129,7 +154,15 @@ const Adjustable = () => {
             width: `calc(50% + ${dragOffset}px)`,
           }}
         >
-          <Question questionData={questionData}></Question>
+          <Question
+            questionData={
+              questions != null && questions.length > 0
+                ? questions[cIndex]
+                : null
+            }
+            index = {cIndex}
+            incIndex={incIndex}
+          ></Question>
         </div>
 
         <div
@@ -146,7 +179,7 @@ const Adjustable = () => {
             width: `calc(50% - ${dragOffset}px)`,
           }}
         >
-          <Editor input ={input} setOutput={setOutput}></Editor>
+          <Editor input={input} setOutput={setOutput}></Editor>
         </div>
       </div>
 

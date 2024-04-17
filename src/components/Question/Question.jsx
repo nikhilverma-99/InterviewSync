@@ -96,7 +96,7 @@ const Question = (props) => {
         })}
       </div>
       <div className="question-examples">
-        {questionData.example.map((val, index) => {
+        {questionData.example?.map((val, index) => {
           return (
             <div className="question-example">
               <p className="example">Example {index + 1}: </p>
@@ -123,7 +123,7 @@ const Question = (props) => {
       <div className="question-constraints">
         <span className="constraint-heading">Constraints:</span>
         <ul className="contraints-list">
-          {questionData.constraints.map((val, index) => {
+          {questionData.constraints?.map((val, index) => {
             return <li>{val}</li>;
           })}
         </ul>

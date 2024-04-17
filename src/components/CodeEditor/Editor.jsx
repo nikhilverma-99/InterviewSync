@@ -314,7 +314,7 @@ const debouncedHandleCodeChange = debounce((newValue, roomID) => {
                       }}
                       onChange={handleFontChange}
                     >
-                      {fontSizes.map((size) => (
+                      {fontSizes?.map((size) => (
                         <option key={size} value={size}>
                           {size + " px"}
                         </option>
@@ -334,7 +334,7 @@ const debouncedHandleCodeChange = debounce((newValue, roomID) => {
                       }}
                       onChange={handleTabSize}
                     >
-                      {tabSizes.map((size) => (
+                      {tabSizes?.map((size) => (
                         <option key={size} value={size}>
                           {size}
                         </option>

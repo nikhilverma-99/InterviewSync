@@ -145,7 +145,7 @@ const Register = () => {
             name="countries"
             className="registration-input-select"
             styles={{ control: (styles) => ({ ...styles, border: "nonee" }) }}
-            options={allCountries.map((val) => ({
+            options={allCountries?.map((val) => ({
               value: val.name,
               label: val.name,
             }))}

@@ -117,7 +117,7 @@ const RichTextEditor = () => {
             <div className="question-description">
               <div className="question-desc-content">
                 <label>Question Description:</label>
-                {questionDescription.map((desc, index) => (
+                {questionDescription?.map((desc, index) => (
                   <div key={index}>
                     <div className="row padding-1rem">
                       <label>{`Paragraph ${index + 1}`}</label>
@@ -159,7 +159,7 @@ const RichTextEditor = () => {
 
           <div className="question-examples">
             <div className="question-example  ">
-              {examples.map((example, index) => (
+              {examples?.map((example, index) => (
                 <div key={index} className="question-example">
                   <div className="row padding-1rem">
                     <p className="example">Example {index + 1}:</p>
@@ -231,7 +231,7 @@ const RichTextEditor = () => {
 
           <div className="question-constraints question-container">
             <span className="constraint-heading">Constraints:</span>
-            {constraints.map((constraint, index) => (
+            {constraints?.map((constraint, index) => (
               <div key={index}>
                 <div className="row padding-1rem">
                   <input

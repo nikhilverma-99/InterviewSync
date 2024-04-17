@@ -146,7 +146,7 @@ const QuestionSelect = () => {
               </select>
             </div>
           </div>
-          {allQuestion.map((question, index) => (
+          {allQuestion?.map((question, index) => (
             <QuestionRow
               key={index}
               questionData={question}

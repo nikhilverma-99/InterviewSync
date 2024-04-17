@@ -36,7 +36,7 @@ const Hero = () => {
 
           <div className="delivered-meals">
             <figure className="delivered-imgs">
-              {Object.values(customerImages).map((value, index) => {
+              {Object.values(customerImages)?.map((value, index) => {
                 return (
                   <>
                     <img

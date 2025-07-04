@@ -25,9 +25,24 @@ const InterviewLobby = () => {
 
   useEffect(() => {
     const interviewStarted = async () => {
-      const data = await getProblemById(params[0].get("_id"));
-      if (data?.data?.interviewObj?.problems.length > 0) {
-        navigate(`/problemEditor/C?_id=${params[0].get("_id")}`);
+      try {
+        const interviewId = params[0]?.get("_id");
+        if (!interviewId) {
+          console.error("No _id found in URL params");
+          return;
+        }
+
+        const { data } = await getProblemById(interviewId);
+
+        if (data?.interviewObj?.problems?.length > 0) {
+          navigate(`/problemEditor/C?_id=${interviewId}`);
+        } else {
+          console.warn("No problems found in interview");
+          // Optionally navigate to a fallback page or show a message
+        }
+      } catch (error) {
+        console.error("Failed to start interview:", error);
+        // Optionally show user-friendly error message
       }
     };
     interviewStarted(); //api call

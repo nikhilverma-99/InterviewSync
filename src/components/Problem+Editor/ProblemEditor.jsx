@@ -14,6 +14,7 @@ import {
   fontColor,
 } from "../constants/theme";
 import Question from "../Question/Question";
+import socket from "../../socket";
 
 const Adjustable = () => {
   const [dragging, setDragging] = useState(false);
@@ -68,36 +69,16 @@ const Adjustable = () => {
       setDragOffset(newOffset);
     }
   };
-  const questionData = {
-    constraints: [
-      `1 <= words.length <= 100`,
-      `1 <= words[i].length <= 100`,
-      `words[i] consists of lowercase English letters.`,
-    ],
-    difficulty: `Hard`,
-    example: [
-      {
-        input: 'words = ["abc","aabc","bc"]',
-        output: "true",
-        explanation: `Move the first 'a' in words[1] to the front of words[2],to make words[1] = "abc" and words[2] = "abc". All the strings are now equal to "abc", so return true.`,
-      },
-    ],
-    title: "RedistribuaSDADdte Characters to Make All Strings Equal",
-    description: [
-      "You are given an array of strings words (0-indexed).",
-      "In one operation, pick two distinct indices i and j, where words[i] is a non-empty string, and move any character from words[i] to any position in words[j].\n\n",
-      "Return true if you can't make every string in words equal using any number of operations, and false otherwise.",
-    ],
-  };
 
   const incIndex = () => {
     // alert("increase");
 
-    setcIndex((prevIndex) => (prevIndex + 1)%questions.length);
+    setcIndex((prevIndex) => (prevIndex + 1) % questions.length);
   };
   useEffect(() => {
+    const interviewId = params[0].get("_id");
     const interviewStarted = async () => {
-      const data = await getProblemById(params[0].get("_id"));
+      const data = await getProblemById(interviewId);
       if (data?.data?.interviewObj?.problems.length > 0) {
         setQuestions(() => {
           return data.data.interviewObj.problems;
@@ -110,8 +91,14 @@ const Adjustable = () => {
   }, []);
 
   useEffect(() => {
-    console.log(questions);
-  }, [questions]);
+    const roomID = localStorage.getItem("roomID");
+    if (roomID) {
+      try {
+        socket.emit("joininterview", roomID);
+      } catch (e) {}
+    }
+  }, []);
+
   return (
     <>
       <VideoDraggable
@@ -120,7 +107,7 @@ const Adjustable = () => {
           title: `${themeBackground[selectedTheme]}`,
           fontColor: `${fontColor[selectedTheme]}`,
         }}
-      ></VideoDraggable>
+      />
       <header
         id="header"
         className="problemNavbar"
@@ -160,7 +147,7 @@ const Adjustable = () => {
                 ? questions[cIndex]
                 : null
             }
-            index = {cIndex}
+            index={cIndex}
             incIndex={incIndex}
           ></Question>
         </div>
